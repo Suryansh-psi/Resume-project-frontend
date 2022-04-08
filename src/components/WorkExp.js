@@ -30,50 +30,50 @@ function WorkExp() {
       <div className="aboutSection">
         <label className="WorkExplabel">
            Client Description
-           <input className="first" {...register('points')} type="text" name="points[]"  />
+           <input className="first" {...register('client_desc')} type="text" name="client_desc[]"  />
         </label>
 
         <label className="WorkExplabel">
            Country
-           <input className="second"{...register('points')} type="text" name="points[]"  />
+           <input className="second"{...register('country')} type="text" name="country[]"  />
         </label>
 
         <label className="WorkExplabel">
            Project Name
-           <input className="third"{...register('points')} type="text" name="points[]"  />
+           <input className="third"{...register('project')} type="text" name="project[]"  />
         </label>
 
         <label className="WorkExplabel">
            Role
-           <input className="fourth"{...register('points')} type="text" name="points[]" placeholder="Developer" /><span className="cross">&#9747;</span>
+           <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Developer" /><span className="cross">&#9747;</span>
             <i><BsPlusCircle/></i>
         </label>
 
         <label className="WorkExplabel">
            Duration
-           <input className="fifth"{...register('points')} type="date" name="points[]" />
-           <span className="duration"><input className="fifth"{...register('points')} type="date" name="points[]" /></span>
+           <input className="fifth"{...register('created_at')} type="date" name="created_at[]" />
+           <span className="duration"><input className="fifth"{...register('update_at')} type="date" name="update_at[]" /></span>
         </label>
 
         <label className="WorkExplabel">
            Business Solution
-           <textarea className="sixth"{...register('about')} name="about" placeholder="Write Your Solution" id="about" cols="54" rows="4"></textarea> 
+           <textarea className="sixth"{...register('business_sol')} name="business_sol" placeholder="Write Your Solution" id="about" cols="54" rows="4"></textarea> 
         </label>
 
         <label className="WorkExplabel">
            Technology Stack
-           <input className="seventh"{...register('points')} type="text" name="points[]" placeholder="Python" /><span className="cross">&#9747;</span>
+           <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Python" /><span className="cross">&#9747;</span>
             <i><BsPlusCircle/></i>
         </label>
 
         <label className="WorkExplabel">
            Project Responsibilities
-           <input className="eight" {...register('points')} type="text" name="points[]" placeholder="Write Responsibilities" />
+           <input className="eight" {...register('responsibility')} type="text" name="responsibility[]" placeholder="Write Responsibilities" />
           <span className="Responsibility"><BsPlusCircle/></span>
         </label>
 
         <div className="footer">
-          <span className="plus"><FaPlus /></span><input className="element" {...register('points')} type="text" name="points[]" placeholder="Add work experience" />
+          <span className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder="Add work experience" />
 
         </div>
 
