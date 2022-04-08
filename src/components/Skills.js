@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import SearchBox from 'react-search-box';
 import { FaFilter } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import './Skills.css'
 
 const Skills = () => {
@@ -26,7 +27,7 @@ const Skills = () => {
           <button className="button2">Cancel</button>     
           <input type="submit" name="aboutme" value="Save" />
           
-          <button className="button1">-></button>
+          <button className="button1"><FaArrowRight /></button>
         </div>
         <h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
         <div className="SearchBox">

@@ -1,0 +1,62 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.profileImage{
+	font-size: 120px;
+    color: grey;
+    padding: 1rem  0 0 13rem;
+
+}
+.detailSection{
+	display: flex;
+	flex-direction: column;
+	margin: 40px 0 0  20px;
+}
+
+.name input{
+	margin-left: 7rem;
+	width: 22rem;
+	height: 2rem;
+	padding: 1rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+}
+
+.name{
+	margin-bottom: 20px;
+}
+
+
+.role select{
+	display: none;
+}
+.role i{
+	margin-left: 15rem;
+	font-size: 27px;
+	color: lightgrey;
+}
+
+
+
+.exp input{
+	margin-left: 5.5rem;
+	margin-top: 0;
+	width: 9rem;
+	height: 2rem;
+	padding: 0.5rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+}
+
+.role{
+	margin-bottom: 20px;
+}
+
+.exp span{
+	color: grey;
+}
+
+
