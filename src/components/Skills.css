@@ -5,11 +5,17 @@
 	width: 32rem;
 
 }
+table{
+	border:2px solid  lightgrey;
+}
+
+
 
 thead {
 	background-color: lightgrey;
 	width: 4rem;
 	height: 2.5rem;
+
 }
 
 thead th{
