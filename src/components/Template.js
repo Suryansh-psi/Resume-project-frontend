@@ -14,24 +14,24 @@ function Template() {
 			</div>
 			<div class="row">
 			  <div class="column">
-			  <h6>ABOUT ME</h6>
-			  <p>Some text..</p>
+				  <h6>ABOUT ME</h6>
+				  <p>Some text..</p>
 			  </div>
 			  <div class="column">
-			  <h6>WORK HISTORY</h6>
-			  <p>Some text..</p>
+				  <h6>WORK HISTORY</h6>
+				  <p>Some text....</p>
 			  </div>
 			  <div class="column1">
-			  <h6>SKILL & PROFICIENCIES</h6>
-			  <p>Some text..</p>
+				  <h6>SKILL & PROFICIENCIES</h6>
+				  <p>Some text...</p>
 			  </div>
 		    <div class="column">
 			  <h6>CERTIFICATION AND VOLUNTEER WORK</h6>
 			  <p>Some text..</p>
 			  </div>
 			  <div class="column">
-			  <h6>EDUCATIONAL BACKGROUND</h6>
-			  <p>Some text..</p>
+				  <h6>EDUCATIONAL BACKGROUND</h6>
+				  <p>Some text..</p>
 		    </div>
 			</div>
 

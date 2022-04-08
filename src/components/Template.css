@@ -6,20 +6,20 @@
 
 .row{
 	box-sizing: border-box;
-	padding: 0rem 0.5rem;
-	position: relative;
-	top: -3rem;
+	padding: 3rem 0 0 0.5rem;
 }
 
 .column {
   float: left;
   width: 50%;
+  padding-bottom: 6rem;
 }
 
 .column1{
 	float: left;
     width: 100%;
-    padding-right: 17.6rem;
+    padding-right: 18rem;
+    padding-bottom: 4rem;
 }
 
 .row:after {
@@ -28,36 +28,10 @@
   clear: both;
 }
 
-.row h6{
-	font-size: 20px;
-	margin: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 h2{
 	font-weight: 700;
 	color: blue;
 	font-size: 1.6rem;
-	margin:0 0 10px 0;
 }
 
 .template h6{
@@ -69,26 +43,6 @@ h2{
 	padding-bottom: 0.25rem;	
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .header h5{
 	font-size: 11px;
 	color: black;
@@ -96,7 +50,7 @@ h2{
 }
 
 .header{
-	padding: 0rem 0 0 8rem;   
+	padding: 0 0 0 8rem;  
 }
 
 .header i{
@@ -106,7 +60,7 @@ h2{
 	border-radius: 50%;
 	background-color: lightgrey;
 	position: relative;
-	top: 5rem;
+	top: 3rem;
 	right: 7rem;
 
 }

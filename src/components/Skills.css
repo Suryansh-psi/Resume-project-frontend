@@ -1,4 +1,4 @@
-table{
+.skillTable{
 	position: relative;
 	top: 1rem;
 	left: 1rem;
@@ -19,8 +19,8 @@ thead th{
  	border: 2px solid lightgrey;
  	padding: 0.5rem 0.5rem;
  }
-h6{
-	padding: 7rem 0 0 1rem;
+.skillHeader{
+	padding: 2.5rem 0 0 1rem;
 }
 
 thead i{
@@ -35,7 +35,7 @@ th a{
 }
 
 .SearchBox{
-	margin: 60px 0 0 10px;
+	margin: 40px 0 0 10px;
 	
 }
 
@@ -56,30 +56,3 @@ th a{
 }
 
 
-
-.buttons{
-	position: absolute;
-	bottom: 37.5rem;
-	left: 35rem;
-}
-
-.buttons input{
-	width: 70px;
-	height: 40px;
-	border-color: transparent;
-	border-radius: 10px;
-	background-color: lightgrey;
-}
-
-.button1{
-	width: 50px;
-	margin: 0 0 0 10px;
-	background: linear-gradient(to right, lightgrey 50%, darkgrey 50%);
-	border-color : lightgrey;
-}
-
-.button2{
-	border-color: transparent;
-	background-color: transparent;
-	margin: 0 10px 0 0;
-}

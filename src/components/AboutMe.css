@@ -3,8 +3,8 @@ form{
 	height: 100vh;
 }
 
-textarea{
-	margin: 80px 0 0 140px;
+.textarea{
+	margin: 35px 0 0 140px;
 	border: 2px solid lightgrey;
 	border-radius: 0.25rem;
 	padding: 1rem;
@@ -26,28 +26,26 @@ textarea{
 
 } 
 
-label{
+.label{
 	position: fixed;
-	margin: 90px 0 0 20px;
+	margin: 40px 0 0 20px;
 }
 
 .buttons{
-	position: absolute;
-	bottom: 37.5rem;
-	left: 35rem;
+	padding: 1rem 0 0 20rem;
 }
 
 .buttons input{
 	width: 70px;
 	height: 40px;
 	border-color: transparent;
-	border-radius: 10px;
+	border-radius: 20px;
 	background-color: lightgrey;
 }
 
 .button1{
 	width: 50px;
-	margin: 0 0 0 10px;
+	margin: 0px 0 0 10px;
 	background: linear-gradient(to right, lightgrey 50%, darkgrey 50%);
 	border-color : lightgrey;
 }
@@ -58,3 +56,8 @@ label{
 	margin: 0 10px 0 0;
 }
 
+/*.aboutSection{
+	padding-top: -4rem;
+}
+
+*/

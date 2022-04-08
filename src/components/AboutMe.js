@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
+import { FaArrowRight } from "react-icons/fa";
 import './AboutMe.css'
 function AboutMe() {
 
@@ -26,18 +27,21 @@ function AboutMe() {
 
 	return (
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
-      <label>About Me</label>
-      <textarea {...register('about')} name="about" placeholder="Write something about yourself" id="about" cols="30" rows="10"></textarea> 
-      <div className="bulletPoints">
-        <input {...register('points')} type="text" name="points[]" placeholder="Write in bulleted list" />
-        <i><BsPlusCircle/></i>
-      </div>
       <div className="buttons"> 
         <button className="button2">Cancel</button>     
         <input type="submit" name="aboutme" value="Save" />
         
-        <button className="button1">-></button>
+        <button className="button1"><FaArrowRight /></button>
       </div>
+      <div className="aboutSection">
+        <label className="label">About Me</label>
+        <textarea className="textarea" {...register('about')} name="about" placeholder="Write something about yourself" id="about" cols="30" rows="10"></textarea> 
+        <div className="bulletPoints">
+          <input {...register('points')} type="text" name="points[]" placeholder="Write in bulleted list" />
+          <i><BsPlusCircle/></i>
+      </div>
+      </div>
+      
     </form>
   );
 }

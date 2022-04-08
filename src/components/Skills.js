@@ -22,7 +22,13 @@ const Skills = () => {
 		<div>
       
 			<form onSubmit={handleSubmit((data) => customFunction(data))}>
-        <h6><div>Skills & </div>Proficiencies</h6>
+        <div className="buttons"> 
+          <button className="button2">Cancel</button>     
+          <input type="submit" name="aboutme" value="Save" />
+          
+          <button className="button1">-></button>
+        </div>
+        <h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
         <div className="SearchBox">
           <input {...register('points')} type="text" name="points[]" placeholder="Search" />
           <i><FaSearch /></i>
@@ -64,13 +70,6 @@ const Skills = () => {
       			</tr>
       		</tbody>
       	</table>
-            
-      	<div className="buttons"> 
-          <button className="button2">Cancel</button>     
-          <input type="submit" name="aboutme" value="Save" />
-          
-          <button className="button1">-></button>
-        </div>
     </form>
 		</div>
 	);
