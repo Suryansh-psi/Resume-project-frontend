@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { RiCheckboxCircleLine } from "react-icons/ri";
 import './WorkExp.css'
 function WorkExp() {
 
@@ -53,6 +54,7 @@ function WorkExp() {
            Duration
            <input className="fifth"{...register('created_at')} type="date" name="created_at[]" />
            <span className="duration"><input className="fifth"{...register('update_at')} type="date" name="update_at[]" /></span>
+           <span className="checkBox"><RiCheckboxCircleLine/></span> till date
         </label>
 
         <label className="WorkExplabel">

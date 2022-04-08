@@ -111,3 +111,11 @@
 	position: relative;
 	left: 5rem;
 }
+
+.checkBox {
+	font-size: 1.3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-top: -0.4rem;
+
+}
