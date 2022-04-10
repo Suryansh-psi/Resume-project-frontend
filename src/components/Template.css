@@ -1,6 +1,8 @@
 .template{
 	width: 40%;
 	border-left: 2px solid lightgrey;
+	position: absolute;
+	right: 0;
 }
 
 

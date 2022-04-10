@@ -1,4 +1,4 @@
-*{
+/* *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -93,7 +93,7 @@
 
 .footer{
 	margin: 2rem 0 0 2rem;
-	/* border-top: 2px solid lightgrey; */
+	border-top: 2px solid lightgrey;
 } 
 
 .element{
@@ -123,4 +123,166 @@
 	padding-right: 1rem;
 	margin-top: -0.4rem;
 
+} */
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
+
+.WorkExpHeader{
+	margin: 0 0 25px 35px;
+}
+
+.WorkExplabel{
+	display: flex;
+	flex-direction: row;
+	margin: 0.7rem 0 0 2rem;
+	font-size: 0.8rem;
+}
+
+.WorkExplabel input{
+	width: 24rem;
+	height: 2rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.WorkExplabel  .first{
+	margin: 0 0 0 1rem;
+}
+
+.WorkExplabel .second{
+	margin: 0 0 0 4.5rem;
+}
+
+.WorkExplabel .third{
+	margin: 0 0 0 2.6rem;
+}
+
+.WorkExplabel .fourth{
+	border: 2px solid lightgrey;
+	width: 7rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 1rem;
+	font-size: 0.8rem;
+	margin-right: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.role-input-div{
+	margin-left: 6rem;
+}
+
+.WorkExplabel i{
+	font-size: 25px;
+	color: lightgrey;
+	margin-top: -0.5rem;
+	margin-right: 1rem;
+}
+/*.WorkExplabel .cross{
+	font-size: 15px;
+	font-weight: 700;
+	color: lightgrey;
+	margin-left: -1.5rem;
+	margin-top: 0.5rem;
+}*/
+
+.WorkExplabel .fifth{
+	margin: 0 0 0 4.5rem;
+	width: 8rem;
+}
+.WorkExplabel .duration .fifth{
+	margin: 0 0 0 0.5rem;
+}
+
+
+.WorkExplabel .sixth{
+	margin: 0 0 0 1.5rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	padding: 0.5rem  1rem 0.5rem 1rem;
+}
+
+
+.WorkExplabel .seventh{
+	border: 2px solid lightgrey;
+	width: 10rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 1rem;
+	font-size: 0.8rem;
+	margin-right: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+
+
+.techstack-input-div{
+	margin-left: 2rem;	
+}
+
+.WorkExplabel .stack{
+	margin-right: 1rem;
+	font-size: 27px;
+	color: lightgrey;
+
+}
+
+.projRes-main-div{
+	margin-left: 2rem;
+}
+
+.WorkExplabel .eight{
+	height: 3rem;
+	width: 22rem;
+	padding: 0 1rem 1rem 1rem;
+	margin-right: 0.25rem;
+}
+
+
+
+.footer{
+	margin: 1rem 1rem 0 1rem;
+	/* border-top: 2px solid lightgrey;  */
+} 
+
+.element{
+	margin: 1rem 0 0 3rem;
+	border: 2px solid lightgrey;
+	width: 10rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 3rem;
+	font-size: 0.6rem;
+}
+
+
+ 
+.plus{
+	color: lightgrey;
+	position: relative;
+	left: 5rem;
+}
+
+.checkBox {
+	font-size: 1.3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-top: -0.4rem;
+
+}
+
+.workexpfields {
+	border-bottom: 2px solid lightgray;
+}
+
+
+
+
+
+
+
+

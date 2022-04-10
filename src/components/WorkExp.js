@@ -4,10 +4,12 @@ import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { RiCheckboxCircleLine } from "react-icons/ri";
+import { useOutletContext } from "react-router-dom";
+
 import axios from 'axios';
 import './WorkExp.css'
 const WorkExp = () => {
-
+  const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
   // const [data, setData] = useState("");
 
@@ -59,7 +61,18 @@ const WorkExp = () => {
       console.log(res.data);
       sessionStorage.setItem("workexp_id", res.data);
     })
+    setTerm(4);
 
+
+    sessionStorage.setItem("clientDesc", d.client_desc);
+    sessionStorage.setItem("country", d.country);
+    sessionStorage.setItem("projectName", d.project);
+    sessionStorage.setItem("role2", roleList);
+    sessionStorage.setItem("startDate", d.stardate);
+    sessionStorage.setItem("endDate",  d.enddate);
+    sessionStorage.setItem("bussinessSol", d.business_sol);
+    sessionStorage.setItem("techStack", techList);
+    sessionStorage.setItem("projectResp", projRespList);
   }
 
   const createField = (name, placeholder, classN, rName, MainClass) => {
@@ -73,7 +86,7 @@ const WorkExp = () => {
     inp.setAttribute('class', classN);
     inp.setAttribute('object', `{...register(${rName})}`);
     document.querySelector(MainClass).appendChild(inp);
-    document.querySelector(MainClass).appendChild(span);
+    // document.querySelector(MainClass).appendChild(span);
   }
 
   const createProjRes = () => {
@@ -89,7 +102,7 @@ const WorkExp = () => {
   const createWorkExp = () => {
     const workexp = document.querySelector(".workexpfields");
     const workexpBlock = document.querySelector('.workexpsection');
-    const newblock = workexp.cloneNode(true); 
+    const newblock = workexp.cloneNode(true);
     // newInput.value = "";
     // console.log(input);
     // console.log(newInput);
@@ -126,7 +139,8 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Role
             <div className='role-input-div'>
-              <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Mention Role" /><span className="cross">&#9747;</span>
+              <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Mention Role" />
+              {/* <span className="cross">&#9747;</span> */}
             </div>
             <i onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i>
           </label>
@@ -146,7 +160,8 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Technology Stack
             <div className='techstack-input-div'>
-              <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" /><span className="cross">&#9747;</span>
+              <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
+              {/* <span className="cross">&#9747;</span> */}
             </div>
             <i onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i>
           </label>
@@ -161,15 +176,15 @@ const WorkExp = () => {
           </label>
         </div>
 
-        
+
 
 
       </div>
 
       <div className="footer">
-          <span onClick={createWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" />
-          {/* <i className='plus'><FaPlus /> Add Work Exp</i> */}
-        </div>
+        <span onClick={createWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" />
+        {/* <i className='plus'><FaPlus /> Add Work Exp</i> */}
+      </div>
 
     </form>
   );

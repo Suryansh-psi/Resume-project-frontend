@@ -9,13 +9,17 @@ import Template from './Template'
 import './Layout.css'
 
 const Layout = () => {
-	const [term, setTerm] = useState('');
+	const [term, setTerm] = useState(0);
+
+	const ChangeState = (num) => {
+		setTerm(num);
+	}
 	
 	return (
 		<div className="resumeBuilder">
 			<Sidebar />
-			<main className="mainsection" >	{<Outlet />}</main>
-			<Template />
+			<main className="mainsection" >	{<Outlet context={[term, setTerm]}/>}</main>
+			<Template term={term}/>
 			
 		</div>
 	)

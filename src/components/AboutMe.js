@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './AboutMe.css'
 function AboutMe() {
-
+  const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState("");
 
@@ -16,11 +17,11 @@ function AboutMe() {
     // console.log(data)
     const element = document.querySelectorAll('.aboutmepoints');
     const aboutList = [];
-    console.log(element)
+    
     element.forEach((ele) => {
       aboutList.push(ele.value);
     });
-    console.log(aboutList)
+    // console.log(aboutList)
     const resume_id = sessionStorage.getItem('resume_id');
     // console.log(resume_id);
 
@@ -30,9 +31,14 @@ function AboutMe() {
       about_me_points: aboutList
     })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
       })
+      setTerm(2);
+
+
+      sessionStorage.setItem("aboutMe", d.about);
+      sessionStorage.setItem("aboutMePoints", aboutList);
   }
 
   const addBulletPoint = () => {

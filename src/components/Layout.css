@@ -1,9 +1,18 @@
 .resumeBuilder{
 	display: flex;
 	flex-direction: row;
-	
+	position: relative;
 }
 
 .mainsection {
 	width: 40%;
+	position: absolute;
+	left: 250px;
 }
+
+/* .mainsection {
+    width: 40%;
+    float: left;
+    height: 1000px;
+    margin-left: 240px;
+} */
