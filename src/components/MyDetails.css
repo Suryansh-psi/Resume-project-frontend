@@ -31,7 +31,7 @@
 
 
 .role select{
-	display: none;
+	display: inline-block;
 }
 .role i{
 	margin-left: 15rem;
@@ -57,6 +57,16 @@
 
 .exp span{
 	color: grey;
+}
+
+.element-role{
+	margin: 1rem 0 0 3rem;
+	border: 2px solid lightgrey;
+	width: 10rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 3rem;
+	font-size: 0.6rem;
 }
 
 

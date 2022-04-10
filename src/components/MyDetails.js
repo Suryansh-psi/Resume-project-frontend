@@ -3,19 +3,56 @@ import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaUserCircle} from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
+import axios from "axios";
 import './MyDetails.css'
-function MyDetails(props) {
+
+
+const MyDetails = (props) => {
   // console.log(props.formfields)
   const { register, handleSubmit } = useForm();
-  // const [data, setData] = useState("");
+  // const [role, setRole] = useState([]);
   
 
   const customFunction = (d) => {
-    sessionStorage.setItem("mydetails", JSON.stringify(d))
+    // sessionStorage.setItem("mydetails", JSON.stringify(d))
     // const data = JSON.parse(sessionStorage.getItem('mydetails'))
     // console.log(sessionStorage.key(0))
     // console.log(data)
+    // setData({
+    //   ...data, name: d.name, image: d.image, total_exp : d.experience, role: d.role
+    // })
+    const elementRole = document.querySelectorAll('.element-role');
+    const roleList = [];
+    elementRole.forEach((ele) => {
+      roleList.push(ele.value);
+    });
+    // console.log(elementRole); 
+    // console.log(d)
+    axios.post('http://localhost:8080/resume', {
+      name : d.name,
+      role : roleList,
+      total_exp : d.experience,
+      image : d.image,
+      userId : 3
+    })
+      .then(res => {
+        // console.log(res);
+        // console.log(res.data);
+        sessionStorage.setItem("resume_id", res.data);
+      })
   }
+  
+  const createNewRole = () => {
+    const roleFields = document.querySelector(".role-fields");
+    const input = document.querySelector('.element-role');
+    const newInput = input.cloneNode(true); 
+    newInput.value = "";
+    // console.log(input);
+    // console.log(newInput);
+    roleFields.append(newInput);
+  }
+
+  
 
   return (
     <>
@@ -35,14 +72,19 @@ function MyDetails(props) {
           <label className="role">
             Role
 
-            <i><BsPlusCircle/></i>
-            <select name="role" id="role" {...register("role")} multiple>
+            
+            <div className="role-fields">
+              
+              <input className="element-role" {...register('role')} type="text" name="role[]" placeholder="Write here" />
+            </div>
+            <i onClick={createNewRole}><BsPlusCircle/></i>
+            {/* <select name="role" id="role" style={{display: "inline-block"}} {...register("role")} multiple>
               <option value="">Select...</option>
               <option value="business analyst">Business Analyst</option>
               <option value="developer">Developer</option>
               <option value="designer">Designer</option>
               <option value="qa">QA</option>
-            </select>
+            </select> */}
           </label>
           <label className="exp">
             Total Exp
@@ -56,4 +98,4 @@ function MyDetails(props) {
   );
 }
 
-export default MyDetails
+export default MyDetails;

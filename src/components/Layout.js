@@ -8,7 +8,8 @@ import {Outlet} from 'react-router-dom'
 import Template from './Template'
 import './Layout.css'
 
-function Layout() {
+const Layout = () => {
+	const [term, setTerm] = useState('');
 	
 	return (
 		<div className="resumeBuilder">
