@@ -1,11 +1,15 @@
 import React from 'react';
-import {BrowerRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import AboutMe from './AboutMe';
+import Skills from './Skills';
+import WorkExp from './WorkExp';
+import Layout from './Layout'
+import MyDetails from './MyDetails'
 
 const App = () => {
   return (
-    <BrowerRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MyDetails />}/>
@@ -14,7 +18,7 @@ const App = () => {
           <Route path="workExp" element={<WorkExp />}/>
         </Route>
       </Routes>
-    </BrowerRouter>
+    </BrowserRouter>
   );
 }
 
