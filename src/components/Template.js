@@ -1,3 +1,81 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react'
 import './Template.css'
 import { BiCircle } from "react-icons/bi";
@@ -8,22 +86,6 @@ import axios from 'axios';
 const Template = (props) => {
 	// const arr = Array.from(sessionStorage.mydetails)
 	// const [render, setRender] = useState(0)
-	let name = sessionStorage.getItem("name");
-	let role = sessionStorage.getItem("role");
-	let total_exp = sessionStorage.getItem("total_exp");
-	let image = sessionStorage.getItem("image");
-	let aboutMe = sessionStorage.getItem("aboutMe");
-	let aboutMePoints = sessionStorage.getItem("aboutMePoints");
-	let skills = sessionStorage.getItem("skills");
-	let clientDesc = sessionStorage.getItem("clientDesc");
-	let country = sessionStorage.getItem("country");
-	let projectName = sessionStorage.getItem("projectName");
-	let role2 = sessionStorage.getItem("role2");
-	let startDate = sessionStorage.getItem("startDate");
-	let endDate = sessionStorage.getItem("endDate");
-	let bussinessSol = sessionStorage.getItem("bussinessSol");
-	let techStack = sessionStorage.getItem("techStack");
-	let projResp = sessionStorage.getItem("projectResp");
 
 
 	const [data, setData] = useState({
@@ -72,22 +134,22 @@ const Template = (props) => {
 
 
 
-	// let name = sessionStorage.getItem("name");
-	// let role = sessionStorage.getItem("role");
-	// let total_exp = sessionStorage.getItem("total_exp");
-	// let image = sessionStorage.getItem("image");
-	// let aboutMe = sessionStorage.getItem("aboutMe");
-	// let aboutMePoints = sessionStorage.getItem("aboutMePoints");
-	// let skills = sessionStorage.getItem("skills");
-	// let clientDesc = sessionStorage.getItem("clientDesc");
-	// let country = sessionStorage.getItem("country");
-	// let projectName = sessionStorage.getItem("projectName");
-	// let role2 = sessionStorage.getItem("role2");
-	// let startDate = sessionStorage.getItem("startDate");
-	// let endDate = sessionStorage.getItem("endDate");
-	// let bussinessSol = sessionStorage.getItem("bussinessSol");
-	// let techStack = sessionStorage.getItem("techStack");
-	// let projResp = sessionStorage.getItem("projectResp");
+	let name = sessionStorage.getItem("name");
+	let role = sessionStorage.getItem("role");
+	let total_exp = sessionStorage.getItem("total_exp");
+	let image = sessionStorage.getItem("image");
+	let aboutMe = sessionStorage.getItem("aboutMe");
+	let aboutMePoints = sessionStorage.getItem("aboutMePoints");
+	let skills = sessionStorage.getItem("skills");
+	let clientDesc = sessionStorage.getItem("clientDesc");
+	let country = sessionStorage.getItem("country");
+	let projectName = sessionStorage.getItem("projectName");
+	let role2 = sessionStorage.getItem("role2");
+	let startDate = sessionStorage.getItem("startDate");
+	let endDate = sessionStorage.getItem("endDate");
+	let bussinessSol = sessionStorage.getItem("bussinessSol");
+	let techStack = sessionStorage.getItem("techStack");
+	let projResp = sessionStorage.getItem("projectResp");
 
 	const roleMapping = () => {
 		role = role.split(',');
@@ -129,6 +191,7 @@ const Template = (props) => {
 		// }
 	}
 
+	
 	const techStackMapping = () => {
 		techStack = techStack.split(',');
 		let result = techStack.map(point => {
@@ -143,9 +206,9 @@ const Template = (props) => {
 		<section className="template">
 			<div className="header">
 				<i><FaUserAlt /></i>
-				<h2 className='template-name'>{name}</h2>
-				<h5 className='template-role'>{roleMapping()}</h5>
-				<h5 className='template-exp'>Total Exp: {total_exp}</h5>
+				<h2>{name}</h2>
+				<h5>{roleMapping()}</h5>
+				<h5>Total Exp: {total_exp}</h5>
 			</div>
 			<div className="row">
 				<div className="column">
@@ -155,9 +218,9 @@ const Template = (props) => {
 						{aboutMePointsMapping()}
 					</ul>
 				</div>
-				<div className="column">
+				<div className="col">
 					<h6>WORK HISTORY</h6>
-					<p>Client: {clientDesc}<span>{country}</span></p>
+					<p>Client: {clientDesc}</p>
 					<p>Project: {projectName}</p>
 					<h5>Role: {role2}</h5>
 					<p>Duration: {startDate} {endDate}</p>
@@ -181,7 +244,7 @@ const Template = (props) => {
 					<h6>CERTIFICATION AND VOLUNTEER WORK</h6>
 					<p>Some text..</p>
 				</div>
-				<div className="column">
+				<div className="col">
 					<h6>EDUCATIONAL BACKGROUND</h6>
 					<p>Some text..</p>
 				</div>

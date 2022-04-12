@@ -1,28 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 .template{
-	width: 40%;
+	width: 42%;
 	border-left: 2px solid lightgrey;
-	position: absolute;
+	top: 0;
+    bottom:0;
+    position:fixed;
+	overflow-x: hidden;
+	overflow-y: scroll;
 	right: 0;
-	/* margin-left: 795px; */
+	margin-top: -1rem;
+}
+
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent;  
 }
 
 
 .row{
 	box-sizing: border-box;
-	padding: 3rem 0 0 0.5rem;
+	padding: 2rem 0 0 0.5rem;
+	
 }
 
 .column {
   float: left;
-  width: 50%;
+  width: 45%;
   padding-bottom: 6rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
 }
 
 .column1{
-	float: left;
-    width: 100%;
-    padding-right: 18rem;
-    padding-bottom: 4rem;
+  float: left;
+  width: 100%;
+  padding-right: 22.5rem;
+  padding-bottom: 4rem;
+  padding-left: 1rem;
 }
 
 .row:after {
@@ -31,17 +51,17 @@
   clear: both;
 }
 
-h2{
-	font-weight: 700;
+.header h2{
+	font-weight: 600;
 	color: blue;
 	font-size: 1.6rem;
+	margin-top: -1.3rem;
 }
 
 .template h6{
 	font-size: 11px;
 	color: blue;
 	font-weight: 700;
-	margin: 0;
 	border-bottom: 2px solid blue;	
 	padding-bottom: 0.25rem;	
 } 
@@ -49,7 +69,6 @@ h2{
 .header h5{
 	font-size: 11px;
 	color: black;
-	margin: 0;
 }
 
 .header{
@@ -68,21 +87,37 @@ h2{
 
 }
 
-/* .col {
-	font-size: 0.8rem;
+.col{
+	padding-right: 2rem;
+	margin-left: -1rem;
 }
 
-.col h5 {
-	font-size: 16rem;
-} */
 
-.tech-stack-output input {
+
+.col h5{
+	font-size: 16px;
+	margin-left: 0.5rem;
+}
+
+.tech-stack-output input{
 	border: 2px solid lightgrey;
 	width: 87px;
 	height: 1.5rem;
 	font-size: 0.75rem;
-	padding: 0.7rem 1rem;
+	padding: 0.7rem 1rem 0.7rem 1rem;
+
 	border-radius: 25px;
-	margin-right: 0.25rem;
 	margin-bottom: 0.25rem;
+	margin-left: 0.5rem;
 }
+
+.row p{
+	margin-bottom: 0.4rem;
+	font-size: 0.8rem;
+	padding-left: 0.5rem;
+}
+
+.row ul{
+	font-size: 0.8rem;
+}
+

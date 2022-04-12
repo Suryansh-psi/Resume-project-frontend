@@ -1,13 +1,18 @@
-form{
-	width: 40vw;
-	height: 100vh;
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.aboutSection{
+	font-size: 0.8rem;
 }
 
 .textarea{
 	margin: 35px 0 0 140px;
 	border: 2px solid lightgrey;
 	border-radius: 0.25rem;
-	padding: 1rem;
+	padding: 0.5rem;
 	width: 350px;
 }
 
@@ -28,24 +33,27 @@ form{
 
 .label{
 	position: fixed;
-	margin: 40px 0 0 20px;
+	margin: 40px 0 0 5px;
 }
 
 .buttons{
-	padding: 1rem 0 0 20rem;
+	padding: 0.5rem 0 0 20rem;
 }
 
 .buttons input{
 	width: 70px;
-	height: 40px;
+	height: 30px;
 	border-color: transparent;
 	border-radius: 20px;
 	background-color: lightgrey;
+	margin-left: 1rem ;
+	margin-right: 0rem;
 }
 
 .button1{
-	width: 50px;
-	margin: 0px 0 0 10px;
+	width: 45px;
+	height: 25px;
+	margin: 0 0 0 20px;
 	background: linear-gradient(to right, lightgrey 50%, darkgrey 50%);
 	border-color : lightgrey;
 }
@@ -56,8 +64,3 @@ form{
 	margin: 0 10px 0 0;
 }
 
-/*.aboutSection{
-	padding-top: -4rem;
-}
-
-*/

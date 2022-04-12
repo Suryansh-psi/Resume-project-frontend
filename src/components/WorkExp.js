@@ -119,7 +119,7 @@ const WorkExp = () => {
       </div>
       <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
 
-      <div className="workexpsection"> {/* aboutSection */}
+      <div className="workexpsection"> 
         <div className='workexpfields'>
           <label className="WorkExplabel">
             Client Description
@@ -139,10 +139,10 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Role
             <div className='role-input-div'>
-              <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Mention Role" />
-              {/* <span className="cross">&#9747;</span> */}
+              <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Role" />
+              <span className="cross">&#9747;</span> 
             </div>
-            <i onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i>
+            <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i>
           </label>
 
           <label className="WorkExplabel">
@@ -161,9 +161,9 @@ const WorkExp = () => {
             TechnologyStack
             <div className='techstack-input-div'>
               <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
-              {/* <span className="cross">&#9747;</span> */}
+               <span className="cross">&#9747;</span> 
             </div>
-            <i onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i>
+            <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i>
           </label>
 
           <label className="WorkExplabel">
@@ -171,14 +171,9 @@ const WorkExp = () => {
             <div className='projRes-main-div'>
               <input className="eight" {...register('responsibility')} type="text" name="responsibility[]" placeholder="Write Responsibilities" />
             </div>
-            {/* <span className="Responsibility"><BsPlusCircle/></span> */}
-            <i onClick={createProjRes}><BsPlusCircle /></i>
+            <i onClick={createProjRes} className="Responsibility"><BsPlusCircle /></i>
           </label>
         </div>
-
-
-
-
       </div>
 
       <div className="footer">
