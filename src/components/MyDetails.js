@@ -49,6 +49,21 @@ const MyDetails = (props) => {
     sessionStorage.setItem("role", roleList);
     sessionStorage.setItem("total_exp", d.experience);
     sessionStorage.setItem("image", d.image);
+
+    // const roleMapping = () => {
+    //   // d.role = d.role.split(',');
+    //   // if (true & data) {
+    //     let result = roleList.map(rol => {
+    //       return <span>{rol} | </span>
+    //     });
+    //     console.log(result);
+    //     return result;
+    //   // }
+    // }
+
+    // document.querySelector('.template-name').innerHTML = d.name;
+    // document.querySelector('.template-role').innerHTML = `Role ${roleMapping()}`
+    // document.querySelector('.template-exp').innerHTML = d.experience;
   }
 
   const createNewRole = () => {

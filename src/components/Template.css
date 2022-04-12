@@ -3,6 +3,7 @@
 	border-left: 2px solid lightgrey;
 	position: absolute;
 	right: 0;
+	/* margin-left: 795px; */
 }
 
 
@@ -67,4 +68,21 @@ h2{
 
 }
 
+/* .col {
+	font-size: 0.8rem;
+}
 
+.col h5 {
+	font-size: 16rem;
+} */
+
+.tech-stack-output input {
+	border: 2px solid lightgrey;
+	width: 87px;
+	height: 1.5rem;
+	font-size: 0.75rem;
+	padding: 0.7rem 1rem;
+	border-radius: 25px;
+	margin-right: 0.25rem;
+	margin-bottom: 0.25rem;
+}

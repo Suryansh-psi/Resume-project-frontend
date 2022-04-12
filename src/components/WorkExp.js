@@ -158,7 +158,7 @@ const WorkExp = () => {
           </label>
 
           <label className="WorkExplabel">
-            Technology Stack
+            TechnologyStack
             <div className='techstack-input-div'>
               <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
               {/* <span className="cross">&#9747;</span> */}
