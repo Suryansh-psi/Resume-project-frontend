@@ -5,14 +5,7 @@
 }
 
 .mainsection {
-	width: 40%;
+	width: 41%;
 	position: absolute;
-	left: 250px;
+	left: 240px;
 }
-
-/* .mainsection {
-    width: 40%;
-    float: left;
-    height: 1000px;
-    margin-left: 240px;
-} */
