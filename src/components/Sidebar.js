@@ -36,9 +36,9 @@ const Sidebar = () => {
 				<div className='sidebar-links'><Link to="aboutme"><i><InfoIcon/></i>About Me</Link></div>
 				<div className='sidebar-links'><Link to="skills"><i><LinkIcon/></i>Skills & Proficiencies</Link></div>
 				<div className='sidebar-links'><Link to="workexp"><i><WorkIcon/></i>Work Experience</Link></div>
-				<div className='sidebar-links'><Link to=""><i><SchoolIcon/></i>Educational Background</Link></div>
-				<div className='sidebar-links'><Link to=""><i><EmojiEventsIcon/></i>Achievements</Link></div>
-				<div className='sidebar-links'><Link to=""><i><LanIcon/></i>Memberships</Link></div>
+				<div className='sidebar-links'><Link to="educationalbackground"><i><SchoolIcon/></i>Educational Background</Link></div>
+				<div className='sidebar-links'><Link to="achievements"><i><EmojiEventsIcon/></i>Achievements</Link></div>
+				<div className='sidebar-links'><Link to="memberships"><i><LanIcon/></i>Memberships</Link></div>
         </div>
         <div className="status">
           <div className='d-flex justify-content-between w-100 table-sidebar'><div>Last Modified</div><div>DD/MM/YYYY</div></div>
