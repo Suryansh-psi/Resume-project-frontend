@@ -6,6 +6,7 @@ import { BsPlusCircle } from "react-icons/bs";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './MyDetails.css'
+import Example from './Example'
 
 
 const MyDetails = (props) => {
@@ -98,10 +99,12 @@ const MyDetails = (props) => {
 
 
             <div className="role-fields">
+              <Example />
+              </div>
 
-              <input className="element-role" {...register('role')} type="text" name="role[]" placeholder="Write here" />
+              {/* <input className="element-role" {...register('role')} type="text" name="role[]" placeholder="Write here" />
             </div>
-            <i onClick={createNewRole}><BsPlusCircle /></i>
+            <i onClick={createNewRole}><BsPlusCircle /></i> */}
             {/* <select name="role" id="role" style={{display: "inline-block"}} {...register("role")} multiple>
               <option value="">Select...</option>
               <option value="business analyst">Business Analyst</option>

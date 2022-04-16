@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { RiCheckboxCircleLine } from "react-icons/ri";
 import { useOutletContext } from "react-router-dom";
+import Example from './Example'
 
 import axios from 'axios';
 import './WorkExp.css'
@@ -160,10 +161,12 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             TechnologyStack
             <div className='techstack-input-div'>
-              <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
+              {/* <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
                <span className="cross">&#9747;</span> 
+            
+            <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
+              <Example />
             </div>
-            <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i>
           </label>
 
           <label className="WorkExplabel">
