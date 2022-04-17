@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.eduBackground{
+    margin: 2rem 0 0 0;
+}
+
+.edu-field{
+    margin: 0 0 0.8rem 0;
+    font-size: 0.8rem;
+}
+.edu-field input{
+    width: 17rem;
+	height: 2rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.eduName{
+    margin-left: 3rem;
+}
+
+.eduLocation{
+    margin-left: 2.1rem;
+}
+.edu-field .startDate{
+    margin-left: 8.1rem;
+    margin-right: 1rem;
+    width: 7rem;
+
+}
+
+.edu-field .endDate{
+    width: 7rem;
+}
+
+.edu-field .eduGrade{
+    width: 6.5rem;
+    margin-left: 7.2rem;
+}
+
