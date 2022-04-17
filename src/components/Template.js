@@ -234,20 +234,25 @@ const Template = (props) => {
 						</ul>
 					</div>
 				</div>
-				<div className="column1">
+				<div className="column">
 					<h6>SKILL & PROFICIENCIES</h6>
 					<ul>
 						{skillsMapping()}
 					</ul>
+				</div>
+				<div className="col">
+					<h6>EDUCATIONAL BACKGROUND</h6>
+					<p>Some text..</p>
 				</div>
 				<div className="column">
 					<h6>CERTIFICATION AND VOLUNTEER WORK</h6>
 					<p>Some text..</p>
 				</div>
 				<div className="col">
-					<h6>EDUCATIONAL BACKGROUND</h6>
+					<h6>MEMBERSHIPS</h6>
 					<p>Some text..</p>
 				</div>
+				
 			</div>
 
 		</section >

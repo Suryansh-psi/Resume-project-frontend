@@ -37,13 +37,13 @@
   padding-right: 2rem;
 }
 
-.column1{
+/* .column1{
   float: left;
   width: 100%;
   padding-right: 22.5rem;
   padding-bottom: 4rem;
   padding-left: 1rem;
-}
+} */
 
 .row:after {
   content: "";
