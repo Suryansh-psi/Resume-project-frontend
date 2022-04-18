@@ -29,16 +29,22 @@
 .edu-field .startDate{
     margin-left: 8.1rem;
     margin-right: 1rem;
-    width: 7rem;
+    width: 8rem;
 
 }
 
 .edu-field .endDate{
-    width: 7rem;
+    width: 8rem;
 }
 
 .edu-field .eduGrade{
     width: 6.5rem;
     margin-left: 7.2rem;
+}
+
+.dropdown{
+    margin-left: 3.5rem;
+    border: 2px solid lightgrey;
+    border-radius: 0.25rem;
 }
 
