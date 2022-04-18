@@ -12,5 +12,4 @@
 .msl:not(.msl-active,.msl-active-up) {
     border-width: 2px;
     border-color: lightgrey;
-
 }

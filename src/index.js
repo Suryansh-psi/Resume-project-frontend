@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './components/App';
 //import Example from './components/Example'
 sessionStorage.setItem("name", "Sample Text");
@@ -22,10 +23,12 @@ sessionStorage.setItem("bussinessSol", "d.business_sol");
 sessionStorage.setItem("techStack", ['techList']);
 sessionStorage.setItem("projectResp", ['projRespList']);
 
+const root = createRoot( document.getElementById('root') );
+root.render(<App />);
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
 
 

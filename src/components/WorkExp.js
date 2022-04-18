@@ -1,36 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { RiCheckboxCircleLine } from "react-icons/ri";
 import { useOutletContext } from "react-router-dom";
-import Example from './Example'
+// import Example from './Example'
+import Select from 'react-multiple-select-dropdown-lite'
+import 'react-multiple-select-dropdown-lite/dist/index.css'
 
 import axios from 'axios';
 import './WorkExp.css'
 const WorkExp = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
+  const [roles, setRoles] = useState([]);
+  const [role, setRole] = useState([]);
   // const [data, setData] = useState("");
 
   const customFunction = (d) => {
-    // sessionStorage.setItem("workExp", JSON.stringify(d))
-    // const data = JSON.parse(sessionStorage.getItem('workExp'))
-    // console.log(sessionStorage.key(0))
-    // console.log(data)
-    console.log(d);
-    const roleList = [];
+    // console.log(role);
     const techList = [];
     const projRespList = [];
 
-    let role = document.querySelectorAll('.fourth');
     let tech = document.querySelectorAll('.seventh');
     let projRes = document.querySelectorAll('.eight');
 
-    role.forEach((ele) => {
-      roleList.push(ele.value);
-    })
+    
 
     tech.forEach((ele) => {
       techList.push(ele.value);
@@ -49,11 +45,11 @@ const WorkExp = () => {
         clientDesc: d.client_desc,
         country: d.country,
         projectName: d.project,
-        role: roleList,
+        role: role,
         startDate: d.stardate,
         endDate: d.enddate,
         bussinessSol: d.business_sol,
-        techStack: techList,
+        techStack: ['techList'],
         resumeId: resume_id,
         projectResp: projRespList
       }
@@ -68,12 +64,43 @@ const WorkExp = () => {
     sessionStorage.setItem("clientDesc", d.client_desc);
     sessionStorage.setItem("country", d.country);
     sessionStorage.setItem("projectName", d.project);
-    sessionStorage.setItem("role2", roleList);
+    sessionStorage.setItem("role2", role);
     sessionStorage.setItem("startDate", d.stardate);
     sessionStorage.setItem("endDate",  d.enddate);
     sessionStorage.setItem("bussinessSol", d.business_sol);
-    sessionStorage.setItem("techStack", techList);
+    sessionStorage.setItem("techStack", ['techList']);
     sessionStorage.setItem("projectResp", projRespList);
+  }
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
+          const response = res.data;
+          let roleList = response.map((role) => {
+            return role.role_name;
+          })
+          setRoles(roleList);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, []);
+
+  const options = roles.map((opt) => {
+    let obj = {
+      label: opt, value: opt
+    };
+    return obj;
+  })
+
+
+  const handleRole = (val) => {
+    val = val.split(',');
+    setRole(val);
   }
 
   const createField = (name, placeholder, classN, rName, MainClass) => {
@@ -140,10 +167,12 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Role
             <div className='role-input-div'>
-              <input className="fourth"{...register('role')} type="text" name="role[]" placeholder="Role" />
-              <span className="cross">&#9747;</span> 
+            <Select
+                options={options}
+                onChange={handleRole}
+              /> 
             </div>
-            <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i>
+            {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
           </label>
 
           <label className="WorkExplabel">
@@ -165,7 +194,12 @@ const WorkExp = () => {
                <span className="cross">&#9747;</span> 
             
             <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
-              <Example />
+              {/* <div className="role-fields"> */}
+              <Select
+                options={options}
+                onChange={handleRole}
+              />
+            {/* </div> */}
             </div>
           </label>
 
