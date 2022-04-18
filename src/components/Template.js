@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Template.css'
-import { BiCircle } from "react-icons/bi";
+import { BiSquare} from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import axios from 'axios';
 
@@ -128,7 +128,7 @@ const Template = (props) => {
 
 		<section className="template">
 			<div className="header">
-				<i><img src={finalImage}/></i>
+				<i><img className='imageTemplate' src={finalImage}/></i>
 				<h2>{name}</h2>
 				<h5>{roleMapping()}</h5>
 				<h5>Total Exp: {total_exp}</h5>

@@ -58,6 +58,11 @@
 	border-color : lightgrey;
 }
 
+.button1 i{
+	position: relative;
+	bottom: 0.2rem;
+}
+
 .button2{
 	border-color: transparent;
 	background-color: transparent;

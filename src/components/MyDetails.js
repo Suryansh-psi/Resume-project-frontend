@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
-import { BsPlusCircle } from "react-icons/bs";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './MyDetails.css'
@@ -103,7 +101,7 @@ const MyDetails = (props) => {
         <div className="buttons">
           <button className="button2">Cancel</button>
           <input type="submit" name="mydetails" value="Save" />
-          <button className="button1"><FaArrowRight /></button>
+          <button className="button1"><i><FaArrowRight /></i></button>
         </div>
 
         {/* Image Section */}
