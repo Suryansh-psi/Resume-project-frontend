@@ -17,10 +17,9 @@ const Layout = () => {
 	
 	return (
 		<div className="resumeBuilder">
-			<Sidebar />
+			{true && <Sidebar />}
 			<main className="mainsection" >	{<Outlet context={[term, setTerm]}/>}</main>
-			<Template term={term}/>
-			
+			{true && <Template term={term}/>}
 		</div>
 	)
 }

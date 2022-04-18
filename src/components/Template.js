@@ -1,81 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react'
 import './Template.css'
 import { BiCircle } from "react-icons/bi";
@@ -99,38 +21,35 @@ const Template = (props) => {
 		workExp: []
 	});
 	let result = null;
-	const resume_id = sessionStorage.getItem("resume_id")
-	useEffect(() => {
-		// if(props.term > 0) {
-		result = async () => {
-			try {
-				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
-					const response = res.data;
-					console.log(res.data)
-					// console.log(data);
-					setData({
-						...data,
-						name: response.name,
-						role: response.role,
-						image: response.image,
-						total_exp: response.total_exp,
-						aboutMe: response.about_me,
-						aboutMePoints: response.about_me_points,
-						skills: response.skills,
-						workExp: response.workExps
+	const resume_id = sessionStorage.getItem("resume_id");
 
-					})
-				})
-			}
-			catch (err) {
-				console.log(err);
-			}
-		}
-		result();
-		// }
+	// useEffect(() => {
+	// 	result = async () => {
+	// 		try {
+	// 			const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
+	// 				const response = res.data;
+	// 				console.log(res.data)
+	// 				setData({
+	// 					...data,
+	// 					name: response.name,
+	// 					role: response.role,
+	// 					image: response.image,
+	// 					total_exp: response.total_exp,
+	// 					aboutMe: response.about_me,
+	// 					aboutMePoints: response.about_me_points,
+	// 					skills: response.skills,
+	// 					workExp: response.workExps
 
-		console.log(props.term);
-	}, [props.term, result]);
+	// 				})
+	// 			})
+	// 		}
+	// 		catch (err) {
+	// 			console.log(err);
+	// 		}
+	// 	}
+	// 	result();
+	// 	console.log(props.term);
+	// }, [props.term, result]);
 
 
 
@@ -150,6 +69,10 @@ const Template = (props) => {
 	let bussinessSol = sessionStorage.getItem("bussinessSol");
 	let techStack = sessionStorage.getItem("techStack");
 	let projResp = sessionStorage.getItem("projectResp");
+	let imageBase = sessionStorage.getItem("imageBase");
+	let imageURl = sessionStorage.getItem("image");
+	const finalImage = `${imageBase},${imageURl}`;
+	console.log(finalImage);
 
 	const roleMapping = () => {
 		role = role.split(',');
@@ -205,7 +128,7 @@ const Template = (props) => {
 
 		<section className="template">
 			<div className="header">
-				<i><FaUserAlt /></i>
+				<i><img src={finalImage}/></i>
 				<h2>{name}</h2>
 				<h5>{roleMapping()}</h5>
 				<h5>Total Exp: {total_exp}</h5>

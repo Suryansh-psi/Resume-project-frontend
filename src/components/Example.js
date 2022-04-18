@@ -21,7 +21,7 @@ const Example = () => {
 
   return(
     <div className="app">
-      <Select
+      <Select 
         options={options}
       />
     </div>

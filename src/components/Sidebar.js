@@ -32,7 +32,7 @@ const Sidebar = () => {
 			  <i className="dots"><BsThreeDotsVertical /></i>
 			</div>
 			<div className='sidelinks-p d-flex flex-column justify-content-around align-items-center'>
-				<div className='sidebar-links'><Link to="/"><i><BadgeIcon/></i> My Details</Link></div>
+				<div className='sidebar-links'><Link to="myDetails"><i><BadgeIcon/></i> My Details</Link></div>
 				<div className='sidebar-links'><Link to="aboutme"><i><InfoIcon/></i>About Me</Link></div>
 				<div className='sidebar-links'><Link to="skills"><i><LinkIcon/></i>Skills & Proficiencies</Link></div>
 				<div className='sidebar-links'><Link to="workexp"><i><WorkIcon/></i>Work Experience</Link></div>

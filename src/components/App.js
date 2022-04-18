@@ -9,13 +9,14 @@ import MyDetails from './MyDetails'
 import EducationalBackground from './EducationalBackground'
 import Achievements from './Achievements'
 import Memberships from './Memberships'
-
+import Home from './Home';
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MyDetails />}/>
+          <Route index element={<Home />}/>
+          <Route path="myDetails" element={<MyDetails />}/>
           <Route path="aboutMe" element={<AboutMe />}/>
           <Route path="skills" element={<Skills />}/>
           <Route path="workExp" element={<WorkExp />}/>
