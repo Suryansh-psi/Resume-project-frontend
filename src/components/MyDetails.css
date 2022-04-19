@@ -10,65 +10,55 @@
     padding: 1rem  0 0 7rem;
 
 }
-.detailSection{
-	display: flex;
-	flex-direction: column;
-	margin: 40px 0 0  20px;
-	font-size: 14px;
+
+.form-group{
+	font-size: 0.8rem;
 }
 
 .name{
-	margin-bottom: 10px;
+	position: relative;
+	top: 3.5rem;
 }
 
-.name input{
-	margin-left: 6rem;
-	width: 22rem;
+.form-control{
+	margin-left: 9rem;
+	margin-top: 2rem;
+	width: 18.5rem;
 	height: 2rem;
 	padding: 1rem;
 	border: 2px solid lightgrey;
 	border-radius: 0.25rem;
 }
-.role i{
-	margin-left: 30.5rem;
-	font-size: 27px;
-	color: lightgrey;
-	position: absolute;
-	top: 18.5rem;
-}
-.exp input{
-	margin-left: 5rem;
-	width: 9rem;
+
+.form-control1{
+	font-size: 0.8rem;
 	height: 2rem;
-	padding: 0 0 0 0.5rem;
+	padding: 1rem;
 	border: 2px solid lightgrey;
 	border-radius: 0.25rem;
-	margin-top: -4rem;
+	margin-top: 0.5rem;
+	margin-left: 6rem;
+
 }
 
+
 .role{
+	font-size: 0.8rem;
+	position: relative;
+	top: 0.8rem;
 	margin-bottom: 12px;
 	margin-left: 0.1rem;
 }
-
+.exp{
+	font-size: 0.8rem;
+}
 .exp span{
 	color: grey;
 }
 
-.element-role{
-	border: 2px solid lightgrey;
-	width: 7rem;
-	height: 2.5rem;
-	border-radius: 25px;
-	padding: 1rem 0 1rem 1rem;
-	font-size: 0.8rem;
-	margin-right: 0.3rem;
-	margin-bottom: 0.25rem;
-}
-
 .role-fields{
-	margin-top: -1.2rem;
-	margin-left: 8rem;
+	margin-top: -1.5rem;
+	margin-left: 9rem;
 }
 
 .msl-vars {
@@ -105,3 +95,21 @@
 	height: 150px;
 	border-radius: 50%;
 }
+
+.invalid{
+	border: 1px solid red !important;
+}
+
+.form-group1 .text-danger{
+	position: relative;
+	top: 1.3rem;
+	right: 20rem;
+	font-size: 0.7rem;
+}
+
+.form-group .text-danger{
+	position: relative;
+	left: 2rem;
+	bottom: 1rem;
+}
+

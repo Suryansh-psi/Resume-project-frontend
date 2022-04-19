@@ -7,7 +7,7 @@ import axios from "axios";
 import './AboutMe.css'
 function AboutMe() {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
 
   const customFunction = (d) => {
@@ -39,6 +39,7 @@ function AboutMe() {
 
       sessionStorage.setItem("aboutMe", d.about);
       sessionStorage.setItem("aboutMePoints", aboutList);
+      reset();
   }
 
   const addBulletPoint = () => {
@@ -64,11 +65,25 @@ function AboutMe() {
       </div>
       <div className="aboutSection">
         <label className="label">About Me</label>
-        <textarea className="textarea" {...register('about')} name="about" placeholder="Write something about yourself" id="about" cols="30" rows="10"></textarea> 
+        <textarea className={`textarea ${errors.about && "invalid"}`} 
+        {...register('about',{required: "*required field",
+        maxLength: {
+          value: 500,
+          message: "Maximum allowed length is 500"
+        }
+        })}
+        onKeyUp={() =>{
+          trigger("about");
+        }}
+        name="about" placeholder="Write something about yourself (max 500 words)" id="about" cols="30" rows="10"></textarea> 
+        {errors.about && (
+          <small className="text-danger">{errors.about.message}</small>
+
+        )}
         <div className="bulletPoints">
           <input {...register('points')} className="aboutmepoints" type="text" name="points[]" placeholder="Write in bulleted list" />
           <i onClick={addBulletPoint}><BsPlusCircle/></i>
-      </div>
+        </div>
       </div>
       
     </form>

@@ -9,7 +9,7 @@
 .sidebar{
   width: 15%;
   height: 100vh;
-  background-color: #b3cfdf;
+  background-color: #397394;
   position: fixed;
 }
 
@@ -82,6 +82,7 @@
 
 .status{
 	padding: 0 0.5rem 0 0.5rem;
+	color: black;
 }
 
 .css-i4bv87-MuiSvgIcon-root{
@@ -90,7 +91,7 @@
 }
 
 .sidelinks-p :hover{
-	background-color: rgb(91, 77, 131);
+	background-color: #032c3b;
 	transform: scale(1.1);
 	color: white;
 }
