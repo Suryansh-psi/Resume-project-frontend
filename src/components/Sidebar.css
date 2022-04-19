@@ -9,10 +9,14 @@
 .sidebar{
   width: 15%;
   height: 100vh;
-  background-color: rgb(163, 176, 235);
+  background-color: #b3cfdf;
   position: fixed;
 }
 
+.sidebarHeader{
+	width: 100px;
+	height: 100px;
+}
 .sidebarHeader{
 	font-size: 2rem;
 	padding: 0 0 0 0.5rem;

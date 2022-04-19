@@ -53,16 +53,16 @@
 
 .header h2{
 	font-weight: 600;
-	color: rgb(80, 40, 226);
+	color: #04537d;
 	font-size: 1.6rem;
-	margin-top: -1.3rem;
+	margin-top: -6rem;
 }
 
 .template h6{
 	font-size: 11px;
-	color: blue;
+	color: #04537d;
 	font-weight: 700;
-	border-bottom: 2px solid blue;	
+	border-bottom: 2px solid #04537d;	
 	padding-bottom: 0.25rem;	
 } 
 
@@ -75,18 +75,7 @@
 	padding: 0 0 0 8rem;  
 }
 
-.header i{
-	font-size: 40px;
-	border: 2px solid lightgrey;
-	padding: 1rem 1.5rem 1.5rem 1.5rem;
-	border-radius: 50%;
-	background-color: lightgrey;
-	position: relative;
-	top: 3rem;
-	right: 7rem;
-
-}
-
+ 
 .col{
 	padding-right: 2rem;
 	margin-left: -1rem;
@@ -120,4 +109,16 @@
 .row ul{
 	font-size: 0.8rem;
 }
+
+.imageTemplate{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-left: -7rem;
+    margin-top: 3rem;
+
+}
+
+
+
 

@@ -40,7 +40,7 @@ const Skills = () => {
 					<button className="button2">Cancel</button>
 					<input type="submit" name="aboutme" value="Save" />
 
-					<button className="button1"><FaArrowRight /></button>
+					<button className="button1"><i><FaArrowRight /></i></button>
 				</div>
 				<h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
 				<div className="SearchBox">

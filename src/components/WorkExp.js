@@ -143,7 +143,7 @@ const WorkExp = () => {
       <div className="buttons">
         <button className="button2">Cancel</button>
         <input type="submit" name="aboutme" value="Save" />
-        <button className="button1"><FaArrowRight /></button>
+        <button className="button1"><i><FaArrowRight /></i></button>
       </div>
       <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
 

@@ -91,18 +91,17 @@
 	display: none;
 }
 
-.profileImage {
-	border-radius: 50%;
-}
+
 
 .insert-image{
-	background-color: blue;
+	background-color: #04537d;
     width: 300px;
     margin-left: 6rem;
     margin-top: 2rem
 }
 
 .resumeImage {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
 }
