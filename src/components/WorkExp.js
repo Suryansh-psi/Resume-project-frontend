@@ -13,7 +13,7 @@ import axios from 'axios';
 import './WorkExp.css'
 const WorkExp = () => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [roles, setRoles] = useState([]);
   const [role, setRole] = useState([]);
   // const [data, setData] = useState("");
@@ -70,6 +70,8 @@ const WorkExp = () => {
     sessionStorage.setItem("bussinessSol", d.business_sol);
     sessionStorage.setItem("techStack", ['techList']);
     sessionStorage.setItem("projectResp", projRespList);
+
+    reset();
   }
 
   useEffect(() => {
@@ -151,17 +153,41 @@ const WorkExp = () => {
         <div className='workexpfields'>
           <label className="WorkExplabel">
             Client Description
-            <input className="first" {...register('client_desc')} type="text" name="client_desc[]" />
+            <input className={`first ${errors.client_desc && "invalid"}`} 
+            {...register('client_desc', {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("client_desc");
+            }} 
+            type="text" name="client_desc[]" />
+             {errors.client_desc &&(
+              <small className="text-danger">{errors.client_desc.message}</small>
+            )}
           </label>
 
           <label className="WorkExplabel">
             Country
-            <input className="second"{...register('country')} type="text" name="country[]" />
+            <input className={`second ${errors.country && "invalid"}`}
+            {...register('country', {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("country");
+            }} 
+            type="text" name="country[]" />
+            {errors.country &&(
+              <small className="text-danger">{errors.country.message}</small>
+            )}
           </label>
 
           <label className="WorkExplabel">
             Project Name
-            <input className="third"{...register('project')} type="text" name="project[]" />
+            <input className={`third ${errors.project && "invalid"}`}
+            {...register('project', {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("project");
+            }} 
+            type="text" name="project[]" />
+             {errors.project &&(
+              <small className="text-danger">{errors.project.message}</small>
+            )}
           </label>
 
           <label className="WorkExplabel">
@@ -175,6 +201,7 @@ const WorkExp = () => {
             {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
           </label>
 
+      
           <label className="WorkExplabel">
             Duration
             <input className="fifth"{...register("stardate")} type="date" name="stardate[]" />
@@ -182,10 +209,28 @@ const WorkExp = () => {
             <span className="checkBox"><RiCheckboxCircleLine /></span> till date
           </label>
 
-          <label className="WorkExplabel">
-            Business Solution
-            <textarea className="sixth"{...register('business_sol')} name="business_sol" placeholder="Write Your Solution" id="about" cols="54" rows="4"></textarea>
-          </label>
+           <div className='business'>
+            <label className="WorkExplabel">
+              Business Solution
+              <textarea className={`sixth ${errors.business_sol && "invalid"}`}
+              {...register('business_sol', {required: "*required",
+              maxLength: {
+                value: 300,
+                message: "Maximum allowed length is 300"
+              }
+              })}
+              onKeyUp={() =>{
+                trigger("business_sol");
+              }}
+              name="business_sol" placeholder="Write Your Solution" id="about" cols="54" rows="4"></textarea>
+              {errors.business_sol && (
+              <small className="text-danger">{errors.business_sol.message}</small>
+              )}
+            </label>
+
+          </div>
+
+         
 
           <label className="WorkExplabel">
             TechnologyStack
@@ -205,8 +250,15 @@ const WorkExp = () => {
 
           <label className="WorkExplabel">
             Project Responsibilities
-            <div className='projRes-main-div'>
-              <input className="eight" {...register('responsibility')} type="text" name="responsibility[]" placeholder="Write Responsibilities" />
+            <div className="projRes-main-div" >
+              <input className={`eight ${errors.responsibility && "invalid"}`} {...register('responsibility',{required: "*required"})} 
+              onKeyUp={() =>{
+              trigger("responsibility");
+              }} 
+               type="text" name="responsibility[]" placeholder="Write Responsibilities" />
+               {errors.responsibility && (
+                <small className="text-danger">{errors.responsibility.message}</small>
+                )}
             </div>
             <i onClick={createProjRes} className="Responsibility"><BsPlusCircle /></i>
           </label>

@@ -6,18 +6,22 @@ import axios from "axios";
 import './MyDetails.css'
 import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
+import { useScrollTrigger } from "@mui/material";
+import { ErrorSharp } from "@mui/icons-material";
 
 
 const MyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [imagePath, setImagePath] = useState('userIcon.png');
   const [roles, setRoles] = useState([]);
+
   const [role, setRole] = useState([]);
 
   const customFunction = (d) => {
     const elementRole = document.querySelectorAll('.element-role');
     const imageURl = imagePath.split(',')[1];
+  
     axios.post('http://localhost:8080/resume', {
       name: d.name,
       role: role,
@@ -29,6 +33,7 @@ const MyDetails = (props) => {
         if(res) {
           sessionStorage.setItem("resume_id", res.data);
           alert("new Resume Created");
+          
         }
       })
     setTerm(1);
@@ -39,6 +44,7 @@ const MyDetails = (props) => {
     sessionStorage.setItem("image", imageURl);
     sessionStorage.setItem("total_exp", d.experience);
     sessionStorage.setItem("imageBase", imagePath.split(',')[0]);
+    reset();
   }
 
   useEffect(() => {
@@ -117,27 +123,62 @@ const MyDetails = (props) => {
           {/* Form Starts */}
         </div>
         <div className="detailSection">
-          <label className="name">
-            Name
-            <input {...register("name")} placeholder="Your name" name="name" id="name" />
-          </label>
-          <label className="role">
-            Role
+          <div className="form-group">
+            <label className="name">
+              Name
+            </label>
+            <input 
+              className={`form-control ${errors.name && "invalid"}`}
 
+              {...register("name", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("name");
+              }}
+              placeholder="Your name" name="name" id="name" 
 
+            />
+            {errors.name &&(
+              <small className="text-danger">{errors.name.message}</small>
+            )}
+          </div>
+          
+          <div className="form-group">
+            <label className="role">
+              Role
+            </label>
             <div className="role-fields">
               <Select
                 options={options}
                 onChange={handleRole}
+              
               />
             </div>
-          </label>
-          <label className="exp">
-            Total Exp
-            <input {...register("experience")} placeholder="Total Experience" name="experience" id="experience" />
-            <span>  years</span>
+          </div>
 
-          </label>
+          <div className="form-group1">
+            <label className="exp">
+              Total Exp
+            </label>  
+              <input 
+                className={`form-control1 ${errors.experience && "invalid"}`}
+                {...register("experience",{
+                  required: "*required",
+                  pattern: {
+                    value: /^[0-9]*$/,
+                    message: "*value should be integer"
+                  }
+                })} 
+                onKeyUp={() => {
+                  trigger("experience");
+                }}
+                placeholder="Total Experience" name="experience" id="experience" 
+                />
+                <span>  years</span>
+                {errors.experience && (
+                  <small className="text-danger">{errors.experience.message}</small>
+                )}
+              
+          </div>     
         </div>
       </form>
     </>

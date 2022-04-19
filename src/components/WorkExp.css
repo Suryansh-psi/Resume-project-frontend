@@ -185,4 +185,21 @@
 	margin-right: 0.25rem;
 }
 
+.text-danger{
+	position: relative;
+	right: 30rem;
+
+}
+
+.business .text-danger{
+	position: relative;
+	right: 26.5rem;
+}
+
+.projRes-main-div .text-danger{
+	position: relative;
+	right: 6rem;
+	bottom: 1rem;
+}
+
 
