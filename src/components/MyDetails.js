@@ -173,7 +173,7 @@ const MyDetails = (props) => {
                   required: "*required",
                   pattern: {
                     value: /^[0-9]*$/,
-                    message: "*value should be integer"
+                    message: "*invalid value"
                   }
                 })} 
                 onKeyUp={() => {

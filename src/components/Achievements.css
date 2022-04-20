@@ -12,14 +12,14 @@
 .achievement .desc{
     border: 2px solid lightgrey;
     border-radius: 0.25rem;
-    margin-left: 10rem;
+    margin-left: 4rem;
     margin-top: 1rem;
     padding: 0.5rem 1rem 1rem 1rem;
 } 
 
 .achievement input{
     border: 2px solid lightgrey;
-    width: 17rem;
+    width: 20rem;
     height: 2.5rem;
     border-radius: 0.25rem;
     margin-left: 2rem;
@@ -27,9 +27,13 @@
 
 }
 
-.achievement-desc{
-    position: relative;
-    right: 26.8rem;
-    top: 4rem;
-}
+.Ach{
+    font-size: 27px;
+    color: lightgrey;
+    margin-left: 0.5rem;
 
+}
+.achievement .certification{
+    margin-left: 2.3rem;
+    margin-top: 1rem;
+}

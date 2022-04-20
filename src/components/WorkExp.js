@@ -210,13 +210,24 @@ const WorkExp = () => {
             {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
           </label>
 
-      
-          <label className="WorkExplabel">
-            Duration
-            <input className="fifth"{...register("stardate")} type="date" name="stardate[]" />
-            <span className="duration"><input className="fifth"{...register("enddate")} type="date" name="enddate[]" /></span>
-            <span className="checkBox"><RiCheckboxCircleLine /></span> till date
+          <div className='time'>
+            <label className="WorkExplabel">
+              Duration
+              <input className={`fifth ${errors.stardate && "invalid"}`}
+              {...register("startdate",{required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("startdate");
+              }}
+              type="date" name="startdate[]" />
+              <span className="duration"><input className="fifth"{...register("enddate")} type="date" name="enddate[]" /></span>
+              <span className="checkBox"><RiCheckboxCircleLine /></span> till date
+              {errors.startdate &&(
+                <small className="text-danger">{errors.startdate.message}</small>
+              )}
           </label>
+
+          </div>
+          
 
            <div className='business'>
             <label className="WorkExplabel">
@@ -249,10 +260,22 @@ const WorkExp = () => {
             
             <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
               {/* <div className="role-fields"> */}
-              <Select
-                options={options}
-                onChange={handleRole}
-              />
+              <select className={`roles1 ${errors.tech && "invalid"}`} name="role" id="role" {...register("tech", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("tech");
+              }} multiple>
+                <option className="option1" value="">Select...</option>
+                <option value="Python">Python</option>
+                <option value="React">React</option>
+                <option value="JAVA">JAVA</option>
+                <option value="Ruby">Ruby</option>
+                <option value="C++">C++</option>
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+            </select>
+            {errors.tech &&(
+              <small className="text-danger">{errors.tech.message}</small>
+            )}
             {/* </div> */}
             </div>
           </label>

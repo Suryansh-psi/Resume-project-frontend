@@ -24,7 +24,7 @@ function EducationalBackground() {
         <button className="button1"><i><FaArrowRight /></i></button>
       </div>
       <div className="eduBackground">
-        <label className="edu-field">Type of Establishment</label>
+        <label className="edu-field">Type of Course</label>
         <select name="type" id="type" className="dropdown">
           <option value="/">---Select---</option>
           <option value="10">10</option>
@@ -37,12 +37,12 @@ function EducationalBackground() {
           <option value="ma">MA</option>
         </select>
         <label className="edu-field">
-          Name of Establishment
+          Name of Institute
           <input className="eduName"{...register("name")}  name="name" id="name" />
         </label>
 
         <label className="edu-field">
-          Location of Establishment
+          Location of Institute
           <input className="eduLocation"{...register("location")}  name="location" id="location" />
         </label>
         

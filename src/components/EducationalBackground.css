@@ -12,7 +12,7 @@
     font-size: 0.8rem;
 }
 .edu-field input{
-    width: 17rem;
+    width: 22rem;
 	height: 2rem;
 	border: 2px solid lightgrey;
 	border-radius: 0.25rem;
@@ -20,31 +20,32 @@
 }
 
 .eduName{
-    margin-left: 3rem;
+    margin-left: 4rem;
 }
 
 .eduLocation{
-    margin-left: 2.1rem;
+    margin-left: 3.1rem;
 }
 .edu-field .startDate{
-    margin-left: 8.1rem;
+    margin-left: 7.1rem;
     margin-right: 1rem;
-    width: 8rem;
+    width: 10.5rem;
 
 }
 
 .edu-field .endDate{
-    width: 8rem;
+    width: 10.5rem;
 }
 
 .edu-field .eduGrade{
-    width: 6.5rem;
-    margin-left: 7.2rem;
+    width: 22rem;
+    margin-left: 6.3rem;
 }
 
 .dropdown{
-    margin-left: 3.5rem;
+    margin-left: 4.9rem;
     border: 2px solid lightgrey;
     border-radius: 0.25rem;
+    width: 21.9rem;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import { BsPlusCircle } from "react-icons/bs";
 import './Achievements.css'
 
 function Achievements() {
@@ -27,15 +27,14 @@ function Achievements() {
         <label className="achievement-name">
           Name of Achievement
           <input {...register("name")}  name="name" placeholder="Name of Achievement" id="name" />
+          <i className="Ach"><BsPlusCircle /></i>
         </label>
-        <label className="achievement-desc">
-          Description
+        <label className="achievement-name">
+          Name of Certification
         </label>
-          <textarea className="desc" {...register('desc')} name="desc" placeholder="Write about achivement briefly" id="desc" cols="36" rows="5"></textarea> 
+          <input className="certification" {...register('desc')} name="desc" placeholder="Name of Certification" id="desc"/> 
+          <i className="Ach"><BsPlusCircle /></i>
 
-    </div>
-    <div className="footer">
-        <span className="plus"><FaPlus /></span><input className="element" {...register('addAchievement')} type="text" name="addAchievement[]" placeholder='Add Achievements' value="Add education details" />
     </div>
         
         

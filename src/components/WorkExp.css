@@ -214,3 +214,17 @@
 	bottom: 3.5rem;
 	font-size: 0.7rem;
 }
+
+
+.techstack-input-div .text-danger{
+	position: relative;
+	bottom: 2.3rem;
+	right: 28rem;
+	
+}
+
+.time .text-danger{
+	position: relative;
+	right: 29.5rem;
+	top: 0.8rem;
+}
