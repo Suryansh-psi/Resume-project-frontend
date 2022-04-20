@@ -105,9 +105,9 @@ const MyDetails = (props) => {
 
         {/* Top Buttons */}
         <div className="buttons">
-          <button className="button2">Cancel</button>
+          <button className="button2" disabled>Cancel</button>
           <input type="submit" name="mydetails" value="Save" />
-          <button className="button1"><i><FaArrowRight /></i></button>
+          <button className="button1" disabled><i><FaArrowRight /></i></button>
         </div>
 
         {/* Image Section */}
@@ -142,16 +142,24 @@ const MyDetails = (props) => {
             )}
           </div>
           
-          <div className="form-group">
+          <div className="form1">
             <label className="role">
               Role
             </label>
             <div className="role-fields">
-              <Select
-                options={options}
-                onChange={handleRole}
-              
-              />
+              <select className={`roles ${errors.role && "invalid"}`} name="role" id="role" {...register("role", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("role");
+              }} multiple>
+                <option className="option1" value="">Select...</option>
+                <option value="business analyst">Business Analyst</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="qa">QA</option>
+            </select>
+            {errors.role &&(
+              <small className="text-danger">{errors.role.message}</small>
+            )}
             </div>
           </div>
 

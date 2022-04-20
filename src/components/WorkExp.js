@@ -143,9 +143,9 @@ const WorkExp = () => {
   return (
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
       <div className="buttons">
-        <button className="button2">Cancel</button>
+        <button className="button2" disabled>Cancel</button>
         <input type="submit" name="aboutme" value="Save" />
-        <button className="button1"><i><FaArrowRight /></i></button>
+        <button className="button1" disabled><i><FaArrowRight /></i></button>
       </div>
       <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
 
@@ -193,10 +193,19 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Role
             <div className='role-input-div'>
-            <Select
-                options={options}
-                onChange={handleRole}
-              /> 
+              <select className={`roles1 ${errors.role && "invalid"}`} name="role" id="role" {...register("role", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("role");
+              }} multiple>
+                <option className="option1" value="">Select...</option>
+                <option value="business analyst">Business Analyst</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="qa">QA</option>
+            </select>
+            {errors.role &&(
+              <small className="text-danger">{errors.role.message}</small>
+            )}
             </div>
             {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
           </label>

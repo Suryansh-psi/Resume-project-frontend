@@ -66,10 +66,10 @@ function AboutMe() {
       <div className="aboutSection">
         <label className="label">About Me</label>
         <textarea className={`textarea ${errors.about && "invalid"}`} 
-        {...register('about',{required: "*required field",
+        {...register('about',{required: "*required",
         maxLength: {
           value: 500,
-          message: "Maximum allowed length is 500"
+          message: "*limit exceed"
         }
         })}
         onKeyUp={() =>{

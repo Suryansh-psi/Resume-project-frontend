@@ -203,3 +203,14 @@
 }
 
 
+.roles1{
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	width: 23.8rem;
+}
+.role-input-div .text-danger{
+	position: relative;
+	right: 8rem;
+	bottom: 3.5rem;
+	font-size: 0.7rem;
+}
