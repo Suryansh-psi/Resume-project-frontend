@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 import SearchBox from 'react-search-box';
@@ -12,7 +12,10 @@ import './Skills.css'
 const Skills = () => {
 	const [term, setTerm] = useOutletContext();
 	const { register, handleSubmit } = useForm();
-	const [data, setData] = useState("");
+	// const [data, setData] = useState("");
+	// const [skills, setSkills] = useState([]);
+	// const [category, setCategory] = useState([]);
+	const [skillData, setSkillData] = useState([]);
 
 	const customFunction = (d) => {
 		// sessionStorage.setItem("skills", JSON.stringify(d));
@@ -31,6 +34,42 @@ const Skills = () => {
 
 		sessionStorage.setItem("skills", d.skill);
 	}
+
+	useEffect(() => {
+		let result = async () => {
+			try {
+				const result2 = await axios.get(`http://localhost:8080/skills`).then(res => {
+					const response = res.data;
+					console.log(response);
+					setSkillData(response);
+					// let skillList = response.map((item) => {
+					// 	return item.skill;
+					// })
+					// let categoryList = response.map((item) => {
+					// 	return item.category;
+					// })
+					// setSkills(skillList);
+					// setCategory(categoryList);
+					//   console.log("skill", skills, "category", category);
+				})
+			}
+			catch (err) {
+				console.log(err);
+			}
+		}
+		result();
+	}, []);
+
+	const skillsMapping = skillData.map((data, index) => {
+		return (
+			<tr key={index}>
+				<td><input {...register('skill')} type="checkbox" name='skill[]' value={`${data.category}#${data.skill}`} /></td>
+				<td>{data.category}</td>
+				<td>{data.skill}</td>
+			</tr>
+		)
+	})
+
 
 	return (
 		<div>
@@ -57,7 +96,7 @@ const Skills = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr key={0}>
+						{/* <tr key={0}>
 							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Agile" /></td>
 							<td>Business Analysis</td>
 							<td>Agile</td>
@@ -81,7 +120,8 @@ const Skills = () => {
 							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Other" /></td>
 							<td>Business Analysis</td>
 							<td>Other</td>
-						</tr>
+						</tr> */}
+						{skillsMapping}
 					</tbody>
 				</table>
 			</form>

@@ -4,8 +4,10 @@ import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
-import './AboutMe.css'
-function AboutMe() {
+import './AboutMe.css';
+
+
+const AboutMe = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
@@ -21,9 +23,7 @@ function AboutMe() {
     element.forEach((ele) => {
       aboutList.push(ele.value);
     });
-    // console.log(aboutList)
     const resume_id = sessionStorage.getItem('resume_id');
-    // console.log(resume_id);
 
     console.log(d);
     axios.put(`http://localhost:8080/resume/about/${resume_id}`, {

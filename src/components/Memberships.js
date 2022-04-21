@@ -2,19 +2,47 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import './Memberships.css'
+import './Memberships.css';
+import axios from 'axios';
+import { useOutletContext } from "react-router-dom";
+import { BsPlusCircle } from "react-icons/bs";
+
 
 function Memberships() {
-
+  const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState("");
 
   const customFunction = (d) => {
-    sessionStorage.setItem("achievements", JSON.stringify(d))
-    const data = JSON.parse(sessionStorage.getItem('achievements'))
-    console.log(sessionStorage.key(0))
-    console.log(data)
+    const membershipInputs = document.querySelectorAll('.membership-input');
+    let membershipList = [];
+    membershipInputs.forEach((val) => {
+      membershipList.push(val.value);
+    });
+    const resume_id = sessionStorage.getItem('resume_id');
+    axios.put(`http://localhost:8080/resume/membership/${resume_id}`, {
+      "membership": membershipList
+    })
+      .then(res => {
+        // console.log(res);
+        // console.log(res.data);
+      })
+    setTerm(7);
+    sessionStorage.setItem("membership", membershipList);
   }
+
+  
+  const cloneFields = (name1, placeholder, classN, regis, inputClass) => {
+    const inp = document.createElement("input");
+    inp.setAttribute('type', 'text');
+    inp.setAttribute('name', name1);
+    inp.setAttribute('placeholder', placeholder);
+    inp.setAttribute('class', inputClass);
+    inp.setAttribute('object', `{...register(${regis})}`);
+    document.querySelector(`.${classN}`).appendChild(inp);
+  }
+
+
   return (
     <>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -24,7 +52,7 @@ function Memberships() {
         <button className="button1"><i><FaArrowRight /></i></button>
       </div>
       <div className="membership">
-        <label>
+        {/* <label>
           Membership No.
           <input className="membership-name"{...register("name")}  name="name" placeholder="Enter Membership No." id="name" />
         </label>
@@ -40,13 +68,19 @@ function Memberships() {
         <label>
            Expiry/Renewal Date
            <input className="end"{...register("enddate")} type="date" name="enddate[]" />
-        </label>
-        
+        </label> */}
+        <div className="achievement">
+          <label className="membership-name">
+            Name of Membership
+            <input className="membership-input" {...register('membership')} name="membership[]" placeholder="Name of Membership" id="desc" />
+            <i className="Ach" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
+          </label>
+        </div>
 
     </div>
-    <div className="footer">
+    {/* <div className="footer">
         <span className="plus"><FaPlus /></span><input className="element" {...register('addMembership')} type="text" name="addMembership[]" placeholder='Add Membership' value="Add Membership" />
-    </div>
+    </div> */}
         
         
       </form>
