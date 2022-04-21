@@ -23,33 +23,33 @@ const Template = (props) => {
 	let result = null;
 	const resume_id = sessionStorage.getItem("resume_id");
 
-	// useEffect(() => {
-	// 	result = async () => {
-	// 		try {
-	// 			const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
-	// 				const response = res.data;
-	// 				console.log(res.data)
-	// 				setData({
-	// 					...data,
-	// 					name: response.name,
-	// 					role: response.role,
-	// 					image: response.image,
-	// 					total_exp: response.total_exp,
-	// 					aboutMe: response.about_me,
-	// 					aboutMePoints: response.about_me_points,
-	// 					skills: response.skills,
-	// 					workExp: response.workExps
+	useEffect(() => {
+		result = async () => {
+			try {
+				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
+					const response = res.data;
+					// console.log(res.data)
+					setData({
+						...data,
+						name: response.name,
+						role: response.role,
+						image: response.image,
+						total_exp: response.total_exp,
+						aboutMe: response.about_me,
+						aboutMePoints: response.about_me_points,
+						skills: response.skills,
+						workExp: response.workExps
 
-	// 				})
-	// 			})
-	// 		}
-	// 		catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 	}
-	// 	result();
-	// 	console.log(props.term);
-	// }, [props.term, result]);
+					})
+				})
+			}
+			catch (err) {
+				console.log(err);
+			}
+		}
+		result();
+		// console.log(props.term);
+	}, [props.term, result]);
 
 
 
@@ -72,7 +72,7 @@ const Template = (props) => {
 	let imageBase = sessionStorage.getItem("imageBase");
 	let imageURl = sessionStorage.getItem("image");
 	const finalImage = `${imageBase},${imageURl}`;
-	console.log(finalImage);
+	// console.log(finalImage);
 
 	const roleMapping = () => {
 		role = role.split(',');
