@@ -16,15 +16,15 @@ const MyDetails = (props) => {
   const [imagePath, setImagePath] = useState('userIcon.png');
   const [roles, setRoles] = useState([]);
 
-  const [role, setRole] = useState([]);
+  // const [role, setRole] = useState([]);
 
   const customFunction = (d) => {
     const elementRole = document.querySelectorAll('.element-role');
     const imageURl = imagePath.split(',')[1];
-  
+    // console.log(d);
     axios.post('http://localhost:8080/resume', {
       name: d.name,
-      role: role,
+      role: d.role,
       total_exp: d.experience,
       image: imageURl,
       userId: 1
@@ -40,7 +40,7 @@ const MyDetails = (props) => {
 
 
     sessionStorage.setItem("name", d.name);
-    sessionStorage.setItem("role", role);
+    sessionStorage.setItem("role", d.role);
     sessionStorage.setItem("image", imageURl);
     sessionStorage.setItem("total_exp", d.experience);
     sessionStorage.setItem("imageBase", imagePath.split(',')[0]);
@@ -52,10 +52,10 @@ const MyDetails = (props) => {
       try {
         const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
           const response = res.data;
-          let roleList = response.map((role) => {
-            return role.role_name;
-          })
-          setRoles(roleList);
+          // let roleList = response.map((role) => {
+          //   return role.role_name;
+          // })
+          setRoles(response);
         })
       }
       catch (err) {
@@ -66,16 +66,17 @@ const MyDetails = (props) => {
   }, []);
 
   const options = roles.map((opt) => {
-    let obj = {
-      label: opt, value: opt
-    };
-    return obj;
+    // let obj = {
+    //   label: opt, value: opt
+    // };
+    // return obj;
+    return <option title={opt.role_desc} value={opt.role_name}>{opt.role_name}</option>
   })
 
-  const handleRole = (val) => {
-    val = val.split(',');
-    setRole(val);
-  }
+  // const handleRole = (val) => {
+  //   val = val.split(',');
+  //   setRole(val);
+  // }
 
   let imageHandler = async (e) => {
     const file = e.target.files[0];
@@ -152,10 +153,11 @@ const MyDetails = (props) => {
                 trigger("role");
               }} multiple>
                 <option className="option1" value="">Select...</option>
-                <option value="business analyst">Business Analyst</option>
+                {/* <option value="business analyst">Business Analyst</option>
                 <option value="developer">Developer</option>
                 <option value="designer">Designer</option>
-                <option value="qa">QA</option>
+                <option value="qa">QA</option> */}
+                {options}
             </select>
             {errors.role &&(
               <small className="text-danger">{errors.role.message}</small>
