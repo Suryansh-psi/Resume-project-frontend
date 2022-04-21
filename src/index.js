@@ -1,7 +1,8 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
-import App from './components/App';
+//import App from './components/App';
+import UserHome from './components/UserHome'
 sessionStorage.setItem("name", "Sample Text");
 sessionStorage.setItem("role", ["role1", "role2"]);
 sessionStorage.setItem("total_exp", 5);
@@ -23,7 +24,7 @@ sessionStorage.setItem("techStack", ['techList']);
 sessionStorage.setItem("projectResp", ['projRespList']);
 
 const root = createRoot( document.getElementById('root') );
-root.render(<App />);
+root.render(<UserHome />);
 
 
 // ReactDOM.render(
