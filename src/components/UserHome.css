@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-family: 'open-sans';
+    color: grey;
+}
+
+
+
+.UserHome{
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+.homeMenu{
+    margin-top: -2.5rem;
+    float: right;
+    display: flex;
+    flex-direction: row;
+}
+
+.homeNav{
+    display: flex;
+    flex-direction: row;
+}
+
+.homeMenu img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.search{
+    margin-left: 20rem;
+    border: 2px solid lightgrey;
+    background-color: rgb(238, 236, 236);
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 25px;
+    padding: 1rem;
+}
+
+.endMenu{
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.searchIcon{
+    position: relative;
+    left: -2rem;
+    top: 0.7rem;
+}
+
+.homeSection{
+    border-top: 2px solid lightgrey;
+    margin: 1rem 0rem 1rem 0;
+}
+
+.section{
+    margin: 3rem 0 0 1rem;
+    border: 2px solid lightgrey;
+    width: 7rem;
+    height: 6rem;
+    padding: 2rem 0 0rem 1rem;
+}
+.section i{
+    margin-left: 1.7rem;
+}
+
+.section h4{
+    color: black;
+    margin-top: 0.5rem;
+}
+
+.section1{
+    margin: 3rem 0 2.5rem 1rem;
+}
+
+.card{
+    border: 2px solid lightgrey;
+    width: 15rem;
+    height: 10rem;
+    margin: 2.5rem 0 0 0;
+    padding: 0.2rem 0.3rem;
+    background-color: rgb(238, 236, 236);
+}
+.card img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: -0.5rem;
+}
+.card p{
+    font-size: 0.5rem;
+}
+
+.cardUppr{
+    border: 1px solid rgb(241, 236, 236);
+    background-color: white;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    color: black;
+}
+
+.cardLower{
+    padding-top: 0.5rem;
+    margin-left: 0.7rem;
+}
+.cardLower h4{
+    color: black;
+}
+
+.cardLower h5{
+    border: 1px solid transparent;
+    font-size: 0.6rem;
+    background-color: lightgrey;
+    width: 3rem;
+    height: 1rem;
+    border-radius: 25px;
+    padding-left: 0.7rem;
+    padding-top: 0.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.homeNav img{
+    width: 60px;
+    height: 60px;
+    margin-right: 2rem;
+    margin-top: -0.8rem;
+}
+
+
+.dropbtn {
+    color: #0e0000;
+    font-size: 35px;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    left: 12rem;
+    bottom: 4rem;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: grey;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
