@@ -143,9 +143,9 @@ const WorkExp = () => {
   return (
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
       <div className="buttons">
-        <button className="button2">Cancel</button>
+        <button className="button2" disabled>Cancel</button>
         <input type="submit" name="aboutme" value="Save" />
-        <button className="button1"><i><FaArrowRight /></i></button>
+        <button className="button1" disabled><i><FaArrowRight /></i></button>
       </div>
       <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
 
@@ -193,21 +193,41 @@ const WorkExp = () => {
           <label className="WorkExplabel">
             Role
             <div className='role-input-div'>
-            <Select
-                options={options}
-                onChange={handleRole}
-              /> 
+              <select className={`roles1 ${errors.role && "invalid"}`} name="role" id="role" {...register("role", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("role");
+              }} multiple>
+                <option className="option1" value="">Select...</option>
+                <option value="business analyst">Business Analyst</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="qa">QA</option>
+            </select>
+            {errors.role &&(
+              <small className="text-danger">{errors.role.message}</small>
+            )}
             </div>
             {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
           </label>
 
-      
-          <label className="WorkExplabel">
-            Duration
-            <input className="fifth"{...register("stardate")} type="date" name="stardate[]" />
-            <span className="duration"><input className="fifth"{...register("enddate")} type="date" name="enddate[]" /></span>
-            <span className="checkBox"><RiCheckboxCircleLine /></span> till date
+          <div className='time'>
+            <label className="WorkExplabel">
+              Duration
+              <input className={`fifth ${errors.stardate && "invalid"}`}
+              {...register("startdate",{required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("startdate");
+              }}
+              type="date" name="startdate[]" />
+              <span className="duration"><input className="fifth"{...register("enddate")} type="date" name="enddate[]" /></span>
+              <span className="checkBox"><RiCheckboxCircleLine /></span> till date
+              {errors.startdate &&(
+                <small className="text-danger">{errors.startdate.message}</small>
+              )}
           </label>
+
+          </div>
+          
 
            <div className='business'>
             <label className="WorkExplabel">
@@ -240,10 +260,22 @@ const WorkExp = () => {
             
             <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
               {/* <div className="role-fields"> */}
-              <Select
-                options={options}
-                onChange={handleRole}
-              />
+              <select className={`roles1 ${errors.tech && "invalid"}`} name="role" id="role" {...register("tech", {required: "*required"})} 
+              onKeyUp={() =>{
+                trigger("tech");
+              }} multiple>
+                <option className="option1" value="">Select...</option>
+                <option value="Python">Python</option>
+                <option value="React">React</option>
+                <option value="JAVA">JAVA</option>
+                <option value="Ruby">Ruby</option>
+                <option value="C++">C++</option>
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+            </select>
+            {errors.tech &&(
+              <small className="text-danger">{errors.tech.message}</small>
+            )}
             {/* </div> */}
             </div>
           </label>

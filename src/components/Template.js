@@ -145,7 +145,7 @@ const Template = (props) => {
 					<h6>WORK HISTORY</h6>
 					<p>Client: {clientDesc}</p>
 					<p>Project: {projectName}</p>
-					<h5>Role: {role2}</h5>
+					<p>Role: {role2}</p>
 					<p>Duration: {startDate} {endDate}</p>
 					<p>Business Solution: {bussinessSol}</p>
 					<div className='tech-stack-output'>

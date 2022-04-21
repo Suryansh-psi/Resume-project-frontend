@@ -32,13 +32,13 @@ const Sidebar = () => {
 			  <i className="dots"><BsThreeDotsVertical /></i>
 			</div>
 			<div className='sidelinks-p d-flex flex-column justify-content-around align-items-center'>
-				<div className='sidebar-links'><Link to="myDetails"><i><BadgeIcon/></i> My Details</Link></div>
-				<div className='sidebar-links'><Link to="aboutme"><i><InfoIcon/></i>About Me</Link></div>
-				<div className='sidebar-links'><Link to="skills"><i><LinkIcon/></i>Skills & Proficiencies</Link></div>
-				<div className='sidebar-links'><Link to="workexp"><i><WorkIcon/></i>Work Experience</Link></div>
-				<div className='sidebar-links'><Link to="educationalbackground"><i><SchoolIcon/></i>Educational Background</Link></div>
-				<div className='sidebar-links'><Link to="achievements"><i><EmojiEventsIcon/></i>Achievements</Link></div>
-				<div className='sidebar-links'><Link to="memberships"><i><LanIcon/></i>Memberships</Link></div>
+			    <Link className='sidebar-links'to="myDetails"><div><i><BadgeIcon/></i> My Details</div></Link>
+				<Link className='sidebar-links'to="aboutme"><div ><i><InfoIcon/></i>About Me</div></Link>
+				<Link className='sidebar-links'to="skills"><div ><i><LinkIcon/></i>Skills & Proficiencies</div></Link>
+				<Link className='sidebar-links'to="workexp"><div ><i><WorkIcon/></i>Work Experience</div></Link>
+				<Link className='sidebar-links'to="educationalbackground"><div ><i><SchoolIcon/></i>Educational Background</div></Link>
+				<Link className='sidebar-links'to="achievements"><div><i><EmojiEventsIcon/></i>Achievements</div></Link>
+				<Link className='sidebar-links'to="memberships"><div><i><LanIcon/></i>Memberships</div></Link>
         </div>
         <div className="status">
           <div className='d-flex justify-content-between w-100 table-sidebar'><div>Last Modified</div><div>DD/MM/YYYY</div></div>

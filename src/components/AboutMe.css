@@ -54,6 +54,7 @@
 	width: 45px;
 	height: 25px;
 	margin: 0 0 0 20px;
+	color: black;
 	background: linear-gradient(to right, lightgrey 50%, darkgrey 50%);
 	border-color : lightgrey;
 }
@@ -67,12 +68,15 @@
 	border-color: transparent;
 	background-color: transparent;
 	margin: 0 10px 0 0;
+	color: black;
+
 }
 
 .aboutSection .text-danger{
 	position: relative;
-	right: 30.5rem;
-	bottom: 10.5rem;
+	right: 31rem;
+	
+	bottom: 11rem;
 
 }
 
