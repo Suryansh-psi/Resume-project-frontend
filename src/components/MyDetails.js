@@ -13,7 +13,7 @@ import { ErrorSharp } from "@mui/icons-material";
 const MyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
-  const [imagePath, setImagePath] = useState('C:/Users/suryansh.gahlot/Desktop/V2/Resume-project-frontend/public/userIcon.png');
+  const [imagePath, setImagePath] = useState('userIcon.png');
   const [roles, setRoles] = useState([]);
 
   // const [role, setRole] = useState([]);
