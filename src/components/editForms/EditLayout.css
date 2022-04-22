@@ -1,0 +1,11 @@
+.resumeBuilder{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+
+.mainsection {
+	width: 41%;
+	position: absolute;
+	left: 240px;
+}

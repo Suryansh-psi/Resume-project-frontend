@@ -5,6 +5,7 @@ import { MdEdit } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
 import { FaFileAlt } from "react-icons/fa";
 import './UserHome.css'
+import { Link } from 'react-router-dom';
 
 
 const UserHome = () => {
@@ -30,10 +31,12 @@ const UserHome = () => {
 
             </div>
             <div className='homeSection'>
-                <div className='section'>
-                    <i><BsPlusCircle /></i>
-                    <h4>Create New</h4>
-                </div>
+                <Link to="/forms/myDetails">
+                    <div className='section'>
+                        <i><BsPlusCircle /></i>
+                        <h4>Create New</h4>
+                    </div>
+                </Link>
                 <div className='section1'>
                     <h4>My Resumes</h4>
                     <div className='card'>

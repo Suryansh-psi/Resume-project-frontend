@@ -3,20 +3,20 @@ import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
-import './MyDetails.css'
+import './EditMyDetails.css'
 import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import { useScrollTrigger } from "@mui/material";
 import { ErrorSharp } from "@mui/icons-material";
 
 
-const MyDetails = (props) => {
+const EditMyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [imagePath, setImagePath] = useState('C:/Users/suryansh.gahlot/Desktop/V2/Resume-project-frontend/public/userIcon.png');
   const [roles, setRoles] = useState([]);
 
-  // const [role, setRole] = useState([]);
+  const [role, setRole] = useState([]);
 
   const customFunction = (d) => {
     const elementRole = document.querySelectorAll('.element-role');
@@ -195,5 +195,5 @@ const MyDetails = (props) => {
   );
 }
 
-export default MyDetails;
+export default EditMyDetails;
 

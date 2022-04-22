@@ -1,0 +1,68 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.skillTable{
+	position: relative;
+	top: 1rem;
+	width: 33.5rem;
+
+}
+table{
+	border:2px solid  lightgrey;
+}
+
+
+
+thead {
+	background-color: lightgrey;
+	width: 4rem;
+	height: 2.5rem;
+
+}
+
+thead th{
+	padding: 0 0 0 1rem;
+}
+ tbody td{
+ 	border: 2px solid lightgrey;
+ 	padding: 0.5rem 0.5rem;
+ }
+.skillHeader{
+	margin-top: 30px;
+}
+
+thead i{
+	padding: 7rem 0 0 13rem ;
+	color: darkgrey;
+}
+
+th a{
+	padding-left: 4rem;
+    color: darkgrey !important;
+
+}
+
+.SearchBox{
+	margin: 40px 0 0 0;
+	
+}
+
+.SearchBox input{
+	width: 160px;
+	height: 40px;
+	border: 2px solid darkgrey;
+	border-radius: 20px;
+	padding: 1rem;
+
+}
+
+.SearchBox i{
+	position: relative;
+	right: 2rem;
+	bottom: 0.25rem;
+	color: darkgrey;
+}
+

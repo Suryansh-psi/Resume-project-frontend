@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.achievement{
+    margin: 3rem 0 0 0;
+    font-size: 0.8rem;
+}
+
+.achievement .desc{
+    border: 2px solid lightgrey;
+    border-radius: 0.25rem;
+    margin-left: 4rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
+} 
+
+.achievement input{
+    border: 2px solid lightgrey;
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    margin-left: 2rem;
+    padding: 1rem;
+
+}
+
+.Ach{
+    font-size: 27px;
+    color: lightgrey;
+    margin-left: 0.5rem;
+
+}
+.achievement .certification-input{
+    margin-left: 2.3rem;
+    margin-top: 1rem;
+}

@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.membership{
+    font-size: 0.8rem;
+    margin-top: 4rem;
+}
+
+.membership input{
+    border: 2px solid lightgrey;
+    width: 10rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.membership-name{
+    margin-left: 4rem;
+}
+
+.membership-type{
+    margin-left: 3.6rem;
+}
+
+.start{
+    margin-left: 3.4rem;
+}
+
+.end{
+    margin-left: 2.7rem;
+}

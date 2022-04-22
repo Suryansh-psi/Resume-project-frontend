@@ -1,14 +1,13 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 
 import App from './components/App';
 
-//Resume info 
+//Resume info
 sessionStorage.setItem("name", "Sample Text");
 sessionStorage.setItem("role", ["role1", "role2"]);
 sessionStorage.setItem("total_exp", 5);
-sessionStorage.setItem("image", "");
+sessionStorage.setItem("image", "userIcon.png");
 // about me info
 sessionStorage.setItem("aboutMe", "About Me Text");
 sessionStorage.setItem("aboutMePoints", ['aboutList']);
@@ -25,8 +24,8 @@ sessionStorage.setItem("bussinessSol", "d.business_sol");
 sessionStorage.setItem("techStack", ['techList']);
 sessionStorage.setItem("projectResp", ['projRespList']);
 // educational background info
-sessionStorage.setItem("educationName", "d.type");
-sessionStorage.setItem("educationType", "d.name");
+sessionStorage.setItem("educationName", "d.name");
+sessionStorage.setItem("educationType", "d.type");
 sessionStorage.setItem("educationLocation", "d.location");
 sessionStorage.setItem("startDate", "d.startdate");
 sessionStorage.setItem("endDate", "d.enddate");
@@ -39,7 +38,7 @@ sessionStorage.setItem("membership", ['membershipList']);
 
 
 const root = createRoot( document.getElementById('root') );
-root.render(<UserHome />);
+root.render(<App />);
 
 
 // ReactDOM.render(

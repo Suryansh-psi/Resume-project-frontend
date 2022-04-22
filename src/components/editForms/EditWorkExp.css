@@ -1,0 +1,231 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.WorkExpHeader{
+	margin: 0 0 25px -6px;
+}
+
+.WorkExplabel{
+	display: flex;
+	flex-direction: row;
+	margin: 0.7rem 0 0 -1rem;
+	font-size: 0.8rem;
+}
+
+.WorkExplabel input{
+	width: 24rem;
+	height: 2rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.WorkExplabel  .first{
+	margin: 0 0 0 3rem;
+}
+
+.WorkExplabel .second{
+	margin: 0 0 0 6.4rem;
+}
+
+.WorkExplabel .third{
+	margin: 0 0 0 4.4rem;
+}
+
+.WorkExplabel .fourth{
+	border: 2px solid lightgrey;
+	width: 7rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 1rem;
+	font-size: 0.8rem;
+	margin-right: 0.6rem;
+	margin-bottom: 0.25rem;
+}
+
+.role-input-div{
+	margin-left: 7.8rem;
+}
+
+.role{
+	margin-left: 1rem;
+}
+
+.WorkExplabel i{
+	font-size: 25px;
+	color: lightgrey;
+	margin-top: -0.5rem;
+	margin-right: 2rem;
+}
+.WorkExplabel .cross{
+	font-size: 15px;
+	font-weight: 700;
+	color: lightgrey;
+	margin-left: -2rem;
+	margin-top: 0.5rem;
+	margin-right: 1.5rem;
+}
+
+.WorkExplabel .fifth{
+	margin: 0 0 0 6.4rem;
+	width: 8rem;
+}
+.WorkExplabel .duration .fifth{
+	margin: 0 0 0 0.7rem;
+}
+
+
+.WorkExplabel .sixth{
+	margin: 0 0 0 3.2rem;
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	padding: 0.5rem  1rem 0.5rem 1rem;
+}
+
+
+.WorkExplabel .seventh{
+	border: 2px solid lightgrey;
+	width: 9rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 1rem;
+	font-size: 0.8rem;
+	margin-right: 0.1rem;
+	margin-bottom: 0.25rem;
+}
+
+
+.techstack-input-div{
+    margin-left: 3.3rem;
+	
+}
+
+/* .WorkExplabel .stack{
+	
+	font-size: 27px;
+	color: lightgrey;
+
+} */
+
+.msl-vars {
+    --menu-max-height: 400px;
+    --input-width: 300px;
+    --font-size: 16px;
+    --border-radius: 8px 8px 8px 8px;
+    /* --active-menu-shadow: 43px 1px 5px 0px grey; */
+    --line-height: 1.4;
+    --active-menu-background: #fff;
+    --active-menu-radius: var(--border-radius);
+}
+
+.msl:not(.msl-active,.msl-active-up) {
+    border-width: 2px;
+    border-color: lightgrey;
+}
+
+.projRes-main-div{
+	margin-left: 3.6rem;
+	position: relative;
+}
+
+.WorkExplabel .eight{
+	height: 3rem;
+	width: 24rem;
+	padding: 0 1rem 1rem 1rem;
+	margin-right: 0.25rem;
+}
+
+
+
+.footer{
+	margin: 2rem 1rem 0 -1rem;
+	border-top: 2px solid lightgrey;  
+} 
+
+.element{
+	margin: 1rem 0 0 1rem;
+	border: 2px solid lightgrey;
+	width: 10rem;
+	height: 2.5rem;
+	border-radius: 25px;
+	padding: 1rem 0 1rem 3rem;
+	font-size: 0.6rem;
+}
+
+
+ 
+.plus{
+	color: lightgrey;
+	position: relative;
+	left: 3rem;
+}
+
+.checkBox {
+	font-size: 1.3rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-top: -0.4rem;
+
+}
+/* 
+.workexpfields {
+	border-bottom: 2px solid lightgray;
+	margin-left: 1rem;
+	margin-top: 2rem;
+} */
+.Responsibility{
+	margin-left: 0.3rem;
+}
+
+.tech{
+	margin-left: 2.5rem;
+	margin-right: 0.25rem;
+}
+
+.text-danger{
+	position: relative;
+	right: 30rem;
+
+}
+
+.business .text-danger{
+	position: relative;
+	right: 26.5rem;
+}
+
+.projRes-main-div .text-danger{
+	position: relative;
+	right: 6rem;
+	bottom: 1rem;
+}
+
+
+.roles1{
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	width: 23.8rem;
+}
+.role-input-div .text-danger{
+	position: relative;
+	right: 8rem;
+	bottom: 3.5rem;
+	font-size: 0.7rem;
+}
+
+
+.techstack-input-div .text-danger{
+	position: relative;
+	bottom: 2.3rem;
+	right: 28rem;
+	
+}
+
+.time .text-danger{
+	position: relative;
+	right: 29.5rem;
+	top: 0.8rem;
+}
+
