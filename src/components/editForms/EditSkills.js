@@ -7,9 +7,9 @@ import { FaSearch } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
-import './Skills.css'
+import './EditSkills.css'
 
-const Skills = () => {
+const EditSkills = () => {
 	const [term, setTerm] = useOutletContext();
 	const { register, handleSubmit } = useForm();
 	// const [data, setData] = useState("");
@@ -129,4 +129,4 @@ const Skills = () => {
 	);
 }
 
-export default Skills
+export default EditSkills;

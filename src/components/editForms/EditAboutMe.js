@@ -4,10 +4,10 @@ import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
-import './AboutMe.css';
+import './EditAboutMe.css';
 
 
-const AboutMe = () => {
+const EditAboutMe = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
@@ -52,7 +52,7 @@ const AboutMe = () => {
     document.querySelector(".bulletPoints").appendChild(inp);
   }
 
-  
+          
 
 
 	return (
@@ -90,4 +90,4 @@ const AboutMe = () => {
   );
 }
 
-export default AboutMe
+export default EditAboutMe;

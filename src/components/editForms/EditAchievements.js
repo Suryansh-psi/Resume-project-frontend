@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
-import './Achievements.css';
+import './EditAchievements.css';
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
 
 
-function Achievements() {
+const EditAchievements = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState("");
@@ -54,6 +54,8 @@ function Achievements() {
     inp.setAttribute('object', `{...register(${regis})}`);
     document.querySelector(`.${classN}`).appendChild(inp);
   }
+
+
   return (
     <>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -85,4 +87,4 @@ function Achievements() {
 }
 
 
-export default Achievements
+export default EditAchievements;

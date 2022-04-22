@@ -3,8 +3,10 @@ import { FaSearch } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
+import { BsThreeDots } from "react-icons/bs";
 import { FaFileAlt } from "react-icons/fa";
 import './UserHome.css'
+import { Link } from 'react-router-dom';
 
 
 const UserHome = () => {
@@ -12,11 +14,10 @@ const UserHome = () => {
         <div className='UserHome'>
             <div className='homeHeader'>
                 <div className='homeNav'>
-                <img src='logo.jfif' id="Image"/>
-                    <span>
-                        
-                        <h3>Resumes</h3>
-                        <h3>Management System</h3>
+                    <img src='logo.jfif' id="Image"/>
+                    <span>    
+                        <h4>Resumes</h4>
+                        <h4>Management System</h4>
                         </span>
                         <input className="search" type="text" value="" placeholder="Search" />
                     <span className='searchIcon'><i><FaSearch /></i></span>
@@ -24,23 +25,25 @@ const UserHome = () => {
                 
                 <div className='homeMenu'>
                    <img src="userIcon.png" id="imageId" /><span className='endMenu'> 
-                   <h5>Virendra Sharma</h5>
+                   <h6>Virendra Sharma</h6>
                    <button className='sign-out'>Sign-out</button></span>
                 </div>
 
             </div>
             <div className='homeSection'>
-                <div className='section'>
-                    <i><BsPlusCircle /></i>
-                    <h4>Create New</h4>
-                </div>
+                <Link className='section' to="/forms/myDetails">
+                    <div className='newResume'>
+                        <i><BsPlusCircle /></i>
+                        <h5>Create New</h5>
+                    </div>
+                </Link>
                 <div className='section1'>
                     <h4>My Resumes</h4>
                     <div className='card'>
                         <div className='cardUppr'>
                             <img src='logo.jfif' id="Image"/>
-                            <h5>Name</h5>
-                            <h6>Designation</h6>
+                            <h6 className='userName'>Name</h6>
+                            <h6 className='userDes'>Designation</h6>
                             <p>Some text.....</p>
                         </div>
                         <div className='cardLower'>
@@ -49,8 +52,8 @@ const UserHome = () => {
                             <h6>PSI Resume Project Manager Virendra Singh</h6>
                         </div>
                         
-                        <div class="dropdown">
-                        <button class="dropbtn">...</button>
+                        <div class="dpdown">
+                        <button class="dropbtn"><BsThreeDots/></button>
                         <div class="dropdown-content">
                             <a href="#"><MdEdit /> Edit </a>
                             <a href="#"><FaFileAlt /> Clone</a>

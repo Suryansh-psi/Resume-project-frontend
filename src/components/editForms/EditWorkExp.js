@@ -8,10 +8,11 @@ import { useOutletContext } from "react-router-dom";
 // import Example from './Example'
 import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
-
 import axios from 'axios';
-import './WorkExp.css'
-const WorkExp = () => {
+import './EditWorkExp.css';
+
+
+const EditWorkExp = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
   // const [roles, setRoles] = useState([]);
@@ -25,7 +26,7 @@ const WorkExp = () => {
     const techList = [];
     const projRespList = [];
 
-    let tech = document.querySelectorAll('.sev');
+    let tech = document.querySelectorAll('.seventh');
     let projRes = document.querySelectorAll('.eight');
 
 
@@ -37,7 +38,7 @@ const WorkExp = () => {
     projRes.forEach((ele) => {
       projRespList.push(ele.value);
     })
-    console.log(d.tech);
+
     // console.log(d);
     // d.startDate = d.startDate.toString();
     // d.endDate = d.endDate.toString();
@@ -51,14 +52,13 @@ const WorkExp = () => {
         startDate: d.startdate,
         endDate: d.enddate,
         bussinessSol: d.business_sol,
-        techStack: d.tech,
+        techStack: ['techList'],
         resumeId: resume_id,
         projectResp: projRespList
       }
     ]).then(res => {
       // console.log(res);
       // console.log(res.data);
-      console.log(techList);
       sessionStorage.setItem("workexp_id", res.data);
     })
     setTerm(4);
@@ -71,47 +71,47 @@ const WorkExp = () => {
     sessionStorage.setItem("startDate", d.startdate);
     sessionStorage.setItem("endDate", d.enddate);
     sessionStorage.setItem("bussinessSol", d.business_sol);
-    sessionStorage.setItem("techStack", d.tech);
+    sessionStorage.setItem("techStack", ['techList']);
     sessionStorage.setItem("projectResp", projRespList);
 
     // reset();
   }
 
-  useEffect(() => {
-    let result = async () => {
-      try {
-        const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
-          const response = res.data;
-          // let roleList = response.map((role) => {
-          //   return role.role_name;
-          // })
-          setRoles(response);
-        })
-      }
-      catch (err) {
-        console.log(err);
-      }
-    }
-    result();
-  }, []);
+  // useEffect(() => {
+  //   let result = async () => {
+  //     try {
+  //       const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
+  //         const response = res.data;
+  //         // let roleList = response.map((role) => {
+  //         //   return role.role_name;
+  //         // })
+  //         setRoles(response);
+  //       })
+  //     }
+  //     catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   result();
+  // }, []);
 
-  useEffect(() => {
-    let result = async () => {
-      try {
-        const result2 = await axios.get(`http://localhost:8080/techstack`).then(res => {
-          const response = res.data;
-          // let roleList = response.map((role) => {
-          //   return role.role_name;
-          // })
-          setTechstacks(response);
-        })
-      }
-      catch (err) {
-        console.log(err);
-      }
-    }
-    result();
-  }, []);
+  // useEffect(() => {
+  //   let result = async () => {
+  //     try {
+  //       const result2 = await axios.get(`http://localhost:8080/techstack`).then(res => {
+  //         const response = res.data;
+  //         // let roleList = response.map((role) => {
+  //         //   return role.role_name;
+  //         // })
+  //         setTechstacks(response);
+  //       })
+  //     }
+  //     catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   result();
+  // }, []);
 
   // const options = roles.map((opt) => {
   //   let obj = {
@@ -126,19 +126,19 @@ const WorkExp = () => {
   //   setRole(val);
   // }
 
-  // const createField = (name, placeholder, classN, rName, MainClass) => {
-  //   const inp = document.createElement("input");
-  //   const span = document.createElement("span");
-  //   span.setAttribute('class', 'cross');
-  //   span.innerHTML = "&#9747;"
-  //   inp.setAttribute('type', 'text');
-  //   inp.setAttribute('name', name);
-  //   inp.setAttribute('placeholder', placeholder);
-  //   inp.setAttribute('class', classN);
-  //   inp.setAttribute('object', `{...register(${rName})}`);
-  //   document.querySelector(MainClass).appendChild(inp);
-  //   // document.querySelector(MainClass).appendChild(span);
-  // }
+  const createField = (name, placeholder, classN, rName, MainClass) => {
+    const inp = document.createElement("input");
+    const span = document.createElement("span");
+    span.setAttribute('class', 'cross');
+    span.innerHTML = "&#9747;"
+    inp.setAttribute('type', 'text');
+    inp.setAttribute('name', name);
+    inp.setAttribute('placeholder', placeholder);
+    inp.setAttribute('class', classN);
+    inp.setAttribute('object', `{...register(${rName})}`);
+    document.querySelector(MainClass).appendChild(inp);
+    // document.querySelector(MainClass).appendChild(span);
+  }
 
   const addWorkExp = (e) => {
     e.preventDefault();
@@ -310,7 +310,7 @@ const WorkExp = () => {
 
 <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
                   {/* <div className="role-fields"> */}
-                  <select className={`sev roles1 ${errors.tech && "invalid"}`} name="role" id="role" {...register("tech", { required: "*required" })}
+                  <select className={`roles1 ${errors.tech && "invalid"}`} name="role" id="role" {...register("tech", { required: "*required" })}
                     onKeyUp={() => {
                       trigger("tech");
                     }} multiple>
@@ -361,4 +361,4 @@ const WorkExp = () => {
 }
 
 
-export default WorkExp
+export default EditWorkExp;

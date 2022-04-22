@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './Template.css'
+import './EditTemplate.css'
 import { BiSquare} from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import axios from 'axios';
 
 
-const Template = (props) => {
+const EditTemplate = (props) => {
 	// const arr = Array.from(sessionStorage.mydetails)
 	// const [render, setRender] = useState(0)
 
@@ -56,16 +56,10 @@ const Template = (props) => {
 	let name = sessionStorage.getItem("name");
 	let role = sessionStorage.getItem("role");
 	let total_exp = sessionStorage.getItem("total_exp");
-	let imageBase = sessionStorage.getItem("imageBase");
-	let imageURl = sessionStorage.getItem("image");
-	const finalImage = `${imageBase},${imageURl}`;
-	// let image = sessionStorage.getItem("image");
-
+	let image = sessionStorage.getItem("image");
 	let aboutMe = sessionStorage.getItem("aboutMe");
 	let aboutMePoints = sessionStorage.getItem("aboutMePoints");
-
 	let skills = sessionStorage.getItem("skills");
-
 	let clientDesc = sessionStorage.getItem("clientDesc");
 	let country = sessionStorage.getItem("country");
 	let projectName = sessionStorage.getItem("projectName");
@@ -75,20 +69,9 @@ const Template = (props) => {
 	let bussinessSol = sessionStorage.getItem("bussinessSol");
 	let techStack = sessionStorage.getItem("techStack");
 	let projResp = sessionStorage.getItem("projectResp");
-
-	let eduName = sessionStorage.getItem("educationName");
-    let eduType = sessionStorage.getItem("educationType");
-    let eduLocation = sessionStorage.getItem("educationLocation");
-    let eduStartDate = sessionStorage.getItem("startDate");
-    let eduEndDate = sessionStorage.getItem("endDate");
-    let eduPercentage = sessionStorage.getItem("percentage");
-
-	let achievemetns = sessionStorage.getItem("achievement");
-    let certificates = sessionStorage.getItem("certificate");
-
-	let membership = sessionStorage.getItem("membership");
-
-	
+	let imageBase = sessionStorage.getItem("imageBase");
+	let imageURl = sessionStorage.getItem("image");
+	const finalImage = `${imageBase},${imageURl}`;
 	// console.log(finalImage);
 
 	const roleMapping = () => {
@@ -140,29 +123,6 @@ const Template = (props) => {
 		return result;
 	}
 
-	const achievementMapping = () => {
-		achievemetns = achievemetns.split(',');
-		let result = achievemetns.map(point => {
-			return <li>{point}</li>
-		})
-		return result;
-	}
-
-	const certificateMapping = () => {
-		certificates = certificates.split(',');
-		let result = certificates.map(point => {
-			return <li>{point}</li>
-		})
-		return result;
-	}
-
-	const membershipMapping = () => {
-		membership = membership.split(',');
-		let result = membership.map(point => {
-			return <li>{point}</li>
-		})
-		return result;
-	}
 
 	return (
 
@@ -205,29 +165,15 @@ const Template = (props) => {
 				</div>
 				<div className="col">
 					<h6>EDUCATIONAL BACKGROUND</h6>
-					<p>{eduType}</p>
-					<p>{eduName}</p>
-					<p>{eduLocation}</p>
-					<p>{eduStartDate} - {eduEndDate}</p>
-					<p>{`Percentage : ${eduPercentage}`}</p>
+					<p>Some text..</p>
 				</div>
 				<div className="column">
 					<h6>CERTIFICATION AND VOLUNTEER WORK</h6>
-					<p>Achievements</p>
-					<ul>
-						{achievementMapping()}
-					</ul>
-					<p>Certificates</p>
-					<ul>
-						{certificateMapping()}
-					</ul>
+					<p>Some text..</p>
 				</div>
 				<div className="col">
 					<h6>MEMBERSHIPS</h6>
-					{/* <p>Some text..</p> */}
-					<ul>
-						{membershipMapping()}
-					</ul>
+					<p>Some text..</p>
 				</div>
 				
 			</div>
@@ -236,4 +182,4 @@ const Template = (props) => {
 
 	)
 }
-export default Template;
+export default EditTemplate;

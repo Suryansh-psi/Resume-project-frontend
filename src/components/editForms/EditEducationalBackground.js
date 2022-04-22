@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import './EducationalBackground.css';
+import './EditEducationalBackground.css';
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
 
 
-const EducationalBackground = () => {
+const EditEducationalBackground = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit } = useForm();
   const [data, setData] = useState("");
@@ -48,6 +48,9 @@ const EducationalBackground = () => {
 
     // reset();
   }
+
+
+
   return (
     <>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -101,4 +104,4 @@ const EducationalBackground = () => {
     </>
   );
 }
-export default EducationalBackground
+export default EditEducationalBackground;
