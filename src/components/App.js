@@ -37,6 +37,7 @@ const App = () => {
         {/* Login screen */}
         <Route path="/" element={<Home />}/>
 
+
         {/* Home Screens */}
         <Route path="/userHome" element={<UserHome />}/>
         <Route path="/managerHome" element={<ManagerHome />}/>
