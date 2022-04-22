@@ -69,11 +69,11 @@ function Memberships() {
            Expiry/Renewal Date
            <input className="end"{...register("enddate")} type="date" name="enddate[]" />
         </label> */}
-        <div className="achievement">
+        <div className="membership">
           <label className="membership-name">
             Name of Membership
             <input className="membership-input" {...register('membership')} name="membership[]" placeholder="Name of Membership" id="desc" />
-            <i className="Ach" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
+            <i className="sideIcon" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
           </label>
         </div>
 

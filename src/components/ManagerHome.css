@@ -72,24 +72,28 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #69afd4;
+    background-color: #f08ca5;
+    
 }
 
 .m1:hover{
-    color:white;
+    color:rgb(255, 253, 253);
     transform: scale(1.1);
+    background-color: #79001e;
+    
 }
 .managerButton .m2{
     border: 2px solid transparent;
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #69afd4;
+    background-color: #f08ca5;;
 }
 
 .m2:hover{
     color:white;
     transform: scale(1.1);
+    background-color: #79001e;
 }
 
 .managerButton .m3{
@@ -97,12 +101,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #69afd4;
+    background-color: #f08ca5;;
 }
 
 .m3:hover{
     color:white;
     transform: scale(1.1);
+    background-color: #79001e;
 }
 
 .managerButton .m4{
@@ -110,12 +115,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #69afd4;
+    background-color: #f08ca5;;
 }
 
 .m4:hover{
     color:white;
     transform: scale(1.1);
+    background-color: #79001e;
 }
 
  .ManagerSection{
@@ -235,15 +241,22 @@
   
 .Manager .dropdown-content a:hover {background-color: #ddd;}
   
-.Manager .dpdown:hover .dropdown-content {display: block;} */
+.Manager .dpdown:hover .dropdown-content {display: block;} 
 
-.sign-out{
+.sign .sign1{
     border-color: transparent;
-    background-color: rgb(144, 215, 248);
+    background-color: rgb(245, 165, 205);
     color: rgb(80, 75, 75);
     margin-top: -0.5rem;
     font-size: 0.8rem;
+    position: relative;
     padding: 0.1rem;
     border-radius: 20px;
+}
+
+.sign .sign1:hover{
+    transform: scale(1.1);
+    background-color: #79001e;
+    color: white;
 }
    

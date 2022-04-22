@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 *{
 	margin: 0;
 	padding: 0;
@@ -45,7 +45,7 @@
   padding-left: 1rem;
 } */
 
-.row:after {
+/*.row:after {
   content: "";
   display: table;
   clear: both;
@@ -117,8 +117,7 @@
 	margin-left: -7rem;
     margin-top: 3rem;
 
-}
-
+}*/
 
 
 

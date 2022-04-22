@@ -11,25 +11,24 @@
 
 .membership input{
     border: 2px solid lightgrey;
-    width: 10rem;
+    width: 20rem;
     height: 2.5rem;
     border-radius: 0.25rem;
+    margin-left:  2vw;
     padding: 1rem;
     margin-bottom: 0.5rem;
 }
 
 .membership-name{
-    margin-left: 4rem;
+    margin-right: 6vw;
 }
 
-.membership-type{
-    margin-left: 3.6rem;
+.membership-name .sideIcon{
+    font-size: 27px;
+    color: lightgrey;
+
+    margin-left: 31rem;
+    position: relative;
+    bottom: 3.2rem;
 }
 
-.start{
-    margin-left: 3.4rem;
-}
-
-.end{
-    margin-left: 2.7rem;
-}

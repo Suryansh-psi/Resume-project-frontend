@@ -26,7 +26,10 @@ const UserHome = () => {
                 <div className='homeMenu'>
                    <img src="userIcon.png" id="imageId" /><span className='endMenu'> 
                    <h6>Virendra Sharma</h6>
-                   <button className='sign-out'>Sign-out</button></span>
+                   <Link  to="/" >
+                   <button className='sign-out'>Sign-out</button>
+                   </Link>
+                   </span>
                 </div>
 
             </div>

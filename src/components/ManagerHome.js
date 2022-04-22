@@ -26,7 +26,12 @@ const ManagerHome = () => {
                 <div className='homeMenu'>
                    <img src="userIcon.png" id="imageId" /><span className='endMenu'> 
                    <h6>Virendra Sharma</h6>
-                   <button className='sign-out'>Sign-out</button></span>
+                  
+                 
+                   <Link  className='sign' to="/" >
+                    <button className='sign1'>Sign-out</button>
+                   </Link>
+                   </span>
                 </div>
 
             </div>

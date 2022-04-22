@@ -1,4 +1,4 @@
-*{
+/* *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -81,7 +81,7 @@
  .sidebar-links i{
 	 padding-right: 1rem; 
 	/* line-height: 1rem; */
-} 
+/* } 
 
 .status{
 	padding: 0 0.5rem 0 0.5rem;
@@ -97,4 +97,4 @@
 	background-color: #032c3b;
 	transform: scale(1.1);
 	color: white;
-}
+} */ 

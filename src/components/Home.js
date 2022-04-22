@@ -27,12 +27,19 @@ const Home = () => {
             <div className='user'>
                 <h2>Login As User</h2>
                 <img src='userIcon.png' id="Image"/>
+                <Link  to="/userHome">
                 <button>Login</button>
+                </Link>
+               
             </div>
             <div className='manager'>
                 <h2>Login As Manager</h2>
                 <img src='userIcon.png' id="Image"/>
+                
+
+                <Link  to="/managerHome">
                 <button>Login</button>
+                </Link>
             </div>
         </div>
         
