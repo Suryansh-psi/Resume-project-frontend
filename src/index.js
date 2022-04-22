@@ -2,6 +2,7 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 //import App from './components/App';
+//import Screen from './components/Screen'
 import UserHome from './components/UserHome'
 sessionStorage.setItem("name", "Sample Text");
 sessionStorage.setItem("role", ["role1", "role2"]);
@@ -24,6 +25,7 @@ sessionStorage.setItem("techStack", ['techList']);
 sessionStorage.setItem("projectResp", ['projRespList']);
 
 const root = createRoot( document.getElementById('root') );
+//root.render(<Screen />);
 root.render(<UserHome />);
 
 

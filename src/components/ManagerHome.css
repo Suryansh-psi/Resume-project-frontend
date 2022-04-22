@@ -59,21 +59,7 @@
     margin: 1rem 0rem 1rem 0;
 }
 
-.section{
-    margin: 3rem 0 0 1rem;
-    border: 2px solid lightgrey;
-    width: 7rem;
-    height: 6rem;
-    padding: 2rem 0 0rem 1rem;
-}
-.section i{
-    margin-left: 1.7rem;
-}
 
-.section h4{
-    color: black;
-    margin-top: 0.5rem;
-}
 
 .section1{
     margin: 3rem 0 2.5rem 1rem;

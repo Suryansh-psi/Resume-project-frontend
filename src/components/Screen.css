@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login {
+    display: flex;
+}
+
+.login h1{
+    color: #04537d;
+    margin: 3rem 0 0 30rem;
+
+}
+
+.user{
+    border: 2px solid lightgrey;
+    margin-top: 13rem;
+    margin-left: -35rem;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 0.50rem;
+    box-shadow: 6px 6px #85b0c7;
+}
+
+.user h2{
+    padding: 1rem 5rem;
+    color: #04537d;
+
+}
+
+.manager h2{
+    padding: 1rem 3.5rem;
+    color: #04537d;
+
+}
+.login img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 6.5rem;
+}
+
+.login button{
+    width: 8rem;
+    height: 3rem;
+    border: 2px solid transparent;
+    color: #04537d;
+    border-radius: 25px;
+    margin: 3rem 6rem;
+    background-color: #85b0c7;
+    color: black;
+    font-size: 1rem;
+
+}
+
+
+
+
+.manager{
+    border: 2px solid lightgrey;
+    margin:13rem 0 0 4rem;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 0.50rem;
+    box-shadow: 6px 6px #85b0c7;
+}

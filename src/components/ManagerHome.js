@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaSearch } from "react-icons/fa";
-import { BsPlusCircle } from "react-icons/bs";
-import { MdEdit } from "react-icons/md";
-import { FaShareSquare } from "react-icons/fa";
+import {FcApproval} from "react-icons/fc";
+import { VscPreview  } from "react-icons/vsc";
+import { FaCommentDots} from "react-icons/fa";
 import { FaFileAlt } from "react-icons/fa";
-import './UserHome.css'
+import './ManagerHome.css'
 
 
-const UserHome = () => {
+const ManagerHome = () => {
     return (
         <div className='UserHome'>
             <div className='homeHeader'>
@@ -30,12 +30,9 @@ const UserHome = () => {
 
             </div>
             <div className='homeSection'>
-                <div className='section'>
-                    <i><BsPlusCircle /></i>
-                    <h4>Create New</h4>
-                </div>
+                
                 <div className='section1'>
-                    <h4>My Resumes</h4>
+                    <h4>Employees Resume</h4>
                     <div className='card'>
                         <div className='cardUppr'>
                             <img src='logo.jfif' id="Image"/>
@@ -52,9 +49,9 @@ const UserHome = () => {
                         <div class="dropdown">
                         <button class="dropbtn">...</button>
                         <div class="dropdown-content">
-                            <a href="#"><MdEdit /> Edit </a>
-                            <a href="#"><FaFileAlt /> Clone</a>
-                            <a href="#"><FaShareSquare /> Share</a>
+                            <a href="#"><VscPreview /> Preview </a>
+                            <a href="#"><FcApproval /> Approved</a>
+                            <a href="#"><FaCommentDots /> Comment</a>
                         </div>
                         </div>
                         
@@ -66,4 +63,4 @@ const UserHome = () => {
     );
 }
 
-export default UserHome;
+export default ManagerHome;
