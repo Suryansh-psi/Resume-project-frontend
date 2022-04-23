@@ -181,7 +181,8 @@
     position: relative;
     display: inline-block;
     left: 15rem;
-
+    width: 30px;
+    height: 30px;
     bottom: 8rem;
     background-color: none;
 }
@@ -209,7 +210,7 @@
 
 .sign-out{
     border-color: transparent;
-    background-color:#e03661;;
+    background-color:#92bff0;
     color: rgb(80, 75, 75);
     margin-top: -0.5rem;
     font-size: 0.8rem;

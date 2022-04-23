@@ -56,12 +56,12 @@ const UserHome = () => {
                         </div>
                         
                         <div class="dpdown">
-                        <button class="dropbtn"><BsThreeDots/></button>
-                        <div class="dropdown-content">
-                            <a href="#"><MdEdit /> Edit </a>
-                            <a href="#"><FaFileAlt /> Clone</a>
-                            <a href="#"><FaShareSquare /> Share</a>
-                        </div>
+                            <button class="dropbtn"><BsThreeDots/></button>
+                            <div class="dropdown-content">
+                                <a href="#"><MdEdit /> Edit </a>
+                                <a href="#"><FaFileAlt /> Clone</a>
+                                <a href="#"><FaShareSquare /> Share</a>
+                            </div>
                         </div>
                         
                     </div>

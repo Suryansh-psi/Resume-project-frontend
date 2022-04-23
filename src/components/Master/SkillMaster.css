@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.skillMaster{
+    font-size: 0.8rem;
+}
+
+.skillMaster h2{
+    text-align: center;
+    color: rgb(63, 116, 160);
+    margin-top: 1rem;
+}
+
+.skillMasterName{
+    margin: 2rem 0 0 20rem;
+}
+
+.skillMasterName input{
+    border: 2px solid lightgrey;
+    width: 300px;
+    height: 40px;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    margin-left: 13rem;
+}
+
+.enterSkill{
+    margin: 1rem 0 0 20rem;   
+}
+
+.enterSkill input{
+    border: 2px solid lightgrey;
+    width: 300px;
+    height: 40px;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    margin-left: 15rem;
+}
+
+.addSkill{
+    border: 2px solid transparent;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+    margin: 2rem 0 2rem 20rem;
+    background-color: rgb(146, 194, 231);
+}
+
+.addSkill:hover{
+    background-color: rgb(63, 116, 160);
+    color: whitesmoke;
+}
+
+.skillMasterTable{
+    margin-left: 20rem;
+}
+
+.skillMasterTable table{
+    width: 1rem !important;
+    border-radius: 0.25rem;
+
+}

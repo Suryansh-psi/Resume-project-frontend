@@ -72,7 +72,7 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #f08ca5;
+    background-color:#587798;
     
 }
 
@@ -87,7 +87,7 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #f08ca5;;
+    background-color: #587798;
 }
 
 .m2:hover{
@@ -101,7 +101,7 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #f08ca5;;
+    background-color: #587798;
 }
 
 .m3:hover{
@@ -115,7 +115,7 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #f08ca5;;
+    background-color: #587798;
 }
 
 .m4:hover{
@@ -187,7 +187,7 @@
 .Manager .cardLower h5{
     border: 1px solid transparent;
     font-size: 0.6rem;
-    background-color: rgb(245, 165, 205);
+    background-color: #ffbff4;
     width: 3rem;
     height: 1rem;
     border-radius: 25px;
@@ -220,6 +220,8 @@
     display: inline-block;
     left: 15rem;
     bottom: 8rem;
+    width: 30px;
+    height: 30px;
     background-color: none;
 }
   
@@ -245,7 +247,7 @@
 
 .sign .sign1{
     border-color: transparent;
-    background-color: rgb(245, 165, 205);
+    background-color: #9dcbfc;
     color: rgb(80, 75, 75);
     margin-top: -0.5rem;
     font-size: 0.8rem;
