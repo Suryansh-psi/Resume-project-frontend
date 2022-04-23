@@ -9,7 +9,7 @@ import { useOutletContext } from "react-router-dom";
 
 function Achievements() {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
 
   const customFunction = (d) => {
@@ -42,6 +42,7 @@ function Achievements() {
     setTerm(6);
     sessionStorage.setItem("achievement", achievementList);
     sessionStorage.setItem("certificate", certificateList);
+    reset();
   }
 
 
@@ -65,16 +66,32 @@ function Achievements() {
         <div className="achievement">
           <label className="achievement-name">
             Name of Achievement
-            <input {...register("achievement")} name="achievement[]" placeholder="Name of Achievement" id="name" className="achievement-class-inputs" />
+            <input className={`achievement-class-inputs ${errors.achievement && "invalid"}`}
+            {...register("achievement", {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("achievement");
+            }} 
+            name="achievement[]" placeholder="Name of Achievement" id="name" />
             <i className="Ach" onClick={() => cloneFields("achievement[]", "Name of Achievement", "achievement-name", "achievement", "achievement-class-inputs")}><BsPlusCircle /></i>
+            {errors.achievement &&(
+              <small className="text-danger">{errors.achievement.message}</small>
+            )}
           </label>
         </div>
 
         <div className="achievement">
           <label className="certificate-name">
             Name of Certification
-            <input className="certification-input" {...register('certification')} name="certification[]" placeholder="Name of Certification" id="desc" />
+            <input className={`certification-input ${errors.certification && "invalid"}`}
+            {...register('certification', {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("certification");
+            }}
+             name="certification[]" placeholder="Name of Certification" id="desc" />
             <i className="Ach" onClick={() => cloneFields("certification[]", "Name of Certification", "certificate-name", "certification", "certification-input")}><BsPlusCircle /></i>
+            {errors.certification &&(
+              <small className="text-danger">{errors.certification.message}</small>
+            )}
           </label>
         </div>
 

@@ -188,12 +188,13 @@
 .text-danger{
 	position: relative;
 	right: 30rem;
-
 }
 
 .business .text-danger{
 	position: relative;
-	right: 26.5rem;
+	right: 27rem;
+	top: 1rem;
+
 }
 
 .projRes-main-div .text-danger{

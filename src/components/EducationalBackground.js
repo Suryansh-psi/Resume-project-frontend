@@ -9,7 +9,7 @@ import { useOutletContext } from "react-router-dom";
 
 const EducationalBackground = () => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
 
   const customFunction = (d) => {
@@ -46,7 +46,7 @@ const EducationalBackground = () => {
     sessionStorage.setItem("endDate", d.enddate);
     sessionStorage.setItem("percentage", d.percentage);
 
-    // reset();
+     reset();
   }
   return (
     <>
@@ -57,40 +57,87 @@ const EducationalBackground = () => {
           <button className="button1"><i><FaArrowRight /></i></button>
         </div>
         <div className="eduBackground">
-          <label className="edu-field">Type of Course</label>
-          <select name="type" {...register("type")} id="type" className="dropdown">
-            <option value="/">---Select---</option>
-            <option value="10">10</option>
-            <option value="12">12</option>
-            <option value="b.Tech">B.Tech</option>
-            <option value="m.Tech">M.Tech</option>
-            <option value="bca">BCA</option>
-            <option value="ba">BA</option>
-            <option value="mca">MCA</option>
-            <option value="ma">MA</option>
-          </select>
-          <label className="edu-field">
+          <div className="ebType">
+            <label className="edu-field">Type of Course</label>
+            <select  className={`dropdown ${errors.type && "invalid"}`}
+            name="type" id="type" {...register("type", {required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("type");
+            }}>
+              <option value="/">---Select---</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+              <option value="b.Tech">B.Tech</option>
+              <option value="m.Tech">M.Tech</option>
+              <option value="bca">BCA</option>
+              <option value="ba">BA</option>
+              <option value="mca">MCA</option>
+              <option value="ma">MA</option>
+            </select>
+            {errors.type &&(
+              <small className="text-danger">{errors.type.message}</small>
+            )}
+
+          </div>
+          
+          <div className="ebName">
+            <label className="edu-field">
             Name of Institute
-            <input className="eduName"{...register("name")} name="name" id="name" />
-          </label>
+            <input className={`eduName ${errors.name && "invalid"}`}
+            {...register("name",{required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("name");
+            }} 
+            name="name" id="name" />
+            {errors.name &&(
+              <small className="text-danger">{errors.name.message}</small>
+            )}
+            </label>
+          </div>
+         
 
           <label className="edu-field">
             Location of Institute
             <input className="eduLocation"{...register("location")} name="location" id="location" />
           </label>
+          <div className="ebDuration">
+            <label className="edu-field">
+              Duration
+              <input className={`startDate ${errors.stardate && "invalid"}`}
+              {...register("startdate",{ required: "*required" })}
+              onKeyUp={() => {
+                trigger("startdate");
+              }} 
+              type="date" name="startdate[]" />
+              <span><input className="endDate"{...register("enddate")} type="date" name="enddate[]" /></span>
+                {errors.startdate && (
+                  <small className="text-danger">{errors.startdate.message}</small>
+                )}
+            </label>
+          </div>
+         
+          <div className="ebPercentage">
+            <label className="edu-field">
+              Percentage
+              <input className={`eduGrade ${errors.percentage && "invalid"}`}
+              {...register("percentage",{
+                required: "*required",
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "*invalid value"
+                }
+              })} 
+              onKeyUp={() => {
+                trigger("percentage");
+              }} placeholder="Percentage" name="percentage" id="Percentage" />
+              <span>  %</span>
+              {errors.percentage && (
+                <small className="text-danger">{errors.percentage.message}</small>
+              )}
+            </label>
+          </div>
 
-          <label className="edu-field">
-            Duration
-            <input className="startDate"{...register("startdate")} type="date" name="startdate[]" />
-            <span><input className="endDate"{...register("enddate")} type="date" name="enddate[]" /></span>
-
-          </label>
-
-          <label className="edu-field">
-            Percentage
-            <input className="eduGrade"{...register("percentage")} placeholder="Percentage" name="percentage" id="Percentage" />
-            <span>  %</span>
-          </label>
+          
         </div>
         <div className="footer">
           <span className="plus"><FaPlus /></span><input className="element" {...register('addEducation')} type="text" name="addEducation[]" placeholder='Add education details' value="Add education details" />

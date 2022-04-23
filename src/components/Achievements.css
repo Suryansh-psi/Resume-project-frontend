@@ -5,7 +5,7 @@
 }
 
 .achievement{
-    margin: 3rem 0 0 0;
+    margin: 5rem 0 0 0;
     font-size: 0.8rem;
     
 }
@@ -20,15 +20,15 @@
 
 .achievement input{
     border: 2px solid lightgrey;
-    width: 20rem;
+    width: 23vw;
     height: 2.5rem;
     border-radius: 0.25rem;
     position: relative;
     align-items: center;
     bottom: 1.5rem;
-    left: 9rem;
     padding: 1rem;
     margin-bottom: 0.5rem;
+    margin-left: 12rem;
 
 }
 
@@ -36,8 +36,8 @@
     font-size: 27px;
     color: lightgrey;
     position: relative;
-    left: 30rem;
-    bottom: 5rem;
+    left: 1rem;
+    bottom: 1.5rem;
 
 }
 /* .achievement .certification-input{
@@ -45,11 +45,19 @@
     margin-top: 0.5rem;
 } */
 
-.achievement-name{
+/* .achievement-name{
     width: 20vw;
     margin-top: 2rem;
 }
+*/
 
 .certificate-name{
-    width: 10vw;
+    margin-top: -2rem;
+    
+} 
+
+
+.achievement .text-danger{
+    position: fixed;
+    left: 22rem;
 }

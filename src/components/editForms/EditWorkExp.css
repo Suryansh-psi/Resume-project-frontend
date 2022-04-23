@@ -1,10 +1,10 @@
-*{
+/* *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-.WorkExpHeader{
+/* .WorkExpHeader{
 	margin: 0 0 25px -6px;
 }
 
@@ -110,13 +110,13 @@
 
 } */
 
-.msl-vars {
+/*.msl-vars {
     --menu-max-height: 400px;
     --input-width: 300px;
     --font-size: 16px;
     --border-radius: 8px 8px 8px 8px;
     /* --active-menu-shadow: 43px 1px 5px 0px grey; */
-    --line-height: 1.4;
+    /*--line-height: 1.4;
     --active-menu-background: #fff;
     --active-menu-radius: var(--border-radius);
 }
@@ -169,13 +169,13 @@
 	padding-right: 1rem;
 	margin-top: -0.4rem;
 
-}
+} */
 /* 
 .workexpfields {
 	border-bottom: 2px solid lightgray;
 	margin-left: 1rem;
 	margin-top: 2rem;
-} */
+} 
 .Responsibility{
 	margin-left: 0.3rem;
 }
@@ -227,5 +227,5 @@
 	position: relative;
 	right: 29.5rem;
 	top: 0.8rem;
-}
+} */
 

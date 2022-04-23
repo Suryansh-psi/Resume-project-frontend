@@ -10,7 +10,7 @@ import { BsPlusCircle } from "react-icons/bs";
 
 function Memberships() {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
 
   const customFunction = (d) => {
@@ -29,6 +29,7 @@ function Memberships() {
       })
     setTerm(7);
     sessionStorage.setItem("membership", membershipList);
+    reset();
   }
 
   
@@ -72,8 +73,16 @@ function Memberships() {
         <div className="membership">
           <label className="membership-name">
             Name of Membership
-            <input className="membership-input" {...register('membership')} name="membership[]" placeholder="Name of Membership" id="desc" />
+            <input className={`membership-input ${errors.membership && "invalid"}`} 
+            {...register('membership',{required: "*required"})} 
+            onKeyUp={() =>{
+              trigger("membership");
+            }} 
+            name="membership[]" placeholder="Name of Membership" id="desc" />
             <i className="sideIcon" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
+            {errors.membership &&(
+              <small className="text-danger">{errors.membership.message}</small>
+            )}
           </label>
         </div>
 

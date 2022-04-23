@@ -38,7 +38,7 @@
 }
 
 .edu-field .eduGrade{
-    width: 22rem;
+    width: 21rem;
     margin-left: 6.3rem;
 }
 
@@ -49,3 +49,25 @@
     width: 21.9rem;
 }
 
+.ebPercentage .text-danger{
+    position: relative;
+    right: 28rem;
+    bottom: 0.3rem;
+}
+
+.ebDuration .text-danger{
+    position: relative;
+    left: 3.2rem;
+    bottom: 2.1rem;
+}
+
+.ebName .text-danger{
+    position: relative;
+    left: 6rem;
+    bottom: 2.2rem;
+}
+
+.ebType .text-danger{
+    position: relative;
+    left: 1rem;
+}
