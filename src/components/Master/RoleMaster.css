@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.roleMaster{
+    font-size: 0.8rem;
+}
+
+.roleMaster h2{
+    text-align: center;
+    color: rgb(63, 116, 160);
+    margin-top: 1rem;
+}
+
+.roleMasterName{
+    margin: 2rem 0 0 20rem;
+}
+
+.roleMasterName input{
+    border: 2px solid lightgrey;
+    width: 300px;
+    height: 40px;
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    margin-left: 13rem;
+}
+
+.roleMasterDesc{
+    margin: 3rem 0 0 20rem;
+    position: relative;
+    top: -10rem;
+}
+
+.textarea1{
+    border: 2px solid lightgrey;
+    margin: 1rem 0 0 11.1rem;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.addRole{
+    border: 2px solid transparent;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+    margin: 1rem 0 1rem 20rem;
+    background-color: rgb(146, 194, 231);
+}
+
+.addRole:hover{
+    background-color: rgb(63, 116, 160);
+    color: whitesmoke;
+}
+
+.masterTable{
+    margin-left: 20rem;
+}
+
+.masterTable table{
+    width: 1rem !important;
+    border-radius: 0.25rem;
+
+}
+
+.delBtn{
+    border-radius: 25px;
+    width: 50px;
+    height: 25px;
+    border-color: transparent;
+    background-color: rgb(146, 194, 231);
+    
+}
+.delBtn:hover{
+    background-color: rgb(63, 116, 160);
+    color: whitesmoke;
+}
