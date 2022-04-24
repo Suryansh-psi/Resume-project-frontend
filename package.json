@@ -20,12 +20,9 @@
     "react-hook-form": "^7.29.0",
     "react-icons": "^4.3.1",
     "react-multiple-select-dropdown-lite": "^2.0.5",
-    "react-multiselect-dropdown": "^2.0.1",
-    "react-multiselect-dropdown-bootstrap": "^1.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-search-box": "^2.2.1",
-    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
