@@ -18,9 +18,9 @@ import LanIcon from '@mui/icons-material/Lan';
 
 const EditSidebar = () => {
   return (
-		<aside className="sidebar">
+		<aside className="Editsidebar">
 			<div className="barTitle">
-			   <span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span>
+			   <Link to="/managerHome"><span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span></Link>
 			   <span className="title">Resume</span>
 			   <div className="title1">Builder</div>
 			</div>

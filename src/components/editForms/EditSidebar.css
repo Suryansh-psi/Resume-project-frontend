@@ -4,15 +4,16 @@
 	box-sizing: border-box;
 }
 
+*/
 
-
-.sidebar{
+.Editsidebar{
   width: 15%;
   height: 100vh;
-  background-color: #397394;
+  background-color: rgb(172, 29, 216);
   position: fixed;
 }
 
+/*
 .sidebarHeader{
 	width: 100px;
 	height: 100px;

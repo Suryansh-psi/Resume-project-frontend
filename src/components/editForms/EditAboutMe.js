@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
@@ -11,35 +11,52 @@ const EditAboutMe = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [data, setData] = useState("");
+  const [resumeInfo, setResumeInfo] = useState({});
+  const [temp, setTemp] = useState(0);
+
+
+  useEffect(() => {
+    const id = 1;
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
   const customFunction = (d) => {
-    // sessionStorage.setItem("aboutme", JSON.stringify(d))
-    // const data = JSON.parse(sessionStorage.getItem('aboutme'))
-    // console.log(sessionStorage.key(0))
-    // console.log(data)
-    const element = document.querySelectorAll('.aboutmepoints');
-    const aboutList = [];
+    console.log(resumeInfo);
+    // const element = document.querySelectorAll('.aboutmepoints');
+    // const aboutList = [];
     
-    element.forEach((ele) => {
-      aboutList.push(ele.value);
-    });
-    const resume_id = sessionStorage.getItem('resume_id');
+    // element.forEach((ele) => {
+    //   aboutList.push(ele.value);
+    // });
+    // const resume_id = sessionStorage.getItem('resume_id');
 
-    console.log(d);
-    axios.put(`http://localhost:8080/resume/about/${resume_id}`, {
-      about_me: d.about,
-      about_me_points: aboutList
-    })
-      .then(res => {
-        // console.log(res);
-        // console.log(res.data);
-      })
-      setTerm(2);
+    // console.log(d);
+    // axios.put(`http://localhost:8080/resume/about/${resume_id}`, {
+    //   about_me: d.about,
+    //   about_me_points: aboutList
+    // })
+    //   .then(res => {
+    //     // console.log(res);
+    //     // console.log(res.data);
+    //   })
+    //   setTerm(2);
 
 
-      sessionStorage.setItem("aboutMe", d.about);
-      sessionStorage.setItem("aboutMePoints", aboutList);
-      reset();
+    //   sessionStorage.setItem("aboutMe", d.about);
+    //   sessionStorage.setItem("aboutMePoints", aboutList);
+    //   reset();
   }
 
   const addBulletPoint = () => {
@@ -52,11 +69,23 @@ const EditAboutMe = () => {
     document.querySelector(".bulletPoints").appendChild(inp);
   }
 
+  const aboutMePointsMapper = () => {
+    if(typeof(resumeInfo.about_me_points) !== undefined || typeof(resumeInfo.about_me_points) !== null) {
+      let result = resumeInfo.about_me_points.map((data, index) => {
+        return <input {...register('points')} 
+        className="aboutmepoints" type="text" 
+        name="points[]" placeholder="Write in bulleted list" value={data}/>
+      })
+      return result;
+    }
+  }
+
           
 
 
 	return (
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
+      <h2>Edit my details</h2>
       <div className="buttons"> 
         <button className="button2">Cancel</button>     
         <input type="submit" name="aboutme" value="Save" />
@@ -65,7 +94,7 @@ const EditAboutMe = () => {
       </div>
       <div className="aboutSection">
         <label className="label">About Me</label>
-        <textarea className={`textarea ${errors.about && "invalid"}`} 
+        <textarea value={resumeInfo.about_me} className={`textarea ${errors.about && "invalid"}`} 
         {...register('about',{required: "*required",
         maxLength: {
           value: 500,
@@ -81,7 +110,7 @@ const EditAboutMe = () => {
 
         )}
         <div className="bulletPoints">
-          <input {...register('points')} className="aboutmepoints" type="text" name="points[]" placeholder="Write in bulleted list" />
+          {(resumeInfo.about_me_points) ? aboutMePointsMapper() : null}
           <i onClick={addBulletPoint}><BsPlusCircle/></i>
         </div>
       </div>
