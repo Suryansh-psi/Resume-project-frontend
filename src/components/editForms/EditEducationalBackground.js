@@ -54,6 +54,7 @@ const EditEducationalBackground = () => {
   return (
     <>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
+      <h2>Edit my details</h2>
         <div className="buttons">
           <button className="button2">Cancel</button>
           <input type="submit" name="aboutme" value="Save" />

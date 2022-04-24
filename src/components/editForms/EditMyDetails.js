@@ -12,39 +12,58 @@ import { ErrorSharp } from "@mui/icons-material";
 
 const EditMyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
+  const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
   const [imagePath, setImagePath] = useState('C:/Users/suryansh.gahlot/Desktop/V2/Resume-project-frontend/public/userIcon.png');
   const [roles, setRoles] = useState([]);
-
   const [role, setRole] = useState([]);
+  const [temp, setTemp] = useState(0);
+  const [resumeInfo, setResumeInfo] = useState({});
+
+  useEffect(() => {
+    const id = 1;
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
   const customFunction = (d) => {
-    const elementRole = document.querySelectorAll('.element-role');
-    const imageURl = imagePath.split(',')[1];
-    // console.log(d);
-    axios.post('http://localhost:8080/resume', {
-      name: d.name,
-      role: d.role,
-      total_exp: d.experience,
-      image: imageURl,
-      userId: 1
-    })
-      .then(res => {
-        if(res) {
-          sessionStorage.setItem("resume_id", res.data);
-          alert("new Resume Created");
-          
-        }
-      })
-    setTerm(1);
+    console.log("resume state", resumeInfo)
+    // const elementRole = document.querySelectorAll('.element-role');
+    // const imageURl = imagePath.split(',')[1];
+    // // console.log(d);
+    // axios.post('http://localhost:8080/resume', {
+    //   name: d.name,
+    //   role: d.role,
+    //   total_exp: d.experience,
+    //   image: imageURl,
+    //   userId: 1
+    // })
+    //   .then(res => {
+    //     if (res) {
+    //       sessionStorage.setItem("resume_id", res.data);
+    //       alert("new Resume Created");
+
+    //     }
+    //   })
+    // setTerm(1);
 
 
-    sessionStorage.setItem("name", d.name);
-    sessionStorage.setItem("role", d.role);
-    sessionStorage.setItem("image", imageURl);
-    sessionStorage.setItem("total_exp", d.experience);
-    sessionStorage.setItem("imageBase", imagePath.split(',')[0]);
-    reset();
+    // sessionStorage.setItem("name", d.name);
+    // sessionStorage.setItem("role", d.role);
+    // sessionStorage.setItem("image", imageURl);
+    // sessionStorage.setItem("total_exp", d.experience);
+    // sessionStorage.setItem("imageBase", imagePath.split(',')[0]);
+    // reset();
   }
 
   useEffect(() => {
@@ -66,10 +85,6 @@ const EditMyDetails = (props) => {
   }, []);
 
   const options = roles.map((opt) => {
-    // let obj = {
-    //   label: opt, value: opt
-    // };
-    // return obj;
     return <option title={opt.role_desc} value={opt.role_name}>{opt.role_name}</option>
   })
 
@@ -102,93 +117,94 @@ const EditMyDetails = (props) => {
 
   return (
     <>
+      <h2>Edit my details</h2>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
 
-        {/* Top Buttons */}
+        
         <div className="buttons">
           <button className="button2" disabled>Cancel</button>
           <input type="submit" name="mydetails" value="Save" />
           <button className="button1" disabled><i><FaArrowRight /></i></button>
         </div>
 
-        {/* Image Section */}
+        
         <div>
           <label htmlFor="insert-image">
             <div className="profileImage">
-              {/* <FaUserCircle /> */}
-              <img src={imagePath} id="imageId" className="resumeImage" />
+              
+              <img src={`data:image/jpeg;base64,${resumeInfo.image}`} id="imageId" className="resumeImage" />
             </div>
             <input type="file" id="insert-image" className="insert-image-input" accept="image/*" onChange={imageHandler} />
           </label>
 
-          {/* Form Starts */}
+          
         </div>
         <div className="detailSection">
           <div className="form-group">
             <label className="name">
               Name
             </label>
-            <input 
-              className={`form-control ${errors.name && "invalid"}`}
-
-              {...register("name", {required: "*required"})} 
-              onKeyUp={() =>{
-                trigger("name");
-              }}
-              placeholder="Your name" name="name" id="name" 
-
+            <input
+              className={`form-control 
+              ${errors.name && "invalid"}
+              `}
+              // {...register("name", { required: "*required" })}
+              // onKeyUp={() => {
+              //   trigger("name");
+              // }}
+              placeholder="Your name" name="name" id="name"
+              value={resumeInfo.name}
             />
-            {errors.name &&(
+            {/* {errors.name && (
               <small className="text-danger">{errors.name.message}</small>
-            )}
+            )} */}
           </div>
-          
+
           <div className="form1">
             <label className="role">
               Role
             </label>
             <div className="role-fields">
-              <select className={`roles ${errors.role && "invalid"}`} name="role" id="role" {...register("role", {required: "*required"})} 
-              onKeyUp={() =>{
-                trigger("role");
-              }} multiple>
+              <select className={`roles ${errors.role && "invalid"}`} name="role" id="role" 
+              // {...register("role", { required: "*required" })}
+                // onKeyUp={() => {
+                //   trigger("role");
+                // }} 
+                multiple >
                 <option className="option1" value="">Select...</option>
-                {/* <option value="business analyst">Business Analyst</option>
-                <option value="developer">Developer</option>
-                <option value="designer">Designer</option>
-                <option value="qa">QA</option> */}
                 {options}
-            </select>
-            {errors.role &&(
-              <small className="text-danger">{errors.role.message}</small>
-            )}
+              </select>
+              {errors.role && (
+                <small className="text-danger">{errors.role.message}</small>
+              )}
             </div>
           </div>
 
           <div className="form-group1">
             <label className="exp">
               Total Exp
-            </label>  
-              <input 
-                className={`form-control1 ${errors.experience && "invalid"}`}
-                {...register("experience",{
-                  required: "*required",
-                  pattern: {
-                    value: /^[0-9]*$/,
-                    message: "*invalid value"
-                  }
-                })} 
-                onKeyUp={() => {
-                  trigger("experience");
-                }}
-                placeholder="Total Experience" name="experience" id="experience" 
-                />
-                <span>  years</span>
-                {errors.experience && (
-                  <small className="text-danger">{errors.experience.message}</small>
-                )}
-              
-          </div>     
+            </label>
+            <input value={resumeInfo.total_exp}
+              className={`form-control1 ${errors.experience && "invalid"}`}
+              {...register("experience", {
+                required: "*required",
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "*invalid value"
+                  
+                }
+              })}
+              onKeyUp={() => {
+                trigger("experience");
+              }}
+              placeholder="Total Experience" name="experience" id="experience"
+            />
+            <span>  years</span>
+            {errors.experience && (
+              <small className="text-danger">{errors.experience.message}</small>
+            )}
+
+          </div>
         </div>
       </form>
     </>
