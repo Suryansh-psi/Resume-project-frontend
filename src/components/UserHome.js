@@ -52,29 +52,32 @@ const UserHome = () => {
 
     let resumeMapper = resumeInfo.map((data, index) => {
         return (
-            <div className='card'>
-                <div className='cardUppr'>
-                    <img src='logo.jfif' id="Image" />
-                    <h6 className='userName'>{data.name}</h6>
-                    <h6 className='userDes'>{data.role.toString()}</h6>
-                    <p>{data.about_me}</p>
-                </div>
-                <div className='cardLower'>
-                    <h5>Draft</h5>
-                    <h4>Project Manager</h4>
-                    <h6>PSI Resume Project Manager Virendra Singh</h6>
-                </div>
-
-                <div class="dpdown">
-                    <button class="dropbtn"><BsThreeDots /></button>
-                    <div class="dropdown-content">
-                        <span onClick={() => editResume(data.resumeId)}><MdEdit /> Edit </span>
-                        <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
-                        <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
+            <div className='system'>
+                <div className='card'>
+                    <div className='cardUppr'>
+                        <img src='logo.jfif' id="Image" />
+                        <h6 className='userName'>{data.name}</h6>
+                        <h6 className='userDes'>{data.role.toString()}</h6>
+                        <p>{data.about_me}</p>
                     </div>
+                    <div className='cardLower'>
+                        <h5>Draft</h5>
+                        <h4>Project Manager</h4>
+                        <h6>PSI Resume Project Manager Virendra Singh</h6>
+                    </div>
+
+                    <div class="dpdown">
+                        <button class="dropbtn"><BsThreeDots /></button>
+                        <div class="dropdown-content">
+                            <span onClick={() => editResume(data.resumeId)}><MdEdit /> Edit </span>
+                            <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
+                            <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
+                        </div>
                 </div>
 
             </div>
+            </div>
+            
         )
     })
 
@@ -109,8 +112,10 @@ const UserHome = () => {
                         <h5>Create New</h5>
                     </div>
                 </Link>
+                <h3>My Resumes</h3> 
                 <div className='section1'>
-                    <h4>My Resumes</h4>
+                    {/* <h4>My Resumes</h4> */}
+                
 
                     {resumeMapper}
 
