@@ -133,13 +133,18 @@
 
 .sectionManager1{
     margin: 2rem 0 2.5rem 1rem;
+
+}
+.Manager{
+    display: flex;
+    
 }
 
 .Manager .card{
     border: 2px solid lightgrey;
     width: 18rem;
     height: 13rem;
-    margin: 2.5rem 0 0 0;
+    margin: 2.5rem 5rem 0 0;
     padding: 0.2rem 0.3rem;
     background-color: rgb(238, 236, 236);
     border-radius: 0.5rem;
@@ -159,7 +164,8 @@
     border: 1px solid rgb(241, 236, 236);
     background-color: white;
     padding-bottom: -4rem;
-
+    overflow-x: hidden;
+	overflow-y: scroll;
     padding-left: 0.5rem;
     color: black;
     font-size: 0.6rem;
@@ -182,6 +188,7 @@
 
 .Manager .cardLower h6{
     font-size: 0.8rem;
+    margin-bottom: -1.5rem;
 }
 
 .Manager .cardLower h5{
@@ -219,7 +226,7 @@
     position: relative;
     display: inline-block;
     left: 15rem;
-    bottom: 8rem;
+    bottom: 6.5rem;
     width: 30px;
     height: 30px;
     background-color: none;

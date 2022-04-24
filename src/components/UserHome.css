@@ -93,14 +93,29 @@
 }
 
 .section1{
-    margin: 2rem 0 2.5rem 1rem;
+    margin: 2rem 0 2.5rem 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
 }
+/* .system{
+    margin-left: -8rem;
+    margin-right: 8rem;
+} */
+
+ .homeSection h3{
+    margin-left: 1rem;
+    
+} 
 
 .section1 .card{
     border: 2px solid lightgrey;
     width: 18rem;
     height: 13rem;
-    margin: 2.5rem 0 0 0;
+    margin: 3rem 1rem 0 0;
+    margin-left: 0.6rem;
     padding: 0.2rem 0.3rem;
     background-color: rgb(238, 236, 236);
     border-radius: 0.5rem;
@@ -120,7 +135,8 @@
     border: 1px solid rgb(241, 236, 236);
     background-color: white;
     padding-bottom: -4rem;
-
+    overflow-x: hidden;
+	overflow-y: scroll;
     padding-left: 0.5rem;
     color: black;
     font-size: 0.6rem;
@@ -134,14 +150,17 @@
 }
 
 .section1 .cardLower{
-    padding-top: 0.5rem;
+
     margin-left: 0.7rem;
+    margin-top: -2.5rem;
 }
 .section1 .cardLower h4{
+    margin-top: 1rem;
     font-size: 1.4rem;
     color: black;
 }
 .section1 .cardLower h6{
+    margin-bottom: -1.5rem;
     font-size: 0.8rem;
 }
 
@@ -155,7 +174,8 @@
     border-radius: 25px;
     padding-left: 0.7rem;
     padding-top: 0.1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 3rem;
+    margin-bottom: -0.5rem;
 }
 
 .homeNav img{
@@ -183,7 +203,7 @@
     left: 15rem;
     width: 30px;
     height: 30px;
-    bottom: 8rem;
+    bottom: 6rem;
     background-color: none;
 }
   
@@ -202,6 +222,12 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+}
+
+.section1 .dropdown-content span:hover{
+    background-color: grey;
+    cursor: pointer;
+    transform: scale(0.9);
 }
   
 .section1 .dropdown-content a:hover {background-color: #ddd;}
@@ -223,4 +249,3 @@
     background-color: #79001e;
     color: white;
 }
-  
