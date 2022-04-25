@@ -4,6 +4,7 @@ import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
 import './AboutMe.css';
 
 
@@ -33,6 +34,7 @@ const AboutMe = () => {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
+        swal("Saved Successfully !");
       })
       setTerm(2);
 
@@ -58,10 +60,10 @@ const AboutMe = () => {
 	return (
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
       <div className="buttons"> 
-        <button className="button2">Cancel</button>     
-        <input type="submit" name="aboutme" value="Save" />
+        <button className="button2" disabled>Cancel</button>     
+        <input  className="bt" type="submit" name="aboutme" value="Save" />
         
-        <button className="button1"><i><FaArrowRight /></i></button>
+        <button className="button1" disabled><i><FaArrowRight /></i></button>
       </div>
       <div className="aboutSection">
         <label className="label">About Me</label>

@@ -11,7 +11,7 @@
     margin: 1rem 2rem 1rem 2rem;
     font-weight: 400;
     font-family: 'open-sans';
-    color: grey;
+    color: #4D4C7D;
 }
 
 .ManagerHeader .homeMenu{
@@ -72,14 +72,14 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color:#587798;
+    background-color:#E9D5DA;
     
 }
 
 .m1:hover{
     color:rgb(255, 253, 253);
     transform: scale(1.1);
-    background-color: #79001e;
+    background-color: #827397;
     
 }
 .managerButton .m2{
@@ -87,13 +87,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #587798;
+    background-color: #E9D5DA;
 }
 
 .m2:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #79001e;
+    background-color: #827397;
 }
 
 .managerButton .m3{
@@ -101,13 +101,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #587798;
+    background-color: #E9D5DA;
 }
 
 .m3:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #79001e;
+    background-color: #827397;
 }
 
 .managerButton .m4{
@@ -115,13 +115,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #587798;
+    background-color: #E9D5DA;
 }
 
 .m4:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #79001e;
+    background-color: #827397;
 }
 
  .ManagerSection{
@@ -136,7 +136,10 @@
 
 }
 .Manager{
-    display: flex;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     
 }
 
@@ -146,7 +149,7 @@
     height: 13rem;
     margin: 2.5rem 5rem 0 0;
     padding: 0.2rem 0.3rem;
-    background-color: rgb(238, 236, 236);
+    background-color: #E9D5DA;
     border-radius: 0.5rem;
     box-shadow: 4px 4px #888888;
 }
@@ -254,7 +257,7 @@
 
 .sign .sign1{
     border-color: transparent;
-    background-color: #9dcbfc;
+    background-color: #E9D5DA;
     color: rgb(80, 75, 75);
     margin-top: -0.5rem;
     font-size: 0.8rem;
@@ -265,7 +268,7 @@
 
 .sign .sign1:hover{
     transform: scale(1.1);
-    background-color: #79001e;
+    background-color: #4D4C7D;
     color: white;
 }
    

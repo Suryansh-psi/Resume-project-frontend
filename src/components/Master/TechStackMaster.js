@@ -43,6 +43,7 @@ const TechStackMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn' onClick={() => deleteTechStack(data.techStackId)}>Delete</button>
+                    <button className='editBtn' onClick={() => editTechStack(data.techStackId)}>Edit</button>
                 </td>
             </tr>
         )

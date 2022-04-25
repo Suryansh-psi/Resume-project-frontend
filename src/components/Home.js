@@ -21,7 +21,7 @@ import './Home.css'
 const Home = () => {
     return (
 
-        <div className='login'>
+        <div className='login' style={{ backgroundImage: "url(/bg1.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
             <h1>Resume Management System</h1>
             <h2 className='groupName'>(Group 4)</h2>
             <div className='user'>

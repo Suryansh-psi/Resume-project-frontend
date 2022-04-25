@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 //import App from './components/App';
 //import Screen from './components/Screen'
 import UserHome from './components/UserHome'
-
+import Preview from './components/Preview'
 import App from './components/App';
 //import EditAboutMe from './components/editForms/EditAboutMe';
 
@@ -45,7 +45,8 @@ sessionStorage.setItem("membership", ['membershipList']);
 const root = createRoot( document.getElementById('root') );
 //root.render(<Screen />);
 //root.render(<UserHome />);
-root.render(<App />);
+//root.render(<App />);
+root.render(<Preview />);
 
 
 // ReactDOM.render(

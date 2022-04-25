@@ -51,6 +51,7 @@ const ProjectMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn' onClick={() => deleteProject(data.project_id)}>Delete</button>
+                    <button className='editBtn' onClick={() => editProject(data.project_id)}>Edit</button>
                 </td>
             </tr>
         )

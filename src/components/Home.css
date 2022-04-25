@@ -6,7 +6,7 @@
 .login {
     display: flex;
     height: 100vh;
-    background-color: #8ecef1;
+    /* background: url(Images/bg.jpg) no-repeat fixed center / cover; */
 }
 
 .login h1{

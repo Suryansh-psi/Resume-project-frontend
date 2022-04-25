@@ -40,6 +40,7 @@ const SkillMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn'  onClick={() => deleteSkill(data.skillId)}>Delete</button>
+                
                 </td>
             </tr>
         )

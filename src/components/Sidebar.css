@@ -9,7 +9,7 @@
 .sidebar{
   width: 15%;
   height: 100vh;
-  background-color: rgb(163, 176, 235);
+  background-color: #E9D5DA;
   position: fixed;
 }
 
@@ -47,7 +47,7 @@
 }
 .dots{
 	font-size: 1.5rem;
-	color: lightgrey;
+	color: #070101;
 	margin-top: -0.5rem;
 }
 .sidebar-links a{
@@ -94,7 +94,7 @@
 }
 
 .sidelinks-p :hover{
-	background-color: rgb(91, 77, 131);;
+	background-color: #827397;
 	transform: scale(1.1);
 	color: white;
 }

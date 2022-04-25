@@ -109,6 +109,7 @@
 	margin-left: 6rem;
 }
 
+
 .invalid{
 	border: 1px solid red !important;
 }
@@ -140,5 +141,54 @@
 }
 
 .option1{
-	background-color: grey;
+	background-color: #E9D5DA;
 }
+
+
+.swal-modal{
+	width: 250px;
+	height: 40px;
+	margin: 1rem 39rem 0 0;
+	background-color: #ccebfc;
+	vertical-align: top;
+	box-shadow: 6px 6px #888888;
+
+	
+	/* border-bottom: 4px solid green;
+	animation: border_anim 3s linear forwards; */
+}
+
+.swal-modal:before{
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	
+	border-bottom: solid 40px rgb(69, 228, 63);
+	animation: border_anim 3s linear forwards;
+}
+
+@keyframes border_anim {
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 100%;
+		border-color: #40a9e2;
+	}
+}
+
+.swal-footer{
+	visibility: hidden;
+
+}
+
+.swal-text:first-child {
+    margin-top: 10px;
+}
+
+.swal-overlay{
+	background-color: rgb(0 0 0 / 0%);
+}
+
