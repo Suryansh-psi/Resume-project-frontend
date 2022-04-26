@@ -106,12 +106,15 @@ const UserHome = () => {
 
             </div>
             <div className='homeSection'>
+                <div className='try'>
                 <Link className='section' to="/forms/myDetails">
                     <div className='newResume'>
                         <i><BsPlusCircle /></i>
                         <h5>Create New</h5>
                     </div>
                 </Link>
+                </div>
+                
                 <h3>My Resumes</h3> 
                 <div className='section1'>
                     {/* <h4>My Resumes</h4> */}

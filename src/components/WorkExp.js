@@ -190,7 +190,7 @@ const WorkExp = () => {
     <form onSubmit={handleSubmit((data) => customFunction(data))}>
       <div className="buttons">
         <button className="button2" disabled>Cancel</button>
-        <input type="submit" name="aboutme" value="Save" />
+        <input className='bt' type="submit" name="aboutme" value="Save" />
         <button className="button1" disabled><i><FaArrowRight /></i></button>
       </div>
       <div className='main-workexp-div'>

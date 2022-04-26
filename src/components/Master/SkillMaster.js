@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import './SkillMaster.css'
+import MasterSidebar from './MasterSidebar';
 
 
 const SkillMaster = () => {
@@ -40,6 +41,7 @@ const SkillMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn'  onClick={() => deleteSkill(data.skillId)}>Delete</button>
+                
                 </td>
             </tr>
         )
@@ -61,7 +63,10 @@ const SkillMaster = () => {
 
 
     return (
+        <>
+        <MasterSidebar />
         <div className='skillMaster'>
+            
             <h2>Skill Master</h2>
            
 
@@ -102,6 +107,7 @@ const SkillMaster = () => {
              </div>
              
         </div>
+        </>
     );
 };
 

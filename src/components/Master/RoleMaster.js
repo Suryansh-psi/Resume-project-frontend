@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import './RoleMaster.css'
+import MasterSidebar from './MasterSidebar';
 
 
 const RoleMaster = () => {
@@ -39,6 +40,7 @@ const RoleMaster = () => {
 
     const deleteRole = (id) => {
         console.log("Deleting Role with Id", id);
+        
         axios.delete(`http://localhost:8080/role/${id}`).then(res => {
             setTemp(res);
         })
@@ -50,8 +52,8 @@ const RoleMaster = () => {
                 <td>{data.role_name}</td>
                 <td>{data.role_desc}</td>
                 <td>
-                     <button onClick={() => editRole(data.role_id)}>Edit</button> 
                     <button className='delBtn' onClick={() => deleteRole(data.role_id)}>Delete</button>
+                    <button className='editBtn' onClick={() => editRole(data.role_id)}>Edit</button>
                 </td>
             </tr>
         )
@@ -72,7 +74,10 @@ const RoleMaster = () => {
     }
 
     return (
+        <>
+        <MasterSidebar />
         <div className='roleMaster'>
+            
             <h2>Role Master</h2>
 
             <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -127,6 +132,7 @@ const RoleMaster = () => {
             </div>
             
         </div>
+        </>
     );
 };
 

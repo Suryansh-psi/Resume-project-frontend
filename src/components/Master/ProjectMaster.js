@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import MasterSidebar from './MasterSidebar';
 
 
 const ProjectMaster = () => {
@@ -51,6 +52,7 @@ const ProjectMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn' onClick={() => deleteProject(data.project_id)}>Delete</button>
+                    <button className='editBtn' onClick={() => editProject(data.project_id)}>Edit</button>
                 </td>
             </tr>
         )
@@ -71,7 +73,10 @@ const ProjectMaster = () => {
     }
 
     return (
+        <>
+        <MasterSidebar />
         <div className='roleMaster'>
+            
             <h2>Project Master</h2>
 
             <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -126,6 +131,7 @@ const ProjectMaster = () => {
             </div>
             
         </div>
+        </>
     );
 };
 

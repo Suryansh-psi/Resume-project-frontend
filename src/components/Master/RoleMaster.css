@@ -6,12 +6,13 @@
 
 .roleMaster{
     font-size: 0.8rem;
+    margin-left: 6rem;
 }
 
 .roleMaster h2{
     text-align: center;
     color: rgb(63, 116, 160);
-    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 .roleMasterName{
@@ -73,6 +74,23 @@
     
 }
 .delBtn:hover{
+    background-color: rgb(63, 116, 160);
+    color: whitesmoke;
+}
+
+.editBtn{
+    position: relative;
+    top: -1.5rem;
+    margin-left: 4rem;
+    border-radius: 25px;
+    width: 50px;
+    height: 25px;
+    border-color: transparent;
+    background-color: rgb(146, 194, 231);
+
+}
+
+.editBtn:hover{
     background-color: rgb(63, 116, 160);
     color: whitesmoke;
 }

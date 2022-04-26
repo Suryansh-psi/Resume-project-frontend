@@ -1,11 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-//import App from './components/App';
-//import Screen from './components/Screen'
-import UserHome from './components/UserHome'
-
 import App from './components/App';
-//import EditAboutMe from './components/editForms/EditAboutMe';
+import EditSidebar from './components/Master/MasterSidebar';
+import RoleMaster from './components/Master/RoleMaster';
 
 //Resume info
 
@@ -43,13 +40,11 @@ sessionStorage.setItem("membership", ['membershipList']);
 
 
 const root = createRoot( document.getElementById('root') );
-//root.render(<Screen />);
-//root.render(<UserHome />);
 root.render(<App />);
+// root.render(<RoleMaster />);
 
 
-// ReactDOM.render(
-//   <App />,
+// ReactDOM.render( <App />,
 //   document.getElementById('root')
 // );
 

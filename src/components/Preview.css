@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.preview{
+    width: 100%;   
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar {
+    width: 0;  
+    background: transparent;  
+}
+
+.PreHeader{
+    margin-bottom: 0.5rem;
+    margin-top: -5.5rem;
+    padding: 0 0 0 23rem; 
+        
+}
+
+.preStyle{
+    background-color: #E9D5DA;
+    height: 12rem;
+}
+
+.PreHeader h2{
+    font-weight: 600;
+    color: #363062;
+    font-size: 2rem;
+}
+  
+
+.PreHeader h5{
+	font-size: 15px;
+	color: black;
+}
+
+
+
+.imagePreview{
+    width: 130px;
+    height: 130px;
+    padding: 2rem 2rem 0 8rem;
+    
+}
+
+
+/* <---------------------------Back Button-----------------------> */
+
+.preview .arrowBtn{
+    font-size: 40px;
+    color: #363062;
+    margin-left: 1rem;
+    position: relative;
+    top: -1.5rem;
+
+}
+
+/* <-------------------mainBtn---------------------------> */
+.preBtn{
+    border: 2px solid transparent;
+    width: 100px;
+    height: 40px;
+    background-color: #736da1;
+    border-radius: 27px;
+    position: relative;
+    top: -8rem;
+    left: 70rem;
+    margin-right: 1rem;
+}
+.preBtn:hover{
+    transform: scale(1.1);
+    color: whitesmoke;
+    background-color: #423d6b;
+}
+
+/* <------------Section----------------> */
+
+.PreRow{
+	box-sizing: border-box;
+	padding: 1rem 0 0 -4rem;
+	
+}
+
+.PreColumn{
+    float: left;
+    width: 50%;
+    padding: 100px;
+    padding-top: 1rem !important;
+    height: 300px;
+}
+
+.PreRow:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+
+
+.preview h4{
+    font-size: 15px;
+    color: #363062;
+    font-weight: 700;
+    border-bottom: 2px solid #363062;	
+    padding-bottom: 0.25rem;	
+} 
+
+
+
+
+.tech-stack-output input{
+	border: 2px solid lightgrey;
+	width: 87px;
+	height: 1.5rem;
+	font-size: 0.75rem;
+	padding: 0.7rem 1rem 0.7rem 1rem;
+
+	border-radius: 25px;
+	margin-bottom: 0.25rem;
+	margin-left: 0.5rem;
+} 
+
+.PreRow p{
+	margin-bottom: 0.4rem;
+    margin-top: 0.4rem;
+	font-size: 15px;
+	padding-left: 0.5rem;
+}
+
+.PreRow ul{
+	font-size: 15px;
+    margin-bottom: 0.4rem;
+    margin-top: 0.4rem;
+    padding-left: 2rem;
+}
+
+
+
+
