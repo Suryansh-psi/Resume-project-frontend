@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
-import { MdEdit } from "react-icons/md";
+import { MdEdit,MdDelete } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { FaFileAlt } from "react-icons/fa";
@@ -58,7 +58,7 @@ const UserHome = () => {
                     <div className='cardUppr'>
                         <img src='logo.jfif' id="Image" />
                         <h6 className='userName'>{data.name}</h6>
-                        <h6 className='userDes'>{data.role.toString()}</h6>
+                        {/* <h6 className='userDes'>{data.role.toString()}</h6> */}
                         <p>{data.about_me}</p>
                     </div>
                     <div className='cardLower'>
@@ -73,6 +73,7 @@ const UserHome = () => {
                             <span onClick={() => editResume(data.resumeId)}><MdEdit /> Edit </span>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
                             <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
+                            <span><MdDelete /> Delete</span>
                             <Link to={`/editforms/editMyDetails/${data.resumeId}`}>Edit</Link>
                         </div>
                 </div>

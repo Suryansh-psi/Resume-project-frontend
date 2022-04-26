@@ -20,7 +20,8 @@ const Sidebar = () => {
   return (
 		<aside className="sidebar">
 			<div className="barTitle">
-			   <span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span>
+				<Link to="/UserHome"><span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span></Link>
+			   
 			   <span className="title">Resume</span>
 			   <div className="title1">Builder</div>
 			</div>

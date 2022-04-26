@@ -4,7 +4,10 @@ import { FaArrowRight, FaUserCircle} from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './MyDetails.css'
-import swal from 'sweetalert';
+// import ReactNotifications  from 'react-notifications-component'
+// import "animate.css"
+// import {  Store } from 'react-notifications-component'
+// import 'react-notifications-component/dist/theme.css'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import { useScrollTrigger } from "@mui/material";
 import { ErrorSharp } from "@mui/icons-material";
@@ -34,8 +37,21 @@ const MyDetails = (props) => {
         if(res) {
           sessionStorage.setItem("resume_id", res.data);
           //alert("new Resume Created");
-          swal("Resume created Successfully !");
-          
+         
+          // store.addNotification({
+          //   title: "Wonderful!",
+          //   message: "teodosii@react-notifications-component",
+          //   type: "success",
+          //   insert: "top",
+          //   container: "top-right",
+          //   animationIn: ["animate__animated", "animate__fadeIn"],
+          //   animationOut: ["animate__animated", "animate__fadeOut"],
+          //   dismiss: {
+          //     duration: 5000,
+          //     onScreen: true
+          //   }
+          // });
+          // console.log(Store);
         }
       })
     setTerm(1);
@@ -103,13 +119,16 @@ const MyDetails = (props) => {
 
 
   return (
-    <>
+    <> 
+      {/* <ReactNotifications /> */}
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
 
         {/* Top Buttons */}
+        
         <div className="buttons">
           <button className="button2" disabled>Cancel</button>
           <input className="bt" type="submit" name="mydetails" value="Save" />
+          
           <button className="button1" disabled><i><FaArrowRight /></i></button>
         </div>
 

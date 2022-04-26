@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import EditSidebar from './components/Master/MasterSidebar';
 import RoleMaster from './components/Master/RoleMaster';
+import ReactNotifications  from 'react-notifications-component'
 
 //Resume info
 
@@ -40,6 +41,7 @@ sessionStorage.setItem("membership", ['membershipList']);
 
 
 const root = createRoot( document.getElementById('root') );
+
 root.render(<App />);
 // root.render(<RoleMaster />);
 
