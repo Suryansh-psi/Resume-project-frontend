@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
+import MasterSidebar from './MasterSidebar';
 
 
 const TechStackMaster = () => {
@@ -64,7 +65,10 @@ const TechStackMaster = () => {
     }
 
     return (
+        <>
+        <MasterSidebar />
         <div className='roleMaster'>
+
             <h2>TechStack Master</h2>
 
             <form onSubmit={handleSubmit((data) => customFunction(data))}>
@@ -119,6 +123,7 @@ const TechStackMaster = () => {
             </div>
             
         </div>
+        </>
     );
 };
 export default TechStackMaster;

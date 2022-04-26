@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import './SkillMaster.css'
+import MasterSidebar from './MasterSidebar';
 
 
 const SkillMaster = () => {
@@ -62,7 +63,10 @@ const SkillMaster = () => {
 
 
     return (
+        <>
+        <MasterSidebar />
         <div className='skillMaster'>
+            
             <h2>Skill Master</h2>
            
 
@@ -103,6 +107,7 @@ const SkillMaster = () => {
              </div>
              
         </div>
+        </>
     );
 };
 
