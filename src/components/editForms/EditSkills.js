@@ -17,6 +17,30 @@ const EditSkills = () => {
 	// const [category, setCategory] = useState([]);
 	const [skillData, setSkillData] = useState([]);
 
+	const [temp, setTemp] = useState(0);
+  	const [resumeInfo, setResumeInfo] = useState({});
+
+	useEffect(() => {
+		// const id = props.match.params.id;
+		// setUserId(id);
+		// console.log(id);
+		let result = async () => {
+		  try {
+			const result2 = await axios.get(`http://localhost:8080/resume/alldetails/12`).then(res => {
+			  const response = res.data;
+			  setResumeInfo(response);
+			  console.log(response);
+			})
+		  }
+		  catch (err) {
+			console.log(err);
+		  }
+		}
+		result();
+	  }, [temp]);
+
+	
+
 	const customFunction = (d) => {
 		// sessionStorage.setItem("skills", JSON.stringify(d));
 		// const data = JSON.parse(sessionStorage.getItem('skills'))
@@ -60,10 +84,14 @@ const EditSkills = () => {
 		result();
 	}, []);
 
+	console.log(resumeInfo.skills)
+
 	const skillsMapping = skillData.map((data, index) => {
+		const selected = (resumeInfo.skills[index] == data.category+'#'+data.skill) ? "checked" : '';
 		return (
 			<tr key={index}>
-				<td><input {...register('skill')} type="checkbox" name='skill[]' value={`${data.category}#${data.skill}`} /></td>
+				
+				<td><input  {...register('skill')} type="checkbox" name='skill[]' value={`${data.category}#${data.skill}`} /></td>
 				<td>{data.category}</td>
 				<td>{data.skill}</td>
 			</tr>

@@ -8,25 +8,46 @@ import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import { useScrollTrigger } from "@mui/material";
 import { ErrorSharp } from "@mui/icons-material";
+import { useParams } from "react-router-dom";
+
 
 
 const EditMyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
+  // const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
   const [imagePath, setImagePath] = useState('C:/Users/suryansh.gahlot/Desktop/V2/Resume-project-frontend/public/userIcon.png');
   const [roles, setRoles] = useState([]);
   const [role, setRole] = useState([]);
   const [temp, setTemp] = useState(0);
   const [resumeInfo, setResumeInfo] = useState({});
+  const [userId, setUserId] = useState(1);
+  const params = useParams();
+  // console.log("Resume Id here", params.id);
+
+
+  // const [values, setValues] = useState({
+  //   nameS: "",
+  //   imageS: "",
+  //   roleS : [],
+  //   total_expS : 0
+  // })
+
+  // const {nameS, imageS, roleS, total_expS} = values;
+
+
+
 
   useEffect(() => {
-    const id = 1;
+    // const id = props.match.params.id;
+    // setUserId(id);
+    // console.log(id);
     let result = async () => {
       try {
-        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${params.id}`).then(res => {
           const response = res.data;
           setResumeInfo(response);
           console.log(response);
+          sessionStorage.setItem("editIdUser", params.id);
         })
       }
       catch (err) {
@@ -35,36 +56,6 @@ const EditMyDetails = (props) => {
     }
     result();
   }, [temp]);
-
-  const customFunction = (d) => {
-    console.log("resume state", resumeInfo)
-    // const elementRole = document.querySelectorAll('.element-role');
-    // const imageURl = imagePath.split(',')[1];
-    // // console.log(d);
-    // axios.post('http://localhost:8080/resume', {
-    //   name: d.name,
-    //   role: d.role,
-    //   total_exp: d.experience,
-    //   image: imageURl,
-    //   userId: 1
-    // })
-    //   .then(res => {
-    //     if (res) {
-    //       sessionStorage.setItem("resume_id", res.data);
-    //       alert("new Resume Created");
-
-    //     }
-    //   })
-    // setTerm(1);
-
-
-    // sessionStorage.setItem("name", d.name);
-    // sessionStorage.setItem("role", d.role);
-    // sessionStorage.setItem("image", imageURl);
-    // sessionStorage.setItem("total_exp", d.experience);
-    // sessionStorage.setItem("imageBase", imagePath.split(',')[0]);
-    // reset();
-  }
 
   useEffect(() => {
     let result = async () => {
@@ -84,19 +75,18 @@ const EditMyDetails = (props) => {
     result();
   }, []);
 
+
   const options = roles.map((opt) => {
     return <option title={opt.role_desc} value={opt.role_name}>{opt.role_name}</option>
   })
 
-  // const handleRole = (val) => {
-  //   val = val.split(',');
-  //   setRole(val);
-  // }
-
   let imageHandler = async (e) => {
     const file = e.target.files[0];
     let base64 = await convertBase64(file);
+
     setImagePath(base64);
+    let temp = imagePath.split(',')[1];
+    setResumeInfo({ ...resumeInfo, image: temp })
   }
 
   const convertBase64 = (file) => {
@@ -114,30 +104,51 @@ const EditMyDetails = (props) => {
     })
   }
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(resumeInfo);
+    try {
+      axios.put(`http://localhost:8080/resume/${params.id}`, resumeInfo)
+        .then(res => {
+          if (res) {
+            console.log(res.data);
+          }
+        })
+
+    } catch (err) {
+      console.log(err);
+    }
+
+    setTerm(1);
+  }
+
+  const handleChange = name => event => {
+    setResumeInfo({ ...resumeInfo, [name]: event.target.value })
+  }
 
   return (
     <>
       <h2>Edit my details</h2>
-      <form onSubmit={handleSubmit((data) => customFunction(data))}>
+      {/* <form onSubmit={handleSubmit((data) => customFunction(data))}> */}
+      <form onSubmit={handleFormSubmit}>
 
-        
         <div className="buttons">
           <button className="button2" disabled>Cancel</button>
           <input type="submit" name="mydetails" value="Save" />
           <button className="button1" disabled><i><FaArrowRight /></i></button>
         </div>
 
-        
+
         <div>
           <label htmlFor="insert-image">
             <div className="profileImage">
-              
+
               <img src={`data:image/jpeg;base64,${resumeInfo.image}`} id="imageId" className="resumeImage" />
             </div>
             <input type="file" id="insert-image" className="insert-image-input" accept="image/*" onChange={imageHandler} />
           </label>
 
-          
+
         </div>
         <div className="detailSection">
           <div className="form-group">
@@ -145,15 +156,17 @@ const EditMyDetails = (props) => {
               Name
             </label>
             <input
-              className={`form-control 
-              ${errors.name && "invalid"}
-              `}
+              className="form-control"
+              // className={`form-control 
+              // ${errors.name && "invalid"}
+              // `}
               // {...register("name", { required: "*required" })}
               // onKeyUp={() => {
               //   trigger("name");
               // }}
               placeholder="Your name" name="name" id="name"
               value={resumeInfo.name}
+              onChange={handleChange("name")}
             />
             {/* {errors.name && (
               <small className="text-danger">{errors.name.message}</small>
@@ -165,8 +178,10 @@ const EditMyDetails = (props) => {
               Role
             </label>
             <div className="role-fields">
-              <select className={`roles ${errors.role && "invalid"}`} name="role" id="role" 
-              // {...register("role", { required: "*required" })}
+              <select
+                // className={`roles ${errors.role && "invalid"}`} 
+                name="role" id="role" className="roles"
+                // {...register("role", { required: "*required" })}
                 // onKeyUp={() => {
                 //   trigger("role");
                 // }} 
@@ -174,9 +189,9 @@ const EditMyDetails = (props) => {
                 <option className="option1" value="">Select...</option>
                 {options}
               </select>
-              {errors.role && (
+              {/* {errors.role && (
                 <small className="text-danger">{errors.role.message}</small>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -185,24 +200,26 @@ const EditMyDetails = (props) => {
               Total Exp
             </label>
             <input value={resumeInfo.total_exp}
-              className={`form-control1 ${errors.experience && "invalid"}`}
-              {...register("experience", {
-                required: "*required",
-                pattern: {
-                  value: /^[0-9]*$/,
-                  message: "*invalid value"
-                  
-                }
-              })}
-              onKeyUp={() => {
-                trigger("experience");
-              }}
+              className="form-control1"
+              // className={`form-control1 ${errors.experience && "invalid"}`}
+              // {...register("experience", {
+              //   required: "*required",
+              //   pattern: {
+              //     value: /^[0-9]*$/,
+              //     message: "*invalid value"
+
+              //   }
+              // })}
+              // onKeyUp={() => {
+              //   trigger("experience");
+              // }}
               placeholder="Total Experience" name="experience" id="experience"
+              onChange={handleChange("total_exp")}
             />
             <span>  years</span>
-            {errors.experience && (
+            {/* {errors.experience && (
               <small className="text-danger">{errors.experience.message}</small>
-            )}
+            )} */}
 
           </div>
         </div>
