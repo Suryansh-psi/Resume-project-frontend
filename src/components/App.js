@@ -61,7 +61,7 @@ const App = () => {
 
         {/* Editing forms */}
         <Route path="/editforms/" element={<EditLayout />}>  
-          <Route path="editMyDetails" element={<EditMyDetails />}/>
+          <Route path="editMyDetails/:id" element={<EditMyDetails />}/>
           <Route path="editAboutMe" element={<EditAboutMe />}/>
           <Route path="editSkills" element={<EditSkills />}/>
           <Route path="editWorkExp" element={<EditWorkExp />}/>

@@ -41,7 +41,7 @@ const ManagerHome = () => {
                     <p>{data.about_me}</p>
                 </div>
                 <div className='cardLower'>
-                    <h5>Draft</h5>
+                    <h5>{(data.status) ? data.status : "Null"}</h5>
                     <h4>Project Manager</h4>
                     <h6>PSI Resume Project Manager Virendra Singh</h6>
                 </div>
@@ -52,6 +52,7 @@ const ManagerHome = () => {
                         <a href="#"><VscPreview /> Preview </a>
                         <a href="#"><FcApproval /> Approved</a>
                         <a href="#"><FaCommentDots /> Comment</a>
+                        
                     </div>
                 </div>
             </div>

@@ -42,6 +42,7 @@ const UserHome = () => {
         console.log("Sharing resume of id" + id);
         axios.put(`http://localhost:8080/resume/share/${id}`).then(res => {
             console.log("updated result", res.data);
+            setTemp(id);
         });
     }
 
@@ -61,7 +62,7 @@ const UserHome = () => {
                         <p>{data.about_me}</p>
                     </div>
                     <div className='cardLower'>
-                        <h5>Draft</h5>
+                        <h5>{(data.status) ? data.status : "Null"}</h5>
                         <h4>Project Manager</h4>
                         <h6>PSI Resume Project Manager Virendra Singh</h6>
                     </div>
@@ -72,6 +73,7 @@ const UserHome = () => {
                             <span onClick={() => editResume(data.resumeId)}><MdEdit /> Edit </span>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
                             <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
+                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}>Edit</Link>
                         </div>
                 </div>
 

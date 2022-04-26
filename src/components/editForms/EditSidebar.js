@@ -20,7 +20,7 @@ const EditSidebar = () => {
   return (
 		<aside className="Editsidebar">
 			<div className="barTitle">
-			   <Link to="/managerHome"><span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span></Link>
+			   <Link to="/UserHome"><span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span></Link>
 			   <span className="title">Resume</span>
 			   <div className="title1">Builder</div>
 			</div>
