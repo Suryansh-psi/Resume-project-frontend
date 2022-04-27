@@ -143,3 +143,13 @@
 
 
 
+.swal-text:first-child {
+    margin-top: 10px;
+}
+
+.swal-content__input{
+    height: 10rem;
+    padding-bottom: 7rem !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+} 

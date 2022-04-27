@@ -58,7 +58,7 @@ const UserHome = () => {
                     <div className='cardUppr'>
                         <img src='logo.jfif' id="Image" />
                         <h6 className='userName'>{data.name}</h6>
-                        {/* <h6 className='userDes'>{data.role.toString()}</h6> */}
+                        <h6 className='userDes'>{data.role.toString()}</h6>
                         <p>{data.about_me}</p>
                     </div>
                     <div className='cardLower'>

@@ -49,7 +49,8 @@ const ManagerHome = () => {
                 <div class="dpdown">
                     <button class="dropbtn"><BsThreeDots /></button>
                     <div class="dropdown-content">
-                        <a href="#"><VscPreview /> Preview </a>
+                        <Link to="/previewMaster"><a href="#"><VscPreview /> Preview </a></Link>
+                        
                         <a href="#"><FcApproval /> Approved</a>
                         <a href="#"><FaCommentDots /> Comment</a>
                         

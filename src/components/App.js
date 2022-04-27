@@ -28,6 +28,8 @@ import EditAchievements from './editForms/EditAchievements';
 import EditMemberships from './editForms/EditMemberships';
 // import EditTemplate from './editForms/EditTemplate';
 import EditLayout from './editForms/EditLayout';
+import { Preview } from '@mui/icons-material';
+import PreviewMaster from './PreviewMaster';
 
 
 const App = () => {
@@ -47,6 +49,7 @@ const App = () => {
         <Route path="/roleMaster" element={<RoleMaster />}/>
         <Route path="/skillMaster" element={<SkillMaster />}/>
         <Route path="/techstackMaster" element={<TechStackMaster />}/>
+        <Route path="/previewMaster" element={<PreviewMaster />}/>
 
         {/* Main froms */}
         <Route path="/forms/" element={<Layout />}>  

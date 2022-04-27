@@ -5,9 +5,12 @@ import { FaUserAlt } from "react-icons/fa";
 import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 import axios from 'axios';
 import './Preview.css'
+import swal from 'sweetalert';
+
+import { Link } from 'react-router-dom';
 
 
-const Preview = (props) => {
+const PreviewMaster = (props) => {
 	// const arr = Array.from(sessionStorage.mydetails)
 	// const [render, setRender] = useState(0)
 
@@ -166,11 +169,22 @@ const Preview = (props) => {
 		return result;
 	}
 
+
+	function Open_Box(){
+		swal("Write comments here:", {
+			content: "input",
+		  })
+		  .then((value) => {
+			swal(`Your comment is: ${value}`);
+		  });
+	}
+
 	return (
 
 		<section className="preview">
             <div className='preStyle'>
-                <span className="arrowBtn"><HiOutlineArrowCircleLeft /></span>
+				<Link to="/ManagerHome"><span className="arrowBtn"><HiOutlineArrowCircleLeft /></span></Link>
+                
                 <i><img className='imagePreview' src={finalImage}/></i>
                 <div className="PreHeader">
                     
@@ -179,8 +193,8 @@ const Preview = (props) => {
                     <h5>Total Exp: {total_exp}</h5>
                 </div>
                 <div className='mainBtn'>
-                    <button className='preBtn'>Approved</button>
-                    <button className='preBtn'>Comment</button>
+                    <button className='preBtn' >Approved</button>
+                    <button onClick={Open_Box} className='preBtn'>Comment</button>
                 </div>
                 
             </div>
@@ -248,4 +262,4 @@ const Preview = (props) => {
 
 	)
 }
-export default Preview;
+export default PreviewMaster;
