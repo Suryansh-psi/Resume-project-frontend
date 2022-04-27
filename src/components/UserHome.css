@@ -15,7 +15,6 @@
     font-weight: 400;
     font-family: 'open-sans';
     color: #4D4C7D;
-    padding-bottom: 4rem;
 }
 
 .homeMenu{
@@ -99,8 +98,8 @@
     margin: 2rem 0 2.5rem 0;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     
 }
 /* .system{
@@ -118,9 +117,9 @@
     width: 18rem;
     height: 13rem;
     margin: 3rem 1rem 0 0;
-    margin-left: 0.6rem;
+    margin-left: 1rem;
     padding: 0.2rem 0.3rem;
-    background-color: #E9D5DA;
+    background-color: #d6d9db;
     border-radius: 0.5rem;
     box-shadow: 4px 4px #888888;
 }
@@ -165,6 +164,7 @@
 .section1 .cardLower h6{
     margin-bottom: -1.5rem;
     font-size: 0.8rem;
+    min-height: 2rem;
 }
 
 .section1 .cardLower h5{
@@ -206,31 +206,36 @@
     left: 15rem;
     width: 30px;
     height: 30px;
-    bottom: 6rem;
+    bottom: 7rem;
     background-color: none;
 }
   
 .section1 .dropdown-content {
     display: none;
     position: absolute;
-
     background-color: whitesmoke;
-    min-width: 160px;
+    min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: -0.5rem;
     z-index: 1;
 }
   
 .section1 .dropdown-content span {
     color: rgb(0, 0, 0);
-    padding: 12px 16px;
+    padding: 3px  0 3px 16px;
     text-decoration: none;
     display: block;
+
+}
+
+.section1 .dropdown-content span i{
+    padding-right: 2rem;
 }
 
 .section1 .dropdown-content span:hover{
     background-color: grey;
     cursor: pointer;
-    transform: scale(0.9);
+    transform: scale(1.0);
 }
   
 .section1 .dropdown-content a:hover {background-color: #ddd;}
