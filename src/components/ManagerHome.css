@@ -72,14 +72,14 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color:#E9D5DA;
+    background-color:#7DC4E1;
     
 }
 
 .m1:hover{
     color:rgb(255, 253, 253);
     transform: scale(1.1);
-    background-color: #827397;
+    background-color: #2D7491;
     
 }
 .managerButton .m2{
@@ -87,13 +87,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #E9D5DA;
+    background-color: #7DC4E1;
 }
 
 .m2:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #827397;
+    background-color: #2D7491;
 }
 
 .managerButton .m3{
@@ -101,13 +101,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #E9D5DA;
+    background-color: #7DC4E1;
 }
 
 .m3:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #827397;
+    background-color: #2D7491;
 }
 
 .managerButton .m4{
@@ -115,13 +115,13 @@
     width: 10rem;
     height: 3rem;
     border-radius: 25px;
-    background-color: #E9D5DA;
+    background-color: #7DC4E1;
 }
 
 .m4:hover{
     color:white;
     transform: scale(1.1);
-    background-color: #827397;
+    background-color: #2D7491;
 }
 
  .ManagerSection{
@@ -138,8 +138,8 @@
 .Manager{
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     
 }
 
@@ -149,7 +149,7 @@
     height: 13rem;
     margin: 2.5rem 5rem 0 0;
     padding: 0.2rem 0.3rem;
-    background-color: #E9D5DA;
+    background-color: #d6d9db;
     border-radius: 0.5rem;
     box-shadow: 4px 4px #888888;
 }
@@ -172,6 +172,7 @@
     padding-left: 0.5rem;
     color: black;
     font-size: 0.6rem;
+    
 }
 
 .Manager .cardUppr .managerName{
@@ -192,6 +193,7 @@
 .Manager .cardLower h6{
     font-size: 0.8rem;
     margin-bottom: -1.5rem;
+    min-height: 2.2rem;
 }
 
 .Manager .cardLower h5{
@@ -229,7 +231,7 @@
     position: relative;
     display: inline-block;
     left: 15rem;
-    bottom: 6.5rem;
+    bottom: 7.2rem;
     width: 30px;
     height: 30px;
     background-color: none;

@@ -45,7 +45,7 @@
 	height: 30px;
 	border-color: transparent;
 	border-radius: 20px;
-	background-color: #E9D5DA;
+	background-color: #cfceff;
 	margin-left: 1rem ;
 	margin-right: 0rem;
 }
@@ -55,8 +55,8 @@
 	height: 25px;
 	margin: 0 0 0 20px;
 	color: black;
-	background: linear-gradient(to right, #E9D5DA 50%, #827397 50%);
-	border-color : #E9D5DA;
+	background: linear-gradient(to right, #cfceff 50%, #ababf8 50%);
+	border-color : transparent;
 }
 
 .button1 i{
