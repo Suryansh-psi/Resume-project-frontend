@@ -5,13 +5,14 @@ import { FaUserAlt } from "react-icons/fa";
 import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 import axios from 'axios';
 import './Preview.css'
+import { Link, useParams } from 'react-router-dom';
 
 
 const Preview = (props) => {
 	// const arr = Array.from(sessionStorage.mydetails)
 	// const [render, setRender] = useState(0)
 
-
+	const params = useParams();
 	const [data, setData] = useState({
 		name: "",
 		role: "",
@@ -23,14 +24,14 @@ const Preview = (props) => {
 		workExp: []
 	});
 	let result = null;
-	const resume_id = sessionStorage.getItem("resume_id");
+	// const resume_id = sessionStorage.getItem("resume_id");
 
 	useEffect(() => {
 		result = async () => {
 			try {
-				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
+				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${params.id}`).then(res => {
 					const response = res.data;
-					// console.log(res.data)
+					console.log(res.data)
 					setData({
 						...data,
 						name: response.name,
@@ -170,7 +171,7 @@ const Preview = (props) => {
 
 		<section className="preview">
             <div className='preStyle'>
-                <span className="arrowBtn"><HiOutlineArrowCircleLeft /></span>
+                <Link to="/managerHome" className="arrowBtn"><HiOutlineArrowCircleLeft /></Link>
                 <i><img className='imagePreview' src={finalImage}/></i>
                 <div className="PreHeader">
                     
@@ -179,8 +180,9 @@ const Preview = (props) => {
                     <h5>Total Exp: {total_exp}</h5>
                 </div>
                 <div className='mainBtn'>
-                    <button className='preBtn'>Approved</button>
+                    <button className='preBtn'>Approve</button>
                     <button className='preBtn'>Comment</button>
+					<button className='preBtn'>Export</button>
                 </div>
                 
             </div>

@@ -44,14 +44,14 @@ const EditAboutMe = () => {
   }
 
   const aboutMePointsMapper = () => {
-    if(typeof(resumeInfo.about_me_points) !== undefined || typeof(resumeInfo.about_me_points) !== null) {
+    // if(typeof(resumeInfo.about_me_points) !== undefined || typeof(resumeInfo.about_me_points) !== null) {
       let result = resumeInfo.about_me_points.map((data, index) => {
         return <input 
         className="aboutmepoints" type="text" 
         name="points[]" placeholder="Write in bulleted list" value={data}/>
       })
       return result;
-    }
+    // }
   }
 
   const handleFormSubmit = (e) => {
@@ -63,10 +63,14 @@ const EditAboutMe = () => {
     element.forEach((ele) => {
       aboutList.push(ele.value);
     });
+    console.log("aboutList", aboutList);
     setResumeInfo({...resumeInfo, about_me_points: aboutList});
-    // console.log(resumeInfo);
+    console.log(resumeInfo);
     try {
-      axios.put(`http://localhost:8080/resume/about/${id}`, resumeInfo)
+      axios.put(`http://localhost:8080/resume/about/${id}`, {
+        about_me: resumeInfo.about_me,
+        about_me_points: aboutList
+      })
         .then(res => {
           if (res) {
             console.log("BACKEND response", res.data);
@@ -82,7 +86,7 @@ const EditAboutMe = () => {
   }
 
   const handleChange = name => event => {
-    setResumeInfo({ ...resumeInfo, about_me: event.target.value })
+    setResumeInfo({ ...resumeInfo, [name]: event.target.value })
   }
 
           

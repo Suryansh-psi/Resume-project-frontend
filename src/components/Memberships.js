@@ -29,7 +29,7 @@ function Memberships() {
       })
     setTerm(7);
     sessionStorage.setItem("membership", membershipList);
-    reset();
+    // reset();
   }
 
   

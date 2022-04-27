@@ -28,6 +28,7 @@ import EditAchievements from './editForms/EditAchievements';
 import EditMemberships from './editForms/EditMemberships';
 // import EditTemplate from './editForms/EditTemplate';
 import EditLayout from './editForms/EditLayout';
+import Preview from './Preview';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
         {/* Home Screens */}
         <Route path="/userHome" element={<UserHome />}/>
         <Route path="/managerHome" element={<ManagerHome />}/>
+        <Route path="/managerHome/preview/:id" element={<Preview/>}/>
 
         {/* Master Screens */}
         <Route path="/projectMaster" element={<ProjectMaster />}/>
