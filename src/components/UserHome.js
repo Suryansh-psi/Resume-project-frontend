@@ -31,7 +31,7 @@ const UserHome = () => {
     }, [temp]);
 
     const cloneResume = (id) => {
-        console.log("clonging resume of id" +  id);
+        console.log("clonging resume of id" + id);
         axios.get(`http://localhost:8080/resume/clone/${id}`).then(res => {
             const response = res.data;
             setTemp(response);
@@ -46,10 +46,14 @@ const UserHome = () => {
         });
     }
 
-    const editResume = (id) => {
-        console.log("editing resume of id" + id);
-        // console.log(resumeInfo)
+    const deleteResume = (id) => {
+        console.log("deleting Resume with id ", id);
+        axios.delete(`http://localhost:8080/resume/${id}`).then(res => {
+            console.log("delete", res);
+            setTemp(id + 1);
+        })
     }
+
 
     let resumeMapper = resumeInfo.map((data, index) => {
         return (
@@ -70,16 +74,17 @@ const UserHome = () => {
                     <div class="dpdown">
                         <button class="dropbtn"><BsThreeDots /></button>
                         <div class="dropdown-content">
-                            <span onClick={() => editResume(data.resumeId)}><MdEdit /> Edit </span>
+
+                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}><MdEdit />Edit</Link>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
                             <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
-                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}>Edit</Link>
+                            <span onClick={() => deleteResume(data.resumeId)}><MdEdit /> Delete </span>
                         </div>
-                </div>
+                    </div>
 
+                </div>
             </div>
-            </div>
-            
+
         )
     })
 
@@ -109,18 +114,18 @@ const UserHome = () => {
             </div>
             <div className='homeSection'>
                 <div className='try'>
-                <Link className='section' to="/forms/myDetails">
-                    <div className='newResume'>
-                        <i><BsPlusCircle /></i>
-                        <h5>Create New</h5>
-                    </div>
-                </Link>
+                    <Link className='section' to="/forms/myDetails">
+                        <div className='newResume'>
+                            <i><BsPlusCircle /></i>
+                            <h5>Create New</h5>
+                        </div>
+                    </Link>
                 </div>
-                
-                <h3>My Resumes</h3> 
+
+                <h3>My Resumes</h3>
                 <div className='section1'>
                     {/* <h4>My Resumes</h4> */}
-                
+
 
                     {resumeMapper}
 

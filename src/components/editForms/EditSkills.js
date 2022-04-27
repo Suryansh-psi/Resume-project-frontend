@@ -12,51 +12,41 @@ import './EditSkills.css'
 const EditSkills = () => {
 	const [term, setTerm] = useOutletContext();
 	const { register, handleSubmit } = useForm();
-	// const [data, setData] = useState("");
-	// const [skills, setSkills] = useState([]);
-	// const [category, setCategory] = useState([]);
 	const [skillData, setSkillData] = useState([]);
 
 	const [temp, setTemp] = useState(0);
-  	const [resumeInfo, setResumeInfo] = useState({});
+	const [resumeInfo, setResumeInfo] = useState({});
 
+	const id = sessionStorage.getItem("editIdUser");
 	useEffect(() => {
-		// const id = props.match.params.id;
-		// setUserId(id);
-		// console.log(id);
 		let result = async () => {
-		  try {
-			const result2 = await axios.get(`http://localhost:8080/resume/alldetails/12`).then(res => {
-			  const response = res.data;
-			  setResumeInfo(response);
-			  console.log(response);
-			})
-		  }
-		  catch (err) {
-			console.log(err);
-		  }
+			try {
+				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+					const response = res.data;
+					setResumeInfo(response);
+					console.log(response);
+				})
+			}
+			catch (err) {
+				console.log(err);
+			}
 		}
 		result();
-	  }, [temp]);
+	}, [temp]);
 
-	
+
 
 	const customFunction = (d) => {
-		// sessionStorage.setItem("skills", JSON.stringify(d));
-		// const data = JSON.parse(sessionStorage.getItem('skills'))
-		// console.log(sessionStorage.key(0))
-		// console.log(data)
-		const resume_id = sessionStorage.getItem('resume_id');
-		axios.put(`http://localhost:8080/resume/skills/${resume_id}`, {
+		axios.put(`http://localhost:8080/resume/skills/${id}`, {
 			skills: d.skill
 		})
 			.then(res => {
 				console.log(res);
 				console.log(res.data);
+				setTemp(temp + 1);
 			})
 		setTerm(3);
-
-		sessionStorage.setItem("skills", d.skill);
+		// sessionStorage.setItem("skills", d.skill);
 	}
 
 	useEffect(() => {
@@ -66,15 +56,6 @@ const EditSkills = () => {
 					const response = res.data;
 					console.log(response);
 					setSkillData(response);
-					// let skillList = response.map((item) => {
-					// 	return item.skill;
-					// })
-					// let categoryList = response.map((item) => {
-					// 	return item.category;
-					// })
-					// setSkills(skillList);
-					// setCategory(categoryList);
-					//   console.log("skill", skills, "category", category);
 				})
 			}
 			catch (err) {
@@ -84,14 +65,20 @@ const EditSkills = () => {
 		result();
 	}, []);
 
-	console.log(resumeInfo.skills)
+
+	const skillsFromDatabaseMapper = () => {
+		let result = resumeInfo.skills.map((data, index) => {
+			let category = data.split('#')[0];
+			let skill = data.split('#')[1];
+			return <p>{`${category} : ${skill}`}</p>
+		})
+		return result;
+	}
 
 	const skillsMapping = skillData.map((data, index) => {
-		const selected = (resumeInfo.skills[index] == data.category+'#'+data.skill) ? "checked" : '';
 		return (
 			<tr key={index}>
-				
-				<td><input  {...register('skill')} type="checkbox" name='skill[]' value={`${data.category}#${data.skill}`} /></td>
+				<td><input {...register('skill')} type="checkbox" name='skill[]' value={`${data.category}#${data.skill}`} /></td>
 				<td>{data.category}</td>
 				<td>{data.skill}</td>
 			</tr>
@@ -110,6 +97,10 @@ const EditSkills = () => {
 					<button className="button1"><i><FaArrowRight /></i></button>
 				</div>
 				<h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
+				{/* i added list here */}
+				<div>
+					{(resumeInfo.skills) ? skillsFromDatabaseMapper() : null}
+				</div>
 				<div className="SearchBox">
 					<input {...register('points')} type="text" name="points[]" placeholder="Search" />
 					<i><FaSearch /></i>
@@ -119,36 +110,11 @@ const EditSkills = () => {
 					<thead>
 						<tr>
 							<th>Select</th>
-							<th>Category<a><FaFilter /></a></th>
+							<th>Category<i><FaFilter /></i></th>
 							<th>Skill<i><FaFilter /></i></th>
 						</tr>
 					</thead>
 					<tbody>
-						{/* <tr key={0}>
-							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Agile" /></td>
-							<td>Business Analysis</td>
-							<td>Agile</td>
-						</tr>
-						<tr key={1}>
-							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Business Requirement Doc" /></td>
-							<td>Business Analysis</td>
-							<td>Business Requirement Doc</td>
-						</tr>
-						<tr key={2}>
-							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Flow Diagrams" /></td>
-							<td>Business Analysis</td>
-							<td>Flow Diagrams</td>
-						</tr>
-						<tr key={3}>
-							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Wireframe" /></td>
-							<td>Business Analysis</td>
-							<td>Wireframe</td>
-						</tr>
-						<tr key={4}>
-							<td><input {...register('skill')} type="checkbox" name='skill[]' value="Business Analysis#Other" /></td>
-							<td>Business Analysis</td>
-							<td>Other</td>
-						</tr> */}
 						{skillsMapping}
 					</tbody>
 				</table>

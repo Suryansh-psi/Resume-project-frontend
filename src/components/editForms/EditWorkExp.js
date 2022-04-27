@@ -21,6 +21,11 @@ const EditWorkExp = () => {
   const [techstacks, setTechstacks] = useState([]);
   // const [data, setData] = useState("");
 
+  const [temp, setTemp] = useState(0);
+	const [resumeInfo, setResumeInfo] = useState({});
+
+	const id = sessionStorage.getItem("editIdUser");
+
   const customFunction = (d) => {
     // console.log(role);
     const techList = [];
@@ -42,83 +47,98 @@ const EditWorkExp = () => {
     // console.log(d);
     // d.startDate = d.startDate.toString();
     // d.endDate = d.endDate.toString();
-    const resume_id = sessionStorage.getItem('resume_id');
-    axios.post(`http://localhost:8080/workexp`, [
-      {
-        clientDesc: d.client_desc,
-        country: d.country,
-        projectName: d.project,
-        role: d.role,
-        startDate: d.startdate,
-        endDate: d.enddate,
-        bussinessSol: d.business_sol,
-        techStack: ['techList'],
-        resumeId: resume_id,
-        projectResp: projRespList
-      }
-    ]).then(res => {
-      // console.log(res);
-      // console.log(res.data);
-      sessionStorage.setItem("workexp_id", res.data);
-    })
-    setTerm(4);
+    
+    // axios.put(`http://localhost:8080/workexp/${id}`, {
+    //     clientDesc: d.client_desc,
+    //     country: d.country,
+    //     projectName: d.project,
+    //     role: d.role,
+    //     startDate: d.startdate,
+    //     endDate: d.enddate,
+    //     bussinessSol: d.business_sol,
+    //     techStack: techList,
+    //     resumeId: resume_id,
+    //     projectResp: projRespList
+    //   }).then(res => {
+    //   // console.log(res);
+    //   // console.log(res.data);
+    //   sessionStorage.setItem("workexp_id", res.data);
+    // })
+    // setTerm(4);
 
 
-    sessionStorage.setItem("clientDesc", d.client_desc);
-    sessionStorage.setItem("country", d.country);
-    sessionStorage.setItem("projectName", d.project);
-    sessionStorage.setItem("role2", d.role);
-    sessionStorage.setItem("startDate", d.startdate);
-    sessionStorage.setItem("endDate", d.enddate);
-    sessionStorage.setItem("bussinessSol", d.business_sol);
-    sessionStorage.setItem("techStack", ['techList']);
-    sessionStorage.setItem("projectResp", projRespList);
+    // sessionStorage.setItem("clientDesc", d.client_desc);
+    // sessionStorage.setItem("country", d.country);
+    // sessionStorage.setItem("projectName", d.project);
+    // sessionStorage.setItem("role2", d.role);
+    // sessionStorage.setItem("startDate", d.startdate);
+    // sessionStorage.setItem("endDate", d.enddate);
+    // sessionStorage.setItem("bussinessSol", d.business_sol);
+    // sessionStorage.setItem("techStack", ['techList']);
+    // sessionStorage.setItem("projectResp", projRespList);
 
     // reset();
   }
 
-  // useEffect(() => {
-  //   let result = async () => {
-  //     try {
-  //       const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
-  //         const response = res.data;
-  //         // let roleList = response.map((role) => {
-  //         //   return role.role_name;
-  //         // })
-  //         setRoles(response);
-  //       })
-  //     }
-  //     catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   result();
-  // }, []);
+  
+	useEffect(() => {
+		let result = async () => {
+			try {
+				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+					const response = res.data;
+					setResumeInfo(response);
+					console.log(response);
+				})
+			}
+			catch (err) {
+				console.log(err);
+			}
+		}
+		result();
+	}, [temp]);
 
-  // useEffect(() => {
-  //   let result = async () => {
-  //     try {
-  //       const result2 = await axios.get(`http://localhost:8080/techstack`).then(res => {
-  //         const response = res.data;
-  //         // let roleList = response.map((role) => {
-  //         //   return role.role_name;
-  //         // })
-  //         setTechstacks(response);
-  //       })
-  //     }
-  //     catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   result();
-  // }, []);
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
+          const response = res.data;
+          // let roleList = response.map((role) => {
+          //   return role.role_name;
+          // })
+          setRoles(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, []);
 
-  // const options = roles.map((opt) => {
-  //   let obj = {
-  //     label: opt, value: opt
-  //   };
-  //   return obj;
-  // })
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/techstack`).then(res => {
+          const response = res.data;
+          // let roleList = response.map((role) => {
+          //   return role.role_name;
+          // })
+          setTechstacks(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, []);
+
+  const options = roles.map((opt) => {
+    let obj = {
+      label: opt, value: opt
+    };
+    return obj;
+  })
 
 
   // const handleRole = (val) => {
@@ -201,7 +221,7 @@ const EditWorkExp = () => {
             <div className='workexpfields'>
               <label className="WorkExplabel">
                 Client Description
-                <input className={`first ${errors.client_desc && "invalid"}`}
+                <input value={resumeInfo.clientDesc} className={`first ${errors.client_desc && "invalid"}`}
                   {...register('client_desc', { required: "*required" })}
                   onKeyUp={() => {
                     trigger("client_desc");
@@ -246,10 +266,7 @@ const EditWorkExp = () => {
                       trigger("role");
                     }} multiple>
                     <option className="option1" value="">Select...</option>
-                    {/* <option value="business analyst">Business Analyst</option>
-  <option value="developer">Developer</option>
-  <option value="designer">Designer</option>
-  <option value="qa">QA</option> */}
+                    
                     {options1}
                   </select>
                   {errors.role && (
@@ -315,13 +332,6 @@ const EditWorkExp = () => {
                       trigger("tech");
                     }} multiple>
                     <option className="option1" value="">Select...</option>
-                    {/* <option value="Python">Python</option>
-  <option value="React">React</option>
-  <option value="JAVA">JAVA</option>
-  <option value="Ruby">Ruby</option>
-  <option value="C++">C++</option>
-  <option value="C">C</option>
-  <option value="C#">C#</option> */}
                     {techstackOptions}
                   </select>
                   {errors.tech && (
