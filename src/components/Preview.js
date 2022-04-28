@@ -6,6 +6,8 @@ import { HiOutlineArrowCircleLeft } from "react-icons/hi";
 import axios from 'axios';
 import './Preview.css'
 import { Link, useParams } from 'react-router-dom';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import swal from 'sweetalert';
 
 
@@ -131,6 +133,8 @@ const Preview = (props) => {
 		return result;
 	}
 
+	// swal("Good job!", "You clicked the button!", "success");
+
 	const addCommentToResume = (id) => {
 		swal("Write comments here:", {
 			content: "input",
@@ -140,7 +144,7 @@ const Preview = (props) => {
 			axios.put(`http://localhost:8080/resume/comment/${id}`, {
 				"comment": value
 			})
-			swal(`Resume Feedback is shared with the user "${value}"`);
+			swal(`Resume Feedback is shared with the user`);
 		});
 	}
 
@@ -157,10 +161,10 @@ const Preview = (props) => {
 
 	const approveResume = (id) => {
 		if(resumeInfo.status === "Approved") {
-			swal("Resume is Already Approved")
+			NotificationManager.success( 'Resume Already Approved !');
 		} else {
 			axios.put(`http://localhost:8080/resume/approve/${id}`).then(res => {
-			swal(`Resume Approved`);
+			NotificationManager.success( 'Approved Successfully !');
 		})
 		}
 	}
@@ -173,16 +177,11 @@ const Preview = (props) => {
 
 	return (
 
-		<section className="preview">
+		<section className="preview" style={{ backgroundImage: "url(/ground.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
 			<div className='preStyle'>
 				<Link to="/managerHome" className="arrowBtn"><HiOutlineArrowCircleLeft /></Link>
-				<i><img className='imagePreview' src={(resumeInfo.image) ? `data:image/jpeg;base64,${resumeInfo.image}` : ""} /></i>
-				<div className="PreHeader">
-
-					<h2>{resumeInfo.name}</h2>
-					<h5>{(resumeInfo.role) ? roleMapping() : null}</h5>
-					<h5>Total Exp: {resumeInfo.total_exp}</h5>
-				</div>
+				<span className='h3'><h3>Resume Preview</h3></span>
+				
 				<div className='mainBtn'>
 					<button style={{backgroundColor: setColor(resumeInfo.status)}}
 					onClick={() => approveResume(params.id)} className='preBtn'>
@@ -190,51 +189,67 @@ const Preview = (props) => {
 					</button>
 					<button onClick={() => addCommentToResume(params.id)} className='preBtn'>Comment</button>
 					<button onClick={exportResume} className='preBtn'>Export</button>
+					<NotificationContainer/>
 				</div>
 
 			</div>
 
-			<div className="PreRow">
-				<div className="PreColumn">
-					<h4>ABOUT ME</h4>
-					<p>{resumeInfo.about_me}</p>
-					<ul>
-						{(resumeInfo.about_me_points) ? aboutMePointsMapping() : null}
-					</ul>
-				</div>
-				<div className="PreColumn">
-					<h4>WORK HISTORY</h4>
-					{(resumeInfo.workExps) ? workExpMapping() : null}
-				</div>
-				<div className="PreColumn">
-					<h4>SKILL & PROFICIENCIES</h4>
-					<ul>
-						{(resumeInfo.skills) ? skillsMapping(resumeInfo.skills) : null}
-					</ul>
-				</div>
-				<div className="PreColumn">
-					<h4>EDUCATIONAL BACKGROUND</h4>
-					{(resumeInfo.educations) ? educationMapping() : null}
-				</div>
-				<div className="PreColumn">
-					<h4>CERTIFICATION AND VOLUNTEER WORK</h4>
-					<p>Achievements</p>
-					<ul>
-						{(resumeInfo.achievement) ? achievementMapping() : null}
-					</ul>
-					<p>Certificates</p>
-					<ul>
-						{(resumeInfo.certificate) ? certificateMapping() : null}
-					</ul>
-				</div>
-				<div className="PreColumn">
-					<h4>MEMBERSHIPS</h4>
-					<ul>
-						{(resumeInfo.membership) ? membershipMapping() : null}
-					</ul>
-				</div>
 
+
+            <div className='preResume' style={{ backgroundImage: "url(/hd.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover" }} >
+				<div className='gt'>
+				<div className="PreHeader" >
+					<i><img className='imagePreview' src={(resumeInfo.image) ? `data:image/jpeg;base64,${resumeInfo.image}` : ""} /></i>
+					<h2>{resumeInfo.name}</h2>
+					<h5>{(resumeInfo.role) ? roleMapping() : null}</h5>
+					<h5>Total Exp: {resumeInfo.total_exp}</h5>
+				</div>
+				</div>
+				
+
+				<div className="PreRow">
+					<div className="PreColumn">
+						<h4>ABOUT ME</h4>
+						<p>{resumeInfo.about_me}</p>
+						<ul>
+							{(resumeInfo.about_me_points) ? aboutMePointsMapping() : null}
+						</ul>
+					</div>
+					<div className="PreColumn">
+						<h4>WORK HISTORY</h4>
+						{(resumeInfo.workExps) ? workExpMapping() : null}
+					</div>
+					<div className="PreColumn">
+						<h4>SKILL & PROFICIENCIES</h4>
+						<ul>
+							{(resumeInfo.skills) ? skillsMapping(resumeInfo.skills) : null}
+						</ul>
+					</div>
+					<div className="PreColumn">
+						<h4>EDUCATIONAL BACKGROUND</h4>
+						{(resumeInfo.educations) ? educationMapping() : null}
+					</div>
+					<div className="PreColumn">
+						<h4>CERTIFICATION AND VOLUNTEER WORK</h4>
+						<p>Achievements</p>
+						<ul>
+							{(resumeInfo.achievement) ? achievementMapping() : null}
+						</ul>
+						<p>Certificates</p>
+						<ul>
+							{(resumeInfo.certificate) ? certificateMapping() : null}
+						</ul>
+					</div>
+					<div className="PreColumn">
+						<h4>MEMBERSHIPS</h4>
+						<ul>
+							{(resumeInfo.membership) ? membershipMapping() : null}
+						</ul>
+					</div>
+
+				</div>
 			</div>
+			
 
 		</section >
 

@@ -66,3 +66,19 @@ th a{
 	color: darkgrey;
 }
 
+.skillEdit{
+	border: 2px solid lightgrey;
+	height: 40px;
+	width: 200px;
+	border-radius: 27px;
+	padding-left: 1rem;
+	padding-top: 0.4rem;
+}
+
+.close{
+	position: relative;
+	top: -0.6rem;
+	left: 9rem;
+	font-size: 25px;
+}
+

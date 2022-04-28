@@ -6,6 +6,8 @@ import { FaPlus } from "react-icons/fa";
 import { RiCheckboxCircleLine } from "react-icons/ri";
 import { useOutletContext } from "react-router-dom";
 // import Example from './Example'
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 
@@ -60,6 +62,7 @@ const WorkExp = () => {
       // console.log(res.data);
       console.log(techList);
       sessionStorage.setItem("workexp_id", res.data);
+      NotificationManager.success( 'Saved Successfully');
     })
     setTerm(4);
 
@@ -192,6 +195,7 @@ const WorkExp = () => {
         <button className="button2" disabled>Cancel</button>
         <input className='bt' type="submit" name="aboutme" value="Save" />
         <button className="button1" disabled><i><FaArrowRight /></i></button>
+        <NotificationContainer/>
       </div>
       <div className='main-workexp-div'>
         <div className='div-workexp'>

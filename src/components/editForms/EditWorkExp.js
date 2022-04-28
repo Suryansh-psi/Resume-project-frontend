@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import { RiCheckboxCircleLine } from "react-icons/ri";
 import { useOutletContext } from "react-router-dom";
 // import Example from './Example'
+import { GrFormClose } from "react-icons/gr";
 import Select from 'react-multiple-select-dropdown-lite'
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import axios from 'axios';
@@ -251,20 +252,29 @@ const EditWorkExp = () => {
 
               <label className="WorkExplabel">
                 Project Name
-                <input className={`third ${errors.project && "invalid"}`}
-                  {...register('project', { required: "*required" })}
-                  onKeyUp={() => {
-                    trigger("project");
-                  }}
-                  type="text" name="project[]" />
-                {errors.project && (
-                  <small className="text-danger">{errors.project.message}</small>
-                )}
+               
+                <div className='project-input-div'>
+                <div className="workRole">
+                  <input type="text" placeholder="project" /><span className="projCross"><GrFormClose/></span>
+                </div>
+                  <select className={`project1 ${errors.project && "invalid"}`} name="project" id="project" {...register("project", { required: "*required" })}
+                    onKeyUp={() => {
+                      trigger("project");
+                    }} multiple>
+                    <option className="option1" value="">Select...</option>
+
+                    {options1}
+                  </select>
+                 
+                </div>
               </label>
 
               <label className="WorkExplabel">
                 Role
                 <div className='role-input-div'>
+                  <div className="workRole">
+                    <input type="text" placeholder="role" /><span className="projCross"><GrFormClose/></span>
+                  </div>
                   <select className={`roles1 ${errors.role && "invalid"}`} name="role" id="role" {...register("role", { required: "*required" })}
                     onKeyUp={() => {
                       trigger("role");
@@ -273,9 +283,7 @@ const EditWorkExp = () => {
 
                     {options1}
                   </select>
-                  {errors.role && (
-                    <small className="text-danger">{errors.role.message}</small>
-                  )}
+                  
                 </div>
                 {/* <i className="role" onClick={() => createField('role[]', 'Mention Role', 'fourth', 'role', '.role-input-div')}><BsPlusCircle /></i> */}
               </label>
@@ -326,6 +334,9 @@ const EditWorkExp = () => {
               <label className="WorkExplabel">
                 TechnologyStack
                 <div className='techstack-input-div'>
+                <div className="workRole">
+                  <input type="text" placeholder="tech-stack" /><span className="projCross"><GrFormClose/></span>
+                </div>
                   {/* <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
                   <span className="cross">&#9747;</span> 
 
@@ -338,9 +349,7 @@ const EditWorkExp = () => {
                     <option className="option1" value="">Select...</option>
                     {techstackOptions}
                   </select>
-                  {errors.tech && (
-                    <small className="text-danger">{errors.tech.message}</small>
-                  )}
+                  
                   {/* </div> */}
                 </div>
               </label>

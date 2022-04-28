@@ -225,7 +225,10 @@
     padding: 3px  0 3px 16px;
     text-decoration: none;
     display: block;
+}
 
+.section1 .dropdown-content a{
+    text-decoration: none;
 }
 
 .section1 .dropdown-content span i{
@@ -262,4 +265,18 @@
 
 .try{
     width: 100px;
+}
+
+.swal-icon--warning__body {
+    width: 4px;
+    height: 35px;
+}
+
+.swal-icon:first-child {
+    margin-top: 12px;
+}
+
+.swal-icon {
+    width: 60px;
+    height: 60px;
 }

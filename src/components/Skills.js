@@ -6,6 +6,8 @@ import { FaFilter } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import axios from 'axios';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { useOutletContext } from "react-router-dom";
 import './Skills.css'
 
@@ -28,7 +30,9 @@ const Skills = () => {
 		})
 			.then(res => {
 				console.log(res);
+				NotificationManager.success( 'Saved Successfully !');
 				console.log(res.data);
+				
 			})
 		setTerm(3);
 
@@ -80,6 +84,7 @@ const Skills = () => {
 					<input className="bt" type="submit" name="aboutme" value="Save" />
 
 					<button className="button1"><i><FaArrowRight /></i></button>
+					<NotificationContainer/>
 				</div>
 				<h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
 				<div className="SearchBox">

@@ -7,6 +7,9 @@ import { BsThreeDots } from "react-icons/bs";
 import { FaFileAlt } from "react-icons/fa";
 import { FcApproval } from "react-icons/fc";
 import './UserHome.css'
+import swal from 'sweetalert'
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -39,26 +42,51 @@ const UserHome = () => {
         })
     }
 
-    const shareResume = (id) => {
+    const shareResume = (id, resumeStatus) => {
         console.log("Sharing resume of id" + id);
-        axios.put(`http://localhost:8080/resume/share/${id}`).then(res => {
-            console.log("updated result", res.data);
-            setTemp(id);
-        });
+
+        if (resumeStatus === 'Approved') {
+            NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+        } else {
+            axios.put(`http://localhost:8080/resume/share/${id}`).then(res => {
+                NotificationManager.success('Resume Shared Successfully');
+                console.log("updated result", res.data);
+
+                setTemp(id);
+
+            });
+        }
     }
 
     const deleteResume = (id) => {
         console.log("deleting Resume with id ", id);
-        axios.delete(`http://localhost:8080/resume/${id}`).then(res => {
-            console.log("delete", res);
-            setTemp(id + 1);
-        })
+
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted resume, you will not be able to recover this resume!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+                if (willDelete) {
+                    // swal("Poof! Your resume has been deleted!", {
+                    //     icon: "success",
+                    // });
+                    axios.delete(`http://localhost:8080/resume/${id}`).then(res => {
+                        let date = new Date();
+                        setTemp(date)
+                    })
+                } else {
+                    swal("Your resume is safe!");
+                }
+            });
     }
 
     const setColor = (resumeStatus) => {
-        if(resumeStatus === 'Draft') {
+        if (resumeStatus === 'Draft') {
             return 'grey';
-        } else if(resumeStatus === 'Review') {
+        } else if (resumeStatus === 'Review') {
             return '#FD6a02';
         } else {
             return '#32cd32';
@@ -77,7 +105,7 @@ const UserHome = () => {
                         <p>{data.about_me}</p>
                     </div>
                     <div className='cardLower'>
-                        <h5 style={{backgroundColor: setColor(data.status)}}>{(data.status) ? data.status : "Null"}</h5>
+                        <h5 style={{ backgroundColor: setColor(data.status) }}>{(data.status) ? data.status : "Null"}</h5>
                         <h4>Project Manager {(data.status === "Approved") ? <FcApproval /> : null}</h4>
                         <h6>PSI Resume Project Manager Virendra Singh</h6>
                     </div>
@@ -86,10 +114,11 @@ const UserHome = () => {
                         <button class="dropbtn"><BsThreeDots /></button>
                         <div class="dropdown-content">
 
-                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}><MdEdit />Edit</Link>
+                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}><span className='edit'><MdEdit />Edit</span></Link>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
-                            <span onClick={() => shareResume(data.resumeId)}><FaShareSquare /> Share</span>
+                            <span onClick={() => shareResume(data.resumeId, data.status)}><FaShareSquare /> Share</span>
                             <span onClick={() => deleteResume(data.resumeId)}><MdEdit /> Delete </span>
+                            <NotificationContainer />
                         </div>
                     </div>
 

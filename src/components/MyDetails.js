@@ -5,6 +5,8 @@ import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './MyDetails.css'
 import swal from 'sweetalert';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-multiple-select-dropdown-lite/dist/index.css'
 import { useScrollTrigger } from "@mui/material";
 import { ErrorSharp } from "@mui/icons-material";
@@ -34,8 +36,8 @@ const MyDetails = (props) => {
         if(res) {
           sessionStorage.setItem("resume_id", res.data);
           //alert("new Resume Created");
-          swal("Resume created Successfully !");
-          
+          //swal("Resume created Successfully !");
+          NotificationManager.success( 'Resume created Successfully !');   
         }
       })
     setTerm(1);
@@ -111,6 +113,7 @@ const MyDetails = (props) => {
           <button className="button2" disabled>Cancel</button>
           <input className="bt" type="submit" name="mydetails" value="Save" />
           <button className="button1" disabled><i><FaArrowRight /></i></button>
+          <NotificationContainer/>
         </div>
 
         {/* Image Section */}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import './EditMyDetails.css'
@@ -128,7 +129,6 @@ const EditMyDetails = (props) => {
 
   return (
     <>
-      <h2>Edit my details</h2>
       {/* <form onSubmit={handleSubmit((data) => customFunction(data))}> */}
       <form onSubmit={handleFormSubmit}>
 
@@ -174,13 +174,16 @@ const EditMyDetails = (props) => {
           </div>
 
           <div className="form1">
-            <label className="role">
+            <label className="roleEdit">
               Role
             </label>
+            <div className="boxRole">
+              <input type="text" placeholder="role" /><span className="cross"><GrFormClose/></span>
+            </div>
             <div className="role-fields">
               <select
                 // className={`roles ${errors.role && "invalid"}`} 
-                name="role" id="role" className="roles"
+                name="role" id="role" className="Proles"
                 // {...register("role", { required: "*required" })}
                 // onKeyUp={() => {
                 //   trigger("role");

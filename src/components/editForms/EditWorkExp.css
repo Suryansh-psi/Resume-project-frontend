@@ -229,3 +229,38 @@
 	top: 0.8rem;
 } */
 
+.project-input-div{
+	margin-left: 4.5rem;
+}
+
+
+.project1{
+	border: 2px solid lightgrey;
+	border-radius: 0.25rem;
+	width: 23.8rem;
+}
+.project-input-div .text-danger{
+	position: relative;
+	right: 8rem;
+	bottom: 3.5rem;
+	font-size: 0.7rem;
+}
+
+.workRole input{
+	border: 2px solid lightgrey;
+	border-radius: 27px;
+	width: 150px;
+	height: 40px;
+	margin-left: 0rem;
+	margin-bottom: 1rem;
+	font-size: 0.8rem;
+	padding: 1rem;
+
+}
+
+.projCross{
+	font-size: 25px;
+	position: relative;
+	left: -2rem;
+	top: 0.2rem;
+}
