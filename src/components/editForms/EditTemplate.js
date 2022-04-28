@@ -3,44 +3,22 @@ import './EditTemplate.css'
 import { BiSquare} from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 
 const EditTemplate = (props) => {
-	// const arr = Array.from(sessionStorage.mydetails)
-	// const [render, setRender] = useState(0)
 
+	const [resumeInfo, setResumeInfo] = useState({});
+	const params = useParams();
 
-	const [data, setData] = useState({
-		name: "",
-		role: "",
-		image: "",
-		total_exp: "",
-		aboutMe: "",
-		aboutMePoints: [],
-		skills: [],
-		workExp: []
-	});
 	let result = null;
-	const resume_id = sessionStorage.getItem("resume_id");
-
 	useEffect(() => {
 		result = async () => {
 			try {
-				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${resume_id}`).then(res => {
+				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${params.id}`).then(res => {
 					const response = res.data;
-					// console.log(res.data)
-					setData({
-						...data,
-						name: response.name,
-						role: response.role,
-						image: response.image,
-						total_exp: response.total_exp,
-						aboutMe: response.about_me,
-						aboutMePoints: response.about_me_points,
-						skills: response.skills,
-						workExp: response.workExps
-
-					})
+					console.log(res.data)
+					setResumeInfo(res.data);
 				})
 			}
 			catch (err) {
@@ -48,77 +26,106 @@ const EditTemplate = (props) => {
 			}
 		}
 		result();
-		// console.log(props.term);
 	}, [props.term, result]);
 
-
-
-	let name = sessionStorage.getItem("name");
-	let role = sessionStorage.getItem("role");
-	let total_exp = sessionStorage.getItem("total_exp");
-	let image = sessionStorage.getItem("image");
-	let aboutMe = sessionStorage.getItem("aboutMe");
-	let aboutMePoints = sessionStorage.getItem("aboutMePoints");
-	let skills = sessionStorage.getItem("skills");
-	let clientDesc = sessionStorage.getItem("clientDesc");
-	let country = sessionStorage.getItem("country");
-	let projectName = sessionStorage.getItem("projectName");
-	let role2 = sessionStorage.getItem("role2");
-	let startDate = sessionStorage.getItem("startDate");
-	let endDate = sessionStorage.getItem("endDate");
-	let bussinessSol = sessionStorage.getItem("bussinessSol");
-	let techStack = sessionStorage.getItem("techStack");
-	let projResp = sessionStorage.getItem("projectResp");
-	let imageBase = sessionStorage.getItem("imageBase");
-	let imageURl = sessionStorage.getItem("image");
-	const finalImage = `${imageBase},${imageURl}`;
-	// console.log(finalImage);
-
+	
 	const roleMapping = () => {
-		role = role.split(',');
-		// if (true & data) {
-			let result = role.map(rol => {
-				return <span>{rol} | </span>
-			});
-			return result;
-		// }
+		let result = resumeInfo.role.map(rol => {
+			return <span>{rol} | </span>
+		});
+		return result;
 	}
 
-	const skillsMapping = () => {
-		skills = skills.split(',');
-		// if (true & data) {
-			let result = skills.map(skill => {
-				return <li>{skill}</li>
-			});
-			return result;
-		// }
+	const skillsMapping = (skill) => {
+		let result = skill.map(skill => {
+			skill = skill.split("#");
+			return <li>{`${skill[0]} : ${skill[1]}`}</li>
+		});
+		return result;
 	}
 
 	const aboutMePointsMapping = () => {
-		aboutMePoints = aboutMePoints.split(',');
-		// if(true & data) {
-			let result =  aboutMePoints.map(point => {
-				return <li>{point}</li>
-			})
-			return result;
-		// }
+		let result = resumeInfo.about_me_points.map(point => {
+			return <li>{point}</li>
+		})
+		return result;
 	}
 
-	const projRespMapping = () => {
-		projResp = projResp.split(',');
-		// if(true & data) {
-			let result =  projResp.map(point => {
-				return <li>{point}</li>
-			})
-			return result;
-		// }
+	const projRespMapping = (resp) => {
+		let result = resp.map(point => {
+			return <li>{point}</li>
+		})
+		return result;
 	}
 
-	
-	const techStackMapping = () => {
-		techStack = techStack.split(',');
-		let result = techStack.map(point => {
+
+	const techStackMapping = (techstack) => {
+		let result = techstack.map(point => {
 			return <input type="text" name="technology[]" value={point} />
+		})
+		return result;
+	}
+
+	const achievementMapping = () => {
+		let achievemetns = resumeInfo.achievement;
+		let result = achievemetns.map(point => {
+			return <li>{point}</li>
+		})
+		return result;
+	}
+
+	const certificateMapping = () => {
+		let certificates = resumeInfo.certificate;
+		let result = certificates.map(point => {
+			return <li>{point}</li>
+		})
+		return result;
+	}
+
+	const membershipMapping = () => {
+		let membership = resumeInfo.membership;
+		let result = membership.map(point => {
+			return <li>{point}</li>
+		})
+		return result;
+	}
+
+	const workExpMapping = () => {
+		let result = [];
+		result = resumeInfo.workExps.map((data, index) => {
+			return (
+				<>
+					<p>Client: {data.clientDesc}</p>
+					<p>Project: {data.projectName}</p>
+					<p>Role: {data.role.toString()}</p>
+					<p>Duration: {data.startDate} {data.endDate}</p>
+					<p>Business Solution: {data.bussinessSol}</p>
+					<div className='tech-stack-output'>
+						{techStackMapping(data.techStack)}
+					</div>
+					<div className='project-res-output'>
+						<ul>
+							{projRespMapping(data.projectResp)}
+						</ul>
+					</div>
+				</>
+			)
+		})
+		return result;
+	}
+
+	const educationMapping = () => {
+		let result = [];
+		result = resumeInfo.educations.map((data, index) => {
+			return (
+				<>
+					<p>{data.educationType}</p>
+					<p>{data.educationName}</p>
+					<p>{data.educationLocation}</p>
+					<p>{data.startDate} - {data.endDate}</p>
+					<p>{`Percentage : ${data.percentage}`}</p>
+				</>
+			)
 		})
 		return result;
 	}
@@ -128,22 +135,22 @@ const EditTemplate = (props) => {
 
 		<section className="template">
 			<div className="header">
-				<i><img className='imageTemplate' src={finalImage}/></i>
-				<h2>{name}</h2>
-				<h5>{roleMapping()}</h5>
-				<h5>Total Exp: {total_exp}</h5>
+				<i><img className='imageTemplate' src={(resumeInfo.image) ? `data:image/jpeg;base64,${resumeInfo.image}` : ""}/></i>
+				<h2>{(resumeInfo.name) ? resumeInfo.name : "Name"}</h2>
+				<h5>{(resumeInfo.role) ? roleMapping() : null}</h5>
+				<h5>Total Exp: {resumeInfo.total_exp}</h5>
 			</div>
 			<div className="row">
 				<div className="column">
 					<h6>ABOUT ME</h6>
-					<p>{aboutMe}</p>
+					<p>{resumeInfo.about_me}</p>
 					<ul>
-						{aboutMePointsMapping()}
+					{(resumeInfo.about_me_points) ? aboutMePointsMapping() : null}
 					</ul>
 				</div>
 				<div className="col">
 					<h6>WORK HISTORY</h6>
-					<p>Client: {clientDesc}</p>
+					{/* <p>Client: {clientDesc}</p>
 					<p>Project: {projectName}</p>
 					<p>Role: {role2}</p>
 					<p>Duration: {startDate} {endDate}</p>
@@ -155,25 +162,35 @@ const EditTemplate = (props) => {
 						<ul>
 							{projRespMapping()}
 						</ul>
-					</div>
+					</div> */}
+					{(resumeInfo.workExps) ? workExpMapping() : null}
 				</div>
 				<div className="column">
 					<h6>SKILL & PROFICIENCIES</h6>
 					<ul>
-						{skillsMapping()}
+					{(resumeInfo.skills) ? skillsMapping(resumeInfo.skills) : null}
 					</ul>
 				</div>
 				<div className="col">
 					<h6>EDUCATIONAL BACKGROUND</h6>
-					<p>Some text..</p>
+					{(resumeInfo.educations) ? educationMapping() : null}
 				</div>
 				<div className="column">
 					<h6>CERTIFICATION AND VOLUNTEER WORK</h6>
-					<p>Some text..</p>
+					<p>Achievements</p>
+					<ul>
+						{(resumeInfo.achievement) ? achievementMapping() : null}
+					</ul>
+					<p>Certificates</p>
+					<ul>
+						{(resumeInfo.certificate) ? certificateMapping() : null}
+					</ul>
 				</div>
 				<div className="col">
 					<h6>MEMBERSHIPS</h6>
-					<p>Some text..</p>
+					<ul>
+						{(resumeInfo.membership) ? membershipMapping() : null}
+					</ul>
 				</div>
 				
 			</div>

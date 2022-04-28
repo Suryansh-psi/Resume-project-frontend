@@ -5,6 +5,7 @@ import { MdEdit } from "react-icons/md";
 import { FaShareSquare } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { FaFileAlt } from "react-icons/fa";
+import { FcApproval } from "react-icons/fc";
 import './UserHome.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -54,6 +55,16 @@ const UserHome = () => {
         })
     }
 
+    const setColor = (resumeStatus) => {
+        if(resumeStatus === 'Draft') {
+            return 'grey';
+        } else if(resumeStatus === 'Review') {
+            return '#FD6a02';
+        } else {
+            return '#32cd32';
+        }
+    }
+
 
     let resumeMapper = resumeInfo.map((data, index) => {
         return (
@@ -66,8 +77,8 @@ const UserHome = () => {
                         <p>{data.about_me}</p>
                     </div>
                     <div className='cardLower'>
-                        <h5>{(data.status) ? data.status : "Null"}</h5>
-                        <h4>Project Manager</h4>
+                        <h5 style={{backgroundColor: setColor(data.status)}}>{(data.status) ? data.status : "Null"}</h5>
+                        <h4>Project Manager {(data.status === "Approved") ? <FcApproval /> : null}</h4>
                         <h6>PSI Resume Project Manager Virendra Singh</h6>
                     </div>
 

@@ -138,8 +138,8 @@
 .Manager{
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     
 }
 
@@ -147,7 +147,7 @@
     border: 2px solid lightgrey;
     width: 18rem;
     height: 13rem;
-    margin: 2.5rem 5rem 0 0;
+    margin: 2.5rem 5rem 0 3rem;
     padding: 0.2rem 0.3rem;
     background-color: #d6d9db;
     border-radius: 0.5rem;
@@ -199,8 +199,8 @@
 .Manager .cardLower h5{
     border: 1px solid transparent;
     font-size: 0.6rem;
-    background-color: #ffbff4;
-    width: 3rem;
+    /* background-color: #ffbff4; */
+    width: 3.5rem;
     height: 1rem;
     border-radius: 25px;
     padding-left: 0.7rem;

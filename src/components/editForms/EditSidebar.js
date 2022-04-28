@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import './EditSidebar.css';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 import BadgeIcon from '@mui/icons-material/Badge';
@@ -17,6 +17,8 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LanIcon from '@mui/icons-material/Lan';
 
 const EditSidebar = () => {
+
+	const params = sessionStorage.getItem("editIdUser");
   return (
 		<aside className="Editsidebar">
 			<div className="barTitle">
@@ -32,13 +34,13 @@ const EditSidebar = () => {
 			  <i className="dots"><BsThreeDotsVertical /></i>
 			</div>
 			<div className='sidelinks-p d-flex flex-column justify-content-around align-items-center'>
-			    <Link className='sidebar-links'to="editMyDetails"><div><i><BadgeIcon/></i> My Details</div></Link>
-				<Link className='sidebar-links'to="editAboutMe"><div ><i><InfoIcon/></i>About Me</div></Link>
-				<Link className='sidebar-links'to="editSkills"><div ><i><LinkIcon/></i>Skills & Proficiencies</div></Link>
-				<Link className='sidebar-links'to="editWorkExp"><div ><i><WorkIcon/></i>Work Experience</div></Link>
-				<Link className='sidebar-links'to="editEducationalBackground"><div ><i><SchoolIcon/></i>Educational Background</div></Link>
-				<Link className='sidebar-links'to="editAchievements"><div><i><EmojiEventsIcon/></i>Achievements</div></Link>
-				<Link className='sidebar-links'to="editMemberships"><div><i><LanIcon/></i>Memberships</div></Link>
+			    <Link className='sidebar-links' to={`editMyDetails\\${params}`}><div><i><BadgeIcon/></i> My Details</div></Link>
+				<Link className='sidebar-links' to={`editAboutMe\\${params}`}><div ><i><InfoIcon/></i>About Me</div></Link>
+				<Link className='sidebar-links' to={`editSkills\\${params}`}><div ><i><LinkIcon/></i>Skills & Proficiencies</div></Link>
+				<Link className='sidebar-links' to={`editWorkExp\\${params}`}><div ><i><WorkIcon/></i>Work Experience</div></Link>
+				<Link className='sidebar-links' to={`editEducationalBackground\\${params}`}><div ><i><SchoolIcon/></i>Educational Background</div></Link>
+				<Link className='sidebar-links' to={`editAchievements\\${params}`}><div><i><EmojiEventsIcon/></i>Achievements</div></Link>
+				<Link className='sidebar-links' to={`editMemberships\\${params}`}><div><i><LanIcon/></i>Memberships</div></Link>
         </div>
         <div className="status">
           <div className='d-flex justify-content-between w-100 table-sidebar'><div>Last Modified</div><div>DD/MM/YYYY</div></div>

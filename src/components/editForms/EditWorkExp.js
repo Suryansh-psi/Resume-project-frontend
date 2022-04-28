@@ -21,10 +21,11 @@ const EditWorkExp = () => {
   const [techstacks, setTechstacks] = useState([]);
   // const [data, setData] = useState("");
 
-  const [temp, setTemp] = useState(0);
-	const [resumeInfo, setResumeInfo] = useState({});
 
-	const id = sessionStorage.getItem("editIdUser");
+  const [temp, setTemp] = useState(0);
+  const [resumeInfo, setResumeInfo] = useState({});
+
+  const id = sessionStorage.getItem("editIdUser");
 
   const customFunction = (d) => {
     // console.log(role);
@@ -47,7 +48,7 @@ const EditWorkExp = () => {
     // console.log(d);
     // d.startDate = d.startDate.toString();
     // d.endDate = d.endDate.toString();
-    
+
     // axios.put(`http://localhost:8080/workexp/${id}`, {
     //     clientDesc: d.client_desc,
     //     country: d.country,
@@ -80,22 +81,22 @@ const EditWorkExp = () => {
     // reset();
   }
 
-  
-	useEffect(() => {
-		let result = async () => {
-			try {
-				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
-					const response = res.data;
-					setResumeInfo(response);
-					console.log(response);
-				})
-			}
-			catch (err) {
-				console.log(err);
-			}
-		}
-		result();
-	}, [temp]);
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
   useEffect(() => {
     let result = async () => {
@@ -204,45 +205,48 @@ const EditWorkExp = () => {
   const techstackOptions = techstacks.map((opt) => {
     return <option title={opt.techStackDesc} value={opt.techStackName}>{opt.techStackName}</option>
   })
-
-
-  return (
-    <form onSubmit={handleSubmit((data) => customFunction(data))}>
-      <div className="buttons">
-        <button className="button2" disabled>Cancel</button>
-        <input type="submit" name="aboutme" value="Save" />
-        <button className="button1" disabled><i><FaArrowRight /></i></button>
-      </div>
-      <div className='main-workexp-div'>
-        <div className='div-workexp'>
-          <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
-
+  // bussinessSol: "sfasfasdf"
+  // clientDesc: "hey whatsapp"
+  // country: "india"
+  // endDate: "2022-04-14"
+  // projectName: "resume builder"
+  // projectResp: ['asdfa']
+  // resumeId: 6
+  // role: (3) ['', 'Developer', 'Manager']
+  // startDate: "2022-03-31"
+  // techStack: (2) ['Hello', 'java']
+  // workExpId: 11
+  const workExpFieldsMapping = () => {
+    let result = [];
+    result = resumeInfo.workExps.map((data, index) => {
+      return (
+        <>
           <div className="workexpsection">
             <div className='workexpfields'>
               <label className="WorkExplabel">
                 Client Description
-                <input value={resumeInfo.clientDesc} className={`first ${errors.client_desc && "invalid"}`}
-                  {...register('client_desc', { required: "*required" })}
-                  onKeyUp={() => {
-                    trigger("client_desc");
-                  }}
+                <input value={data.clientDesc} className={`first ${errors.client_desc && "invalid"}`}
+                  // {...register('client_desc', { required: "*required" })}
+                  // onKeyUp={() => {
+                  //   trigger("client_desc");
+                  // }}
                   type="text" name="client_desc[]" />
-                {errors.client_desc && (
+                {/* {errors.client_desc && (
                   <small className="text-danger">{errors.client_desc.message}</small>
-                )}
+                )} */}
               </label>
 
               <label className="WorkExplabel">
                 Country
-                <input className={`second ${errors.country && "invalid"}`}
-                  {...register('country', { required: "*required" })}
-                  onKeyUp={() => {
-                    trigger("country");
-                  }}
+                <input value={data.country} className={`second ${errors.country && "invalid"}`}
+                  // {...register('country', { required: "*required" })}
+                  // onKeyUp={() => {
+                  //   trigger("country");
+                  // }}
                   type="text" name="country[]" />
-                {errors.country && (
+                {/* {errors.country && (
                   <small className="text-danger">{errors.country.message}</small>
-                )}
+                )} */}
               </label>
 
               <label className="WorkExplabel">
@@ -266,7 +270,7 @@ const EditWorkExp = () => {
                       trigger("role");
                     }} multiple>
                     <option className="option1" value="">Select...</option>
-                    
+
                     {options1}
                   </select>
                   {errors.role && (
@@ -323,9 +327,9 @@ const EditWorkExp = () => {
                 TechnologyStack
                 <div className='techstack-input-div'>
                   {/* <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
- <span className="cross">&#9747;</span> 
+                  <span className="cross">&#9747;</span> 
 
-<i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
+                  <i className="tech" onClick={() => createField('technology[]', 'Mention Tech', 'seventh', 'technology', '.techstack-input-div')}><BsPlusCircle /></i> */}
                   {/* <div className="role-fields"> */}
                   <select className={`roles1 ${errors.tech && "invalid"}`} name="role" id="role" {...register("tech", { required: "*required" })}
                     onKeyUp={() => {
@@ -357,16 +361,34 @@ const EditWorkExp = () => {
               </label>
             </div>
           </div>
-        </div>
+        </>
+      )
+    });
+    return result;
+  }
 
+  return (
+    <form onSubmit={handleSubmit((data) => customFunction(data))}>
+      <div className="buttons">
+        <button className="button2" disabled>Cancel</button>
+        <input type="submit" name="aboutme" value="Save" />
+        <button className="button1" disabled><i><FaArrowRight /></i></button>
       </div>
+      <div className='main-workexp-div'>
+        <div className='div-workexp'>
+          <h6 className="WorkExpHeader"><div>Work & </div>Experience</h6>
+          {(resumeInfo.workExps) ? workExpFieldsMapping() : null}
+          {/* {workExpFieldsMapping()} */}
+        </div >
+
+      </div >
       <div className="footer">
         {/* <span onClick={createWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" /> */}
         <span onClick={addWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" />
         {/* <i className='plus'><FaPlus /> Add Work Exp</i> */}
       </div>
 
-    </form>
+    </form >
   );
 }
 

@@ -112,14 +112,14 @@ const EditMyDetails = (props) => {
         .then(res => {
           if (res) {
             console.log(res.data);
+            let date = new Date();
+            setTerm(date.toLocaleString())
           }
         })
 
     } catch (err) {
       console.log(err);
     }
-
-    setTerm(1);
   }
 
   const handleChange = name => event => {

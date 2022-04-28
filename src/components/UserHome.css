@@ -95,11 +95,11 @@
 }
 
 .section1{
-    margin: 2rem 0 2.5rem 0;
+    margin: 2rem 0 2.5rem 3rem;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     
 }
 /* .system{
@@ -170,9 +170,9 @@
 .section1 .cardLower h5{
     border: 1px solid transparent;
     font-size: 0.6rem;
-    background-color: #e03661;
+    /* background-color: #e03661; */
     color: #0e0000;
-    width: 3rem;
+    width: 3.5rem;
     height: 1rem;
     border-radius: 25px;
     padding-left: 0.7rem;
