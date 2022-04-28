@@ -64,12 +64,12 @@ const App = () => {
         {/* Editing forms */}
         <Route path="/editforms/" element={<EditLayout />}>  
           <Route path="editMyDetails/:id" element={<EditMyDetails />}/>
-          <Route path="editAboutMe" element={<EditAboutMe />}/>
-          <Route path="editSkills" element={<EditSkills />}/>
-          <Route path="editWorkExp" element={<EditWorkExp />}/>
-          <Route path="editEducationalBackground" element={<EditEducationalBackground />}/>
-          <Route path="editAchievements" element={<EditAchievements />}/>
-          <Route path="editMemberships" element={<EditMemberships />}/>
+          <Route path="editAboutMe/:id" element={<EditAboutMe />}/>
+          <Route path="editSkills/:id" element={<EditSkills />}/>
+          <Route path="editWorkExp/:id" element={<EditWorkExp />}/>
+          <Route path="editEducationalBackground/:id" element={<EditEducationalBackground />}/>
+          <Route path="editAchievements/:id" element={<EditAchievements />}/>
+          <Route path="editMemberships/:id" element={<EditMemberships />}/>
         </Route>
       </Routes>
     </BrowserRouter>

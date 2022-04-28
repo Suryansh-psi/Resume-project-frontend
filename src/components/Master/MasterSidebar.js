@@ -13,7 +13,7 @@ const MasterSidebar = () => {
   return (
 		<aside className="sidebar">
 			<div className="barTitle">
-			   <Link to="/ManagerHome">
+			   <Link to="/managerHome">
 				<span className="sidebarHeader"><HiOutlineArrowCircleLeft /></span>
 			   </Link>
 				<span className="title">Resume</span>
