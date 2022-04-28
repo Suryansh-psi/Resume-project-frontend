@@ -5,6 +5,9 @@ import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert';
+import { GrFormClose } from "react-icons/gr";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import './AboutMe.css';
 
 
@@ -34,7 +37,8 @@ const AboutMe = () => {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
-        swal("Saved Successfully !");
+        NotificationManager.success( 'Saved Successfully !');
+        // swal("Saved Successfully !");
       })
       setTerm(2);
 
@@ -54,6 +58,7 @@ const AboutMe = () => {
     document.querySelector(".bulletPoints").appendChild(inp);
   }
 
+ 
   
 
 
@@ -64,6 +69,7 @@ const AboutMe = () => {
         <input  className="bt" type="submit" name="aboutme" value="Save" />
         
         <button className="button1" disabled><i><FaArrowRight /></i></button>
+        <NotificationContainer/>
       </div>
       <div className="aboutSection">
         <label className="label">About Me</label>
@@ -84,6 +90,7 @@ const AboutMe = () => {
         )}
         <div className="bulletPoints">
           <input {...register('points')} className="aboutmepoints" type="text" name="points[]" placeholder="Write in bulleted list" />
+          <span className="cross"><GrFormClose/></span>
           <i onClick={addBulletPoint}><BsPlusCircle/></i>
         </div>
       </div>

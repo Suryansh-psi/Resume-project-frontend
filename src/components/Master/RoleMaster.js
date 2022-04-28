@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import './RoleMaster.css'
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import MasterSidebar from './MasterSidebar';
 
 
@@ -39,9 +41,10 @@ const RoleMaster = () => {
     }
 
     const deleteRole = (id) => {
-        console.log("Deleting Role with Id", id);
         
+        console.log("Deleting Role with Id", id); 
         axios.delete(`http://localhost:8080/role/${id}`).then(res => {
+            NotificationManager.error('Role deleted successfully !');
             setTemp(res);
         })
     }
@@ -54,6 +57,7 @@ const RoleMaster = () => {
                 <td>
                     <button className='delBtn' onClick={() => deleteRole(data.role_id)}>Delete</button>
                     <button className='editBtn' onClick={() => editRole(data.role_id)}>Edit</button>
+                    <NotificationContainer/>
                 </td>
             </tr>
         )

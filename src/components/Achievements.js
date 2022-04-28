@@ -4,6 +4,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
 import './Achievements.css';
 import axios from 'axios';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { useOutletContext } from "react-router-dom";
 
 
@@ -38,6 +40,7 @@ function Achievements() {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
+        NotificationManager.success( 'Saved Successfully');
       })
     setTerm(6);
     sessionStorage.setItem("achievement", achievementList);
@@ -62,6 +65,7 @@ function Achievements() {
           <button className="button2">Cancel</button>
           <input className="bt" type="submit" name="aboutme" value="Save" />
           <button className="button1"><i><FaArrowRight /></i></button>
+          <NotificationContainer/>
         </div>
         <div className="achievement">
           <label className="achievement-name">

@@ -4,6 +4,8 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import './Memberships.css';
 import axios from 'axios';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { useOutletContext } from "react-router-dom";
 import { BsPlusCircle } from "react-icons/bs";
 
@@ -26,6 +28,7 @@ function Memberships() {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
+        NotificationManager.success( 'Saved Successfully');
       })
     setTerm(7);
     sessionStorage.setItem("membership", membershipList);
@@ -51,6 +54,7 @@ function Memberships() {
         <button className="button2">Cancel</button>
         <input className="bt" type="submit" name="aboutme" value="Save" />
         <button className="button1"><i><FaArrowRight /></i></button>
+        <NotificationContainer/>
       </div>
       <div className="membership">
         {/* <label>

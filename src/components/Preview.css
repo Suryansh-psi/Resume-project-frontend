@@ -5,7 +5,7 @@
 }
 
 .preview{
-    width: 100%;   
+    
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -16,22 +16,46 @@
     background: transparent;  
 }
 
+.h3{
+    position: relative;
+    top: -3rem;
+    text-align: center;
+    color: #bab1ff;
+}
+
+/* <---------------------------Back Button-----------------------> */
+
+.preview .arrowBtn{
+    font-size: 40px;
+    color: #bab1ff;
+    margin-left: 1rem;
+    position: relative;
+    top: 0rem;
+
+}
+
+
+
+/* <-------------------mainBtn---------------------------> */
+
 .PreHeader{
-    margin-bottom: 0.5rem;
-    margin-top: -5.5rem;
-    padding: 0 0 0 23rem; 
+    margin-bottom: 2rem;
+    margin-top: -4.5rem;
+    padding: 0 0 0 18rem; 
+    
         
 }
 
 .preStyle{
-    background-color: #E9D5DA;
-    height: 12rem;
+    background-color: black;
+    height: 5rem;
+    width: 100%;   
 }
 
 .PreHeader h2{
     font-weight: 600;
     color: #363062;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
   
 
@@ -43,33 +67,24 @@
 
 
 .imagePreview{
-    width: 130px;
-    height: 130px;
-    padding: 2rem 2rem 0 8rem;
-    
-}
-
-
-/* <---------------------------Back Button-----------------------> */
-
-.preview .arrowBtn{
-    font-size: 40px;
-    color: #363062;
-    margin-left: 1rem;
+    width: 100px;
+    height: 100px;
+    border: 50%;
     position: relative;
-    top: -1.5rem;
-
+    left: -15rem;
+    top: 5.5rem;
+       
 }
 
-/* <-------------------mainBtn---------------------------> */
+
 .preBtn{
     border: 2px solid transparent;
     width: 100px;
     height: 40px;
-    background-color: #736da1;
+    background-color: #c4bcff;
     border-radius: 27px;
     position: relative;
-    top: -8rem;
+    top: -5rem;
     left: 64rem;
     margin-right: 1rem;
 }
@@ -83,16 +98,20 @@
 
 .PreRow{
 	box-sizing: border-box;
-	padding: 1rem 0 0 -4rem;
-	
+	padding: 1rem 0 0 0;	
+    border-top: 2px solid rgb(58, 157, 190);
 }
 
 .PreColumn{
     float: left;
     width: 50%;
-    padding: 100px;
-    padding-top: 1rem !important;
-    height: 300px;
+    padding-top: 1.5rem !important;
+    height: 200px;
+    padding: 0 50px;
+}
+
+.PreColumn h4{
+    background-color: #78acb4;
 }
 
 .PreRow:after {
@@ -139,7 +158,32 @@
     margin-top: 0.4rem;
     padding-left: 2rem;
 }
+/* 
+.swal-text:first-child {
+    margin-top: 15px;
+}
+
+.swal-content__input{
+    height: 10rem;
+    margin-right: 1rem;
+    padding-bottom: 7rem !important;
+}
+
+.swal-modal {
+    width: 350px;
+    height: 300px;
+    
+} */
 
 
-
+.preResume{
+    margin: 3rem 16.5rem;
+    padding: 1rem;
+    border: 2px solid lightgrey;
+    width: 60%;
+    height: 10%;
+    box-shadow: 10px 10px 10px grey;
+    background-color: whitesmoke;
+    
+}
 

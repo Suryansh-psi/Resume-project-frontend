@@ -5,6 +5,7 @@ import SearchBox from 'react-search-box';
 import { FaFilter } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
 import './EditSkills.css'
@@ -98,8 +99,12 @@ const EditSkills = () => {
 				</div>
 				<h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
 				{/* i added list here */}
+				<div className="skillEdit">
+				    <span className="close"><GrFormClose/></span>
+				</div>
 				<div>
 					{(resumeInfo.skills) ? skillsFromDatabaseMapper() : null}
+					
 				</div>
 				<div className="SearchBox">
 					<input {...register('points')} type="text" name="points[]" placeholder="Search" />

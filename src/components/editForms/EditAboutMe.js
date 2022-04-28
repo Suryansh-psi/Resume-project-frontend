@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
+import { GrFormClose } from "react-icons/gr";
 import axios from "axios";
 import './EditAboutMe.css';
 
@@ -98,7 +99,6 @@ const EditAboutMe = () => {
   return (
     // <form onSubmit={handleSubmit((data) => customFunction(data))}>
     <form onSubmit={handleFormSubmit}>
-      <h2>Edit my details</h2>
       <div className="buttons">
         <button className="button2">Cancel</button>
         <input type="submit" name="aboutme" value="Save" />
@@ -128,6 +128,8 @@ const EditAboutMe = () => {
         )} */}
         <div className="bulletPoints">
           {(resumeInfo.about_me_points) ? aboutMePointsMapper() : null}
+          <span className="cross"><GrFormClose/></span>
+          
           <i onClick={addBulletPoint}><BsPlusCircle /></i>
         </div>
       </div>
