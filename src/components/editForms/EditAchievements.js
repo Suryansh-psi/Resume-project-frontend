@@ -1,47 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
 import './EditAchievements.css';
 import axios from 'axios';
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 
-const EditAchievements = () => {
+const EditAchievements = (props) => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [data, setData] = useState("");
 
-  const customFunction = (d) => {
-    // sessionStorage.setItem("achievements", JSON.stringify(d))
-    // const data = JSON.parse(sessionStorage.getItem('achievements'))
-    // console.log(sessionStorage.key(0))
-    // console.log(data)
+  const [temp, setTemp] = useState(0);
+  const [resumeInfo, setResumeInfo] = useState({});
+  const id = sessionStorage.getItem("editIdUser");
+  
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
+
+  const customFunction = (d) => {
     const achievementInputs = document.querySelectorAll('.achievement-class-inputs');
     const certificateInputs = document.querySelectorAll('.certification-input');
     let achievementList = [];
     let certificateList = [];
     achievementInputs.forEach((val) => {
-      achievementList.push(val.value);
+      if (val.value !== "") {
+        achievementList.push(val.value);
+      }
     });
-
     certificateInputs.forEach((val) => {
-      certificateList.push(val.value);
+      if (val.value !== "") {
+        certificateList.push(val.value);
+      }
     });
-    const resume_id = sessionStorage.getItem('resume_id');
-    axios.put(`http://localhost:8080/resume/achievement/${resume_id}`, {
-      "achievement": achievementList,
-      "certificate": certificateList,
-      "training": ["string"]
+    axios.put(`http://localhost:8080/resume/achievement/${id}`, {
+      "achievement": [...resumeInfo.achievement, ...achievementList],
+      "certificate": [...resumeInfo.certificate, ...certificateList]
     })
       .then(res => {
-        // console.log(res);
-        // console.log(res.data);
+        let date = new Date();
+        setTerm(date.toLocaleString());
       })
+    setResumeInfo({ ...resumeInfo, "achievement": [...resumeInfo.achievement, ...achievementList], "certificate": [...resumeInfo.certificate, ...certificateList] });
     setTerm(6);
-    sessionStorage.setItem("achievement", achievementList);
-    sessionStorage.setItem("certificate", certificateList);
+    reset();
   }
 
 
@@ -55,6 +72,45 @@ const EditAchievements = () => {
     document.querySelector(`.${classN}`).appendChild(inp);
   }
 
+  const deletethisbubble = (index) => {
+    setResumeInfo({
+      ...resumeInfo, "achievement": resumeInfo.achievement.filter((ele, i) => {
+        return i !== index;
+      })
+    })
+  }
+
+  const deletethisbubble2 = (index) => {
+    setResumeInfo({
+      ...resumeInfo, "certificate": resumeInfo.certificate.filter((ele, i) => {
+        return i !== index;
+      })
+    })
+  }
+
+  const achievementBulbleMapping = () => {
+    let result = [];
+    result = resumeInfo.achievement.map((data, index) => {
+      return (
+        <li>{data} <span onClick={() => deletethisbubble(index)}>X</span></li>
+      )
+    });
+    return result;
+  }
+
+  const certificateBubbleMapping = () => {
+    let result = [];
+    result = resumeInfo.certificate.map((data, index) => {
+      return (
+        <>
+          <li>{data} <span onClick={() => deletethisbubble2(index)}>X</span></li>
+        </>
+      )
+    });
+    return result;
+  }
+
+
 
   return (
     <>
@@ -64,6 +120,24 @@ const EditAchievements = () => {
           <input type="submit" name="aboutme" value="Save" />
           <button className="button1"><i><FaArrowRight /></i></button>
         </div>
+        <div>
+          <h3>Achievements</h3>
+          <div>
+            <ul>
+              {(resumeInfo.achievement) ? achievementBulbleMapping() : null}
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h3>Certification</h3>
+          <div>
+            <ul>
+              {(resumeInfo.certificate) ? certificateBubbleMapping() : null}
+            </ul>
+          </div>
+        </div>
+
         <div className="achievement">
           <label className="achievement-name">
             Name of Achievement

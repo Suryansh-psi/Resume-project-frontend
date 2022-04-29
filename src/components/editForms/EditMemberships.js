@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -10,28 +10,53 @@ import { BsPlusCircle } from "react-icons/bs";
 
 const EditMemberships = () => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [data, setData] = useState("");
 
+  const [temp, setTemp] = useState(0);
+  const [resumeInfo, setResumeInfo] = useState({});
+  const id = sessionStorage.getItem("editIdUser");
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
+
   const customFunction = (d) => {
+
     const membershipInputs = document.querySelectorAll('.membership-input');
     let membershipList = [];
     membershipInputs.forEach((val) => {
-      membershipList.push(val.value);
+      if (val.value !== "") {
+        membershipList.push(val.value);
+      }
     });
-    const resume_id = sessionStorage.getItem('resume_id');
-    axios.put(`http://localhost:8080/resume/membership/${resume_id}`, {
-      "membership": membershipList
+
+    axios.put(`http://localhost:8080/resume/membership/${id}`, {
+      "membership": [...resumeInfo.membership, ...membershipList]
+    }).then(res => {
+      let date = new Date();
+      setTerm(date.toLocaleString());
+      console.log(res.data);
     })
-      .then(res => {
-        // console.log(res);
-        // console.log(res.data);
-      })
+    setResumeInfo({ ...resumeInfo, "membership": [...resumeInfo.membership, ...membershipList] });
     setTerm(7);
-    sessionStorage.setItem("membership", membershipList);
+    reset();
   }
 
-  
+
   const cloneFields = (name1, placeholder, classN, regis, inputClass) => {
     const inp = document.createElement("input");
     inp.setAttribute('type', 'text');
@@ -42,47 +67,58 @@ const EditMemberships = () => {
     document.querySelector(`.${classN}`).appendChild(inp);
   }
 
+  const deletethisbubble3 = (index) => {
+    setResumeInfo({
+      ...resumeInfo, "membership": resumeInfo.membership.filter((ele, i) => {
+        return i !== index;
+      })
+    })
+  }
+
+  const membershipBubbleMapping = () => {
+    let result = [];
+    result = resumeInfo.membership.map((data, index) => {
+      return (
+        <>
+          <li>{data} <span onClick={() => deletethisbubble3(index)}>X</span></li>
+        </>
+      )
+    });
+    return result;
+  }
+
 
   return (
     <>
       <form onSubmit={handleSubmit((data) => customFunction(data))}>
-      <div className="buttons">
-        <button className="button2">Cancel</button>
-        <input type="submit" name="aboutme" value="Save" />
-        <button className="button1"><i><FaArrowRight /></i></button>
-      </div>
-      <div className="membership">
-        {/* <label>
-          Membership No.
-          <input className="membership-name"{...register("name")}  name="name" placeholder="Enter Membership No." id="name" />
-        </label>
-        <label>
-          Membership Type
-          <input className="membership-type" {...register('type')} name="type" placeholder="Write type" id="desc" /> 
-        </label>
-          
-        <label>
-           Membership Since
-         <input className="start"{...register("startdate")} type="date" name="startdate[]" />
-        </label>
-        <label>
-           Expiry/Renewal Date
-           <input className="end"{...register("enddate")} type="date" name="enddate[]" />
-        </label> */}
-        <div className="membership">
-          <label className="membership-name">
-            Name of Membership
-            <input className="membership-input" {...register('membership')} name="membership[]" placeholder="Name of Membership" id="desc" />
-            <i className="Ach" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
-          </label>
+        <div className="buttons">
+          <button className="button2">Cancel</button>
+          <input type="submit" name="aboutme" value="Save" />
+          <button className="button1"><i><FaArrowRight /></i></button>
         </div>
+        <div className="membership">
+          <div>
+            <h3>Memberships</h3>
+            <div>
+              <ul>
+                {(resumeInfo.membership) ? membershipBubbleMapping() : null}
+              </ul>
+            </div>
+          </div>
+          <div className="membership">
+            <label className="membership-name">
+              Name of Membership
+              <input className="membership-input" {...register('membership')} name="membership[]" placeholder="Name of Membership" id="desc" />
+              <i className="Ach" onClick={() => cloneFields("membership[]", "Name of Membership", "membership-name", "membership", "membership-input")}><BsPlusCircle /></i>
+            </label>
+          </div>
 
-    </div>
-    {/* <div className="footer">
+        </div>
+        {/* <div className="footer">
         <span className="plus"><FaPlus /></span><input className="element" {...register('addMembership')} type="text" name="addMembership[]" placeholder='Add Membership' value="Add Membership" />
     </div> */}
-        
-        
+
+
       </form>
     </>
   );

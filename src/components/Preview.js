@@ -14,6 +14,7 @@ import swal from 'sweetalert';
 const Preview = (props) => {
 	const [resumeInfo, setResumeInfo] = useState({});
 	const params = useParams();
+	const [temp, setTemp] = useState({});
 
 	let result = null;
 	useEffect(() => {
@@ -30,7 +31,7 @@ const Preview = (props) => {
 			}
 		}
 		result();
-	}, [props.term, result]);
+	}, [props.term, result, temp]);
 
 	const roleMapping = () => {
 		let result = resumeInfo.role.map(rol => {
@@ -165,6 +166,7 @@ const Preview = (props) => {
 		} else {
 			axios.put(`http://localhost:8080/resume/approve/${id}`).then(res => {
 			NotificationManager.success( 'Approved Successfully !');
+			setTemp(res);
 		})
 		}
 	}

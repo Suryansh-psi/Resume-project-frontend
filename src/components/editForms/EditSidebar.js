@@ -16,9 +16,9 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LanIcon from '@mui/icons-material/Lan';
 
-const EditSidebar = () => {
+const EditSidebar = (props) => {
 
-	const params = sessionStorage.getItem("editIdUser");
+	const params = props.idForRequest;
   return (
 		<aside className="Editsidebar">
 			<div className="barTitle">

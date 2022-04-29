@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -9,56 +9,84 @@ import { useOutletContext } from "react-router-dom";
 
 const EditEducationalBackground = () => {
   const [term, setTerm] = useOutletContext();
-  const { register, handleSubmit } = useForm();
-  const [data, setData] = useState("");
+  const { register, handleSubmit, reset } = useForm();
+  const [data, setData] = useState({
+    "educationName": "",
+    "educationType": "",
+    "educationLocation": "",
+    "startDate": "",
+    "endDate": "",
+    "percentage": ""
+  });
+
+  const [temp, setTemp] = useState(0);
+  const [resumeInfo, setResumeInfo] = useState({});
+  const id = sessionStorage.getItem("editIdUser");
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
   const customFunction = (d) => {
-    // sessionStorage.setItem("educationalbackground", JSON.stringify(d))
-    // const data = JSON.parse(sessionStorage.getItem('educationalbackground'))
-    // console.log(sessionStorage.key(0))
-    // console.log(data)
-
     console.log(d);
-    const resume_id = sessionStorage.getItem('resume_id');
-    axios.post('http://localhost:8080/edu', [
+    axios.put(`http://localhost:8080/edu/${resumeInfo.educations[0].educationId}`, 
       {
         "educationName": d.type,
         "educationType": d.name,
         "educationLocation": d.location,
         "startDate": d.startdate,
         "endDate": d.enddate,
-        "percentage": d.percentage,
-        "resume_id": resume_id
+        "percentage": d.percentage
+        
       }
-    ])
+    )
       .then(res => {
         if (res) {
-          console.log(res);
+          let date = new Date();
+          setTerm(date.toLocaleString());
+          console.log(res.data);
         }
       })
     setTerm(5);
 
 
-    sessionStorage.setItem("educationName", d.type);
-    sessionStorage.setItem("educationType", d.name);
-    sessionStorage.setItem("educationLocation", d.location);
-    sessionStorage.setItem("startDate", d.startdate);
-    sessionStorage.setItem("endDate", d.enddate);
-    sessionStorage.setItem("percentage", d.percentage);
 
-    // reset();
+    reset();
   }
 
+  // const handleChange = name => event => {
+  //   setResumeInfo({ ...resumeInfo, educations[0].[name]: event.target.value })
+  // }
 
+  const handleChange = name => event => {
+    setData({ ...data, [name]: event.target.value })
+  }
 
-  return (
-    <>
-      <form onSubmit={handleSubmit((data) => customFunction(data))}>
-        <div className="buttons">
-          <button className="button2">Cancel</button>
-          <input type="submit" name="aboutme" value="Save" />
-          <button className="button1"><i><FaArrowRight /></i></button>
-        </div>
+  //   educationId: 5
+  // educationLocation: "Jaipur"
+  // educationName: "b.Tech"
+  // educationType: "Suryansh"
+  // endDate: "2022-04-13"
+  // percentage: 98
+  // resume_id: 6
+  // startDate: "2022-04-15"
+  const educationMapper = () => {
+    let result = [];
+    result = resumeInfo.educations.map((data, index) => {
+      return (
         <div className="eduBackground">
           <label className="edu-field">Type of Course</label>
           <select name="type" {...register("type")} id="type" className="dropdown">
@@ -74,30 +102,48 @@ const EditEducationalBackground = () => {
           </select>
           <label className="edu-field">
             Name of Institute
-            <input className="eduName"{...register("name")} name="name" id="name" />
+            <input className="eduName"{...register("name")}
+              name="name" id="name" placeholder={data.educationName} />
           </label>
 
           <label className="edu-field">
             Location of Institute
-            <input className="eduLocation"{...register("location")} name="location" id="location" />
+            <input className="eduLocation"{...register("location")} placeholder={data.educationLocation}
+              name="location" id="location" />
           </label>
 
           <label className="edu-field">
             Duration
-            <input className="startDate"{...register("startdate")} type="date" name="startdate[]" />
-            <span><input className="endDate"{...register("enddate")} type="date" name="enddate[]" /></span>
+            <input className="startDate"{...register("startdate")} type="date" name="startdate[]" placeholder={data.startDate} />
+            <span><input placeholder={data.endDate}
+              className="endDate"{...register("enddate")} type="date" name="enddate[]" /></span>
 
           </label>
 
           <label className="edu-field">
             Percentage
-            <input className="eduGrade"{...register("percentage")} placeholder="Percentage" name="percentage" id="Percentage" />
+            <input placeholder={data.percentage}
+              className="eduGrade"{...register("percentage")} name="percentage" id="Percentage" />
             <span>  %</span>
           </label>
         </div>
-        <div className="footer">
-          <span className="plus"><FaPlus /></span><input className="element" {...register('addEducation')} type="text" name="addEducation[]" placeholder='Add education details' value="Add education details" />
+      )
+    });
+    return result;
+  }
+
+  return (
+    <>
+      <form onSubmit={handleSubmit((data) => customFunction(data))}>
+        <div className="buttons">
+          <button className="button2">Cancel</button>
+          <input type="submit" name="aboutme" value="Save" />
+          <button className="button1"><i><FaArrowRight /></i></button>
         </div>
+        {(resumeInfo.educations) ? educationMapper() : null}
+        {/* <div className="footer">
+          <span className="plus"><FaPlus /></span><input className="element" {...register('addEducation')} type="text" name="addEducation[]" placeholder='Add education details' value="Add education details" />
+        </div> */}
 
 
       </form>

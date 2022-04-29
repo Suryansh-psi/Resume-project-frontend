@@ -8,7 +8,7 @@ import axios from "axios";
 import './EditAboutMe.css';
 
 
-const EditAboutMe = () => {
+const EditAboutMe = (props) => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
   const [data, setData] = useState("");
@@ -16,8 +16,9 @@ const EditAboutMe = () => {
   const [temp, setTemp] = useState(0);
   const id = sessionStorage.getItem("editIdUser");
 
-  useEffect(() => {
 
+  useEffect(() => {
+    const id = sessionStorage.getItem("editIdUser");
     let result = async () => {
       try {
         const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
@@ -33,6 +34,29 @@ const EditAboutMe = () => {
     result();
   }, [temp]);
 
+  const customFunction = (d) => {
+
+    const element = document.querySelectorAll('.aboutmepoints');
+    const aboutList = [];
+    element.forEach((ele) => {
+      if(ele.value !== "") {
+        aboutList.push(ele.value);
+      }
+    });
+
+    axios.put(`http://localhost:8080/resume/about/${id}`, {
+      "about_me": resumeInfo.about_me,
+      "about_me_points": [...resumeInfo.about_me_points, ...aboutList]
+    }).then(res => {
+      let date = new Date();
+      setTerm(date.toLocaleString());
+      console.log(res.data);
+    })
+    setResumeInfo({ ...resumeInfo, "about_me_points": [...resumeInfo.about_me_points, ...aboutList] });
+    setTerm(2);
+    reset();
+  }
+
 
   const addBulletPoint = () => {
     const inp = document.createElement("input");
@@ -44,61 +68,37 @@ const EditAboutMe = () => {
     document.querySelector(".bulletPoints").appendChild(inp);
   }
 
+  const deleteRolePoints = (key) => {
+    setResumeInfo({
+      ...resumeInfo, "about_me_points": resumeInfo.about_me_points.filter((ele, i) => {
+        return i !== key;
+      })
+    })
+  }
+
   const aboutMePointsMapper = () => {
     // if(typeof(resumeInfo.about_me_points) !== undefined || typeof(resumeInfo.about_me_points) !== null) {
     let result = resumeInfo.about_me_points.map((data, index) => {
-      return <input
-        className="aboutmepoints" type="text"
+      return (
+        <>
+          <input  type="text"
         name="points[]" placeholder="Write in bulleted list" value={data} />
-    })
+          <span onClick={() => deleteRolePoints(index)} className="cross"><GrFormClose/></span>
+        </>
+    )})
     return result;
     // }
   }
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // console.log(resumeInfo);
-
-    const element = document.querySelectorAll('.aboutmepoints');
-    const aboutList = [];
-    element.forEach((ele) => {
-      aboutList.push(ele.value);
-    });
-    console.log("aboutList", aboutList);
-    setResumeInfo({ ...resumeInfo, about_me_points: aboutList });
-    console.log(resumeInfo);
-    console.log("About me", aboutList)
-    try {
-      axios.put(`http://localhost:8080/resume/about/${id}`, {
-        about_me: resumeInfo.about_me,
-        about_me_points: aboutList
-      }).then(res => {
-        if (res) {
-          console.log("BACKEND response", res.data);
-          console.log("resume Info", resumeInfo);
-          
-          let date = new Date();
-          setTerm(date.toLocaleString());
-        }
-      })
-
-    } catch (err) {
-      console.log(err);
-    }
-
-    // setTerm(2);
-  }
+  
 
   const handleChange = name => event => {
     setResumeInfo({ ...resumeInfo, [name]: event.target.value })
   }
 
-
-
-
   return (
-    // <form onSubmit={handleSubmit((data) => customFunction(data))}>
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleSubmit((data) => customFunction(data))}>
+    {/* <form onSubmit={handleFormSubmit}> */}
       <div className="buttons">
         <button className="button2">Cancel</button>
         <input type="submit" name="aboutme" value="Save" />
@@ -107,17 +107,17 @@ const EditAboutMe = () => {
       <div className="aboutSection">
         <label className="label">About Me</label>
         <textarea value={resumeInfo.about_me}
-          className="textarea"
-          // className={`textarea ${errors.about && "invalid"}`} 
-          // {...register('about',{required: "*required",
-          // maxLength: {
-          //   value: 500,
-          //   message: "*limit exceed"
-          // }
-          // })}
-          // onKeyUp={() =>{
-          //   trigger("about");
-          // }}
+          // className="textarea"
+          className={`textarea ${errors.about && "invalid"}`} 
+          {...register('about',{required: "*required",
+          maxLength: {
+            value: 500,
+            message: "*limit exceed"
+          }
+          })}
+          onKeyUp={() =>{
+            trigger("about");
+          }}
           onChange={handleChange("about_me")}
           name="about"
           placeholder="Write something about yourself (max 500 words)"
@@ -126,9 +126,13 @@ const EditAboutMe = () => {
           <small className="text-danger">{errors.about.message}</small>
 
         )} */}
+        <div>
+        {(resumeInfo.about_me_points) ? aboutMePointsMapper() : null}
+        </div>
+
         <div className="bulletPoints">
-          {(resumeInfo.about_me_points) ? aboutMePointsMapper() : null}
-          <span className="cross"><GrFormClose/></span>
+          
+          {/* <span className="cross"><GrFormClose/></span> */}
           
           <i onClick={addBulletPoint}><BsPlusCircle /></i>
         </div>

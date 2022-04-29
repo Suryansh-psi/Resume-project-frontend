@@ -12,13 +12,13 @@ import './EditSkills.css'
 
 const EditSkills = () => {
 	const [term, setTerm] = useOutletContext();
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, reset } = useForm();
 	const [skillData, setSkillData] = useState([]);
 
 	const [temp, setTemp] = useState(0);
 	const [resumeInfo, setResumeInfo] = useState({});
-
 	const id = sessionStorage.getItem("editIdUser");
+
 	useEffect(() => {
 		let result = async () => {
 			try {
@@ -40,14 +40,14 @@ const EditSkills = () => {
 	const customFunction = (d) => {
 		axios.put(`http://localhost:8080/resume/skills/${id}`, {
 			skills: d.skill
+		}).then(res => {
+			let date = new Date();
+			setTerm(date.toLocaleString());
+			console.log(res.data);
 		})
-			.then(res => {
-				console.log(res);
-				console.log(res.data);
-				setTemp(temp + 1);
-			})
 		setTerm(3);
-		// sessionStorage.setItem("skills", d.skill);
+		setResumeInfo({ ...resumeInfo, "skills": d.skill });
+		reset();
 	}
 
 	useEffect(() => {
@@ -66,12 +66,28 @@ const EditSkills = () => {
 		result();
 	}, []);
 
+	const deleteskills = (key) => {
+		setResumeInfo({
+		  ...resumeInfo, "skills": resumeInfo.skills.filter((ele, i) => {
+			return i !== key;
+		  })
+		})
+	  }
+
 
 	const skillsFromDatabaseMapper = () => {
 		let result = resumeInfo.skills.map((data, index) => {
 			let category = data.split('#')[0];
 			let skill = data.split('#')[1];
-			return <p>{`${category} : ${skill}`}</p>
+			// <p>{`${category} : ${skill}`}</p>
+			return (
+				<>
+					<input type="text"
+					 value={`${category} : ${skill}`} /> 
+					{/* <span ><GrFormClose /></span> */}
+					<span onClick={() => deleteskills(index)}className="close" ><GrFormClose /></span>
+				</>
+			)
 		})
 		return result;
 	}
@@ -100,12 +116,13 @@ const EditSkills = () => {
 				<h6 className="skillHeader"><div>Skills & </div>Proficiencies</h6>
 				{/* i added list here */}
 				<div className="skillEdit">
-				    <span className="close"><GrFormClose/></span>
-				</div>
-				<div>
+					{/* <span className="close"><GrFormClose /></span> */}
 					{(resumeInfo.skills) ? skillsFromDatabaseMapper() : null}
-					
 				</div>
+				{/* <div className="boxRole">
+					
+
+				</div> */}
 				<div className="SearchBox">
 					<input {...register('points')} type="text" name="points[]" placeholder="Search" />
 					<i><FaSearch /></i>

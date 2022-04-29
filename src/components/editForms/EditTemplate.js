@@ -17,7 +17,7 @@ const EditTemplate = (props) => {
 			try {
 				const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${params.id}`).then(res => {
 					const response = res.data;
-					console.log(res.data)
+					// console.log(res.data)
 					setResumeInfo(res.data);
 				})
 			}

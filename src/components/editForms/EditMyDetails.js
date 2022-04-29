@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom";
 
 const EditMyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
-  // const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
   const [imagePath, setImagePath] = useState('C:/Users/suryansh.gahlot/Desktop/V2/Resume-project-frontend/public/userIcon.png');
   const [roles, setRoles] = useState([]);
   const [role, setRole] = useState([]);
@@ -23,31 +23,14 @@ const EditMyDetails = (props) => {
   const [resumeInfo, setResumeInfo] = useState({});
   const [userId, setUserId] = useState(1);
   const params = useParams();
-  // console.log("Resume Id here", params.id);
-
-
-  // const [values, setValues] = useState({
-  //   nameS: "",
-  //   imageS: "",
-  //   roleS : [],
-  //   total_expS : 0
-  // })
-
-  // const {nameS, imageS, roleS, total_expS} = values;
-
-
-
-
+  
   useEffect(() => {
-    // const id = props.match.params.id;
-    // setUserId(id);
-    // console.log(id);
     let result = async () => {
       try {
         const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${params.id}`).then(res => {
           const response = res.data;
           setResumeInfo(response);
-          console.log(response);
+          console.log("hello", response);
           sessionStorage.setItem("editIdUser", params.id);
         })
       }
@@ -63,9 +46,6 @@ const EditMyDetails = (props) => {
       try {
         const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
           const response = res.data;
-          // let roleList = response.map((role) => {
-          //   return role.role_name;
-          // })
           setRoles(response);
         })
       }
@@ -84,7 +64,7 @@ const EditMyDetails = (props) => {
   let imageHandler = async (e) => {
     const file = e.target.files[0];
     let base64 = await convertBase64(file);
-
+    console.log("Hellloooo")
     setImagePath(base64);
     let temp = imagePath.split(',')[1];
     setResumeInfo({ ...resumeInfo, image: temp })
@@ -105,32 +85,78 @@ const EditMyDetails = (props) => {
     })
   }
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(resumeInfo);
-    try {
-      axios.put(`http://localhost:8080/resume/${params.id}`, resumeInfo)
-        .then(res => {
-          if (res) {
-            console.log(res.data);
-            let date = new Date();
-            setTerm(date.toLocaleString())
-          }
-        })
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+    
+  //   try {
+  //     axios.put(`http://localhost:8080/resume/${params.id}`, resumeInfo)
+  //       .then(res => {
+  //         if (res) {
+  //           console.log(res.data);
+  //           let date = new Date();
+  //           setTerm(date.toLocaleString())
+  //         }
+  //       })
 
-    } catch (err) {
-      console.log(err);
-    }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  const customFunction = (d) => {
+    const elementRole = document.querySelectorAll('.element-role');
+    const imageURl = imagePath.split(',')[1];
+    // console.log(d);
+    axios.put(`http://localhost:8080/resume/${params.id}`, {
+      name: d.name,
+      role: [...resumeInfo.role, ...d.role],
+      total_exp: d.experience,
+      image: resumeInfo.image,
+      userId: 1
+    })
+      .then(res => {
+        if(res) {
+          let date = new Date();
+          setTerm(date.toLocaleString());
+          console.log(res.data);
+        }
+      })
+    setTerm(1);
+
+
+    setResumeInfo({ ...resumeInfo, "role": [...resumeInfo.role, ...d.role] });
+    reset();
   }
 
   const handleChange = name => event => {
     setResumeInfo({ ...resumeInfo, [name]: event.target.value })
   }
 
+  const deleteRoleItem = (key) => {
+    setResumeInfo({
+      ...resumeInfo, "role": resumeInfo.role.filter((ele, i) => {
+        return i !== key;
+      })
+    })
+  }
+
+  const resumeRoleMapping = () => {
+    let result = [];
+    result = resumeInfo.role.map((data, index) => {
+      return (
+        <>
+          <input type="text" value={data} placeholder="role" />
+          <span onClick={() => deleteRoleItem(index)} className="cross"><GrFormClose/></span>
+        </>
+      )
+    })
+    return result;
+  }
+
   return (
     <>
-      {/* <form onSubmit={handleSubmit((data) => customFunction(data))}> */}
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit((data) => customFunction(data))}>
+      {/* <form onSubmit={handleFormSubmit}> */}
 
         <div className="buttons">
           <button className="button2" disabled>Cancel</button>
@@ -156,14 +182,14 @@ const EditMyDetails = (props) => {
               Name
             </label>
             <input
-              className="form-control"
-              // className={`form-control 
-              // ${errors.name && "invalid"}
-              // `}
-              // {...register("name", { required: "*required" })}
-              // onKeyUp={() => {
-              //   trigger("name");
-              // }}
+              // className="form-control"
+              className={`form-control 
+              ${errors.name && "invalid"}
+              `}
+              {...register("name")}
+              onKeyUp={() => {
+                trigger("name");
+              }}
               placeholder="Your name" name="name" id="name"
               value={resumeInfo.name}
               onChange={handleChange("name")}
@@ -178,22 +204,25 @@ const EditMyDetails = (props) => {
               Role
             </label>
             <div className="boxRole">
-              <input type="text" placeholder="role" /><span className="cross"><GrFormClose/></span>
+              {/* <input type="text" placeholder="role" /><span className="cross"><GrFormClose/></span> */}
+              <ul>
+              {(resumeInfo.role) ? resumeRoleMapping() : null}
+              </ul>
             </div>
             <div className="role-fields">
               <select
-                // className={`roles ${errors.role && "invalid"}`} 
-                name="role" id="role" className="Proles"
-                // {...register("role", { required: "*required" })}
-                // onKeyUp={() => {
-                //   trigger("role");
-                // }} 
+                className={`Proles ${errors.role && "invalid"}`} 
+                name="role" id="role" 
+                {...register("role")}
+                onKeyUp={() => {
+                  trigger("role");
+                }} 
                 multiple >
                 <option className="option1" value="">Select...</option>
                 {options}
               </select>
               {/* {errors.role && (
-                <small className="text-danger">{errors.role.message}</small>
+                <small className="text-danger">{errors.role.message}</small> { required: "*required" }
               )} */}
             </div>
           </div>
@@ -203,19 +232,18 @@ const EditMyDetails = (props) => {
               Total Exp
             </label>
             <input value={resumeInfo.total_exp}
-              className="form-control1"
-              // className={`form-control1 ${errors.experience && "invalid"}`}
-              // {...register("experience", {
-              //   required: "*required",
-              //   pattern: {
-              //     value: /^[0-9]*$/,
-              //     message: "*invalid value"
+              // className="form-control1"
+              className={`form-control1 ${errors.experience && "invalid"}`}
+              {...register("experience", {
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: "*invalid value"
 
-              //   }
-              // })}
-              // onKeyUp={() => {
-              //   trigger("experience");
-              // }}
+                }
+              })}
+              onKeyUp={() => {
+                trigger("experience");
+              }}
               placeholder="Total Experience" name="experience" id="experience"
               onChange={handleChange("total_exp")}
             />
