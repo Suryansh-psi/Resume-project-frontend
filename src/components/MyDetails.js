@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaArrowRight, FaUserCircle} from "react-icons/fa";
 import { useOutletContext } from "react-router-dom";
@@ -11,14 +11,11 @@ import 'react-multiple-select-dropdown-lite/dist/index.css'
 import { useScrollTrigger } from "@mui/material";
 import { ErrorSharp } from "@mui/icons-material";
 
-
-
 const MyDetails = (props) => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState:{errors}, reset, trigger} = useForm();
   const [imagePath, setImagePath] = useState('');
   const [roles, setRoles] = useState([]);
-
   // const [role, setRole] = useState([]);
 
   const customFunction = (d) => {

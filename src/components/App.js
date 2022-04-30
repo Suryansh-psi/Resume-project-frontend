@@ -29,6 +29,7 @@ import EditMemberships from './editForms/EditMemberships';
 // import EditTemplate from './editForms/EditTemplate';
 import EditLayout from './editForms/EditLayout';
 import Preview from './Preview';
+import UserPreview from './UserPreview';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
 
         {/* Home Screens */}
         <Route path="/userHome" element={<UserHome />}/>
+        <Route path="userHome/preview/:id" element={<UserPreview />} />
         <Route path="/managerHome" element={<ManagerHome />}/>
         <Route path="/managerHome/preview/:id" element={<Preview/>}/>
 

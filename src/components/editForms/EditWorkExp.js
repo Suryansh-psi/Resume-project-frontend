@@ -16,17 +16,38 @@ import './EditWorkExp.css';
 const EditWorkExp = () => {
   const [term, setTerm] = useOutletContext();
   const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
-  // const [roles, setRoles] = useState([]);
-  // const [role, setRole] = useState([]);
   const [roles, setRoles] = useState([]);
   const [techstacks, setTechstacks] = useState([]);
-  // const [data, setData] = useState("");
-
-
+  const [projects, setProjects] = useState([]);
   const [temp, setTemp] = useState(0);
   const [resumeInfo, setResumeInfo] = useState({});
-
   const id = sessionStorage.getItem("editIdUser");
+  const [data, setData] = useState({
+    "educationName": "",
+    "educationType": "",
+    "educationLocation": "",
+    "startDate": "",
+    "endDate": "",
+    "percentage": ""
+  });
+
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/resume/alldetails/${id}`).then(res => {
+          const response = res.data;
+          setResumeInfo(response);
+          console.log(response);
+
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, [temp]);
 
   const customFunction = (d) => {
     // console.log(role);
@@ -36,8 +57,6 @@ const EditWorkExp = () => {
     let tech = document.querySelectorAll('.seventh');
     let projRes = document.querySelectorAll('.eight');
 
-
-
     tech.forEach((ele) => {
       techList.push(ele.value);
     })
@@ -46,40 +65,29 @@ const EditWorkExp = () => {
       projRespList.push(ele.value);
     })
 
-    // console.log(d);
-    // d.startDate = d.startDate.toString();
-    // d.endDate = d.endDate.toString();
-
-    // axios.put(`http://localhost:8080/workexp/${id}`, {
-    //     clientDesc: d.client_desc,
-    //     country: d.country,
-    //     projectName: d.project,
-    //     role: d.role,
-    //     startDate: d.startdate,
-    //     endDate: d.enddate,
-    //     bussinessSol: d.business_sol,
-    //     techStack: techList,
-    //     resumeId: resume_id,
-    //     projectResp: projRespList
-    //   }).then(res => {
-    //   // console.log(res);
-    //   // console.log(res.data);
-    //   sessionStorage.setItem("workexp_id", res.data);
-    // })
-    // setTerm(4);
-
-
-    // sessionStorage.setItem("clientDesc", d.client_desc);
-    // sessionStorage.setItem("country", d.country);
-    // sessionStorage.setItem("projectName", d.project);
-    // sessionStorage.setItem("role2", d.role);
-    // sessionStorage.setItem("startDate", d.startdate);
-    // sessionStorage.setItem("endDate", d.enddate);
-    // sessionStorage.setItem("bussinessSol", d.business_sol);
-    // sessionStorage.setItem("techStack", ['techList']);
-    // sessionStorage.setItem("projectResp", projRespList);
-
-    // reset();
+    console.log(d);
+    d.startdate = d.startdate.toString();
+    d.enddate = d.enddate.toString();
+    console.log([resumeInfo.workExps[0].role ,...d.role])
+    axios.put(`http://localhost:8080/workexp/${resumeInfo.workExps[0].workExpId}`, {
+        clientDesc: d.client_desc,
+        country: d.country,
+        projectName: d.project,
+        role: [...resumeInfo.workExps[0].role ,...d.role],
+        startDate: d.startdate,
+        endDate: d.enddate,
+        bussinessSol: d.business_sol,
+        techStack: [...resumeInfo.workExps[0].techStack ,...techList],
+        projectResp: [...resumeInfo.workExps[0].projectResp ,...projRespList]
+      }).then(res => {
+        let date = new Date();
+        setTerm(date.toLocaleString());
+        console.log(res.data);
+        setTerm(4);
+        reset();
+      sessionStorage.setItem("workexp_id", res.data);
+    })
+    
   }
 
 
@@ -104,9 +112,6 @@ const EditWorkExp = () => {
       try {
         const result2 = await axios.get(`http://localhost:8080/role`).then(res => {
           const response = res.data;
-          // let roleList = response.map((role) => {
-          //   return role.role_name;
-          // })
           setRoles(response);
         })
       }
@@ -122,10 +127,22 @@ const EditWorkExp = () => {
       try {
         const result2 = await axios.get(`http://localhost:8080/techstack`).then(res => {
           const response = res.data;
-          // let roleList = response.map((role) => {
-          //   return role.role_name;
-          // })
           setTechstacks(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, []);
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/project`).then(res => {
+          const response = res.data;
+          setProjects(response);
         })
       }
       catch (err) {
@@ -140,6 +157,10 @@ const EditWorkExp = () => {
       label: opt, value: opt
     };
     return obj;
+  })
+
+  const projOps = projects.map((ops) => {
+    return <option title={ops.project_desc} value={ops.project_name}>{ops.project_name}</option>
   })
 
 
@@ -206,6 +227,63 @@ const EditWorkExp = () => {
   const techstackOptions = techstacks.map((opt) => {
     return <option title={opt.techStackDesc} value={opt.techStackName}>{opt.techStackName}</option>
   })
+
+  const deleteSelectedRole = (index, work) => {
+    // setResumeInfo({
+    //   ...resumeInfo, "membership": resumeInfo.membership.filter((ele, i) => {
+    //     return i !== index;
+    //   })
+    // })
+    work.role = work.role.filter((ele, i) => {
+      return i!==index;
+    })
+    setResumeInfo({...resumeInfo});
+  }
+
+  const showRoles = (work) => {
+    let result = [];
+    result = work.role.map((data, index) => {
+      return <><input type="text" value={data} />
+      <span className="projCross" onClick={() => deleteSelectedRole(index, work)}><GrFormClose/></span></>
+    });
+    return result;
+  }
+
+  const deleteSelectedTech = (index, work) => {
+    work.techStack = work.techStack.filter((ele, i) => {
+      return i!==index;
+    })
+    setResumeInfo({...resumeInfo});
+  }
+
+  const showTechStack = (work) => {
+    let result = [];
+    result = work.techStack.map((data, index) => {
+      return <>
+        <input type="text" value={data} /><span className="projCross" onClick={() => deleteSelectedTech(index, work)}> 
+          <GrFormClose/></span>
+      </>
+    })
+    return result;
+  }
+
+  const deleteSelectProjResp = (index, work) => {
+    work.projectResp = work.projectResp.filter((ele, i) => {
+      return i!==index;
+    })
+    setResumeInfo({...resumeInfo});
+  }
+
+  const showProjResp = (work) => {
+    let result = [];
+    result = work.projectResp.map((data, index) => {
+      return <>
+        <input type="text" value={data} /><span className="projCross" onClick={() => deleteSelectProjResp(index, work)}> 
+          <GrFormClose/></span>
+      </>
+    })
+    return result;
+  }
   // bussinessSol: "sfasfasdf"
   // clientDesc: "hey whatsapp"
   // country: "india"
@@ -226,11 +304,12 @@ const EditWorkExp = () => {
             <div className='workexpfields'>
               <label className="WorkExplabel">
                 Client Description
-                <input value={data.clientDesc} className={`first ${errors.client_desc && "invalid"}`}
+                <input className={`first ${errors.client_desc && "invalid"}`}
                   // {...register('client_desc', { required: "*required" })}
                   // onKeyUp={() => {
                   //   trigger("client_desc");
                   // }}
+                  placeholder={data.clientDesc}
                   type="text" name="client_desc[]" />
                 {/* {errors.client_desc && (
                   <small className="text-danger">{errors.client_desc.message}</small>
@@ -239,7 +318,7 @@ const EditWorkExp = () => {
 
               <label className="WorkExplabel">
                 Country
-                <input value={data.country} className={`second ${errors.country && "invalid"}`}
+                <input placeholder={data.country} className={`second ${errors.country && "invalid"}`}
                   // {...register('country', { required: "*required" })}
                   // onKeyUp={() => {
                   //   trigger("country");
@@ -254,16 +333,16 @@ const EditWorkExp = () => {
                 Project Name
                
                 <div className='project-input-div'>
-                <div className="workRole">
+                {/* <div className="workRole">
                   <input type="text" placeholder="project" /><span className="projCross"><GrFormClose/></span>
-                </div>
+                </div> */}
                   <select className={`project1 ${errors.project && "invalid"}`} name="project" id="project" {...register("project", { required: "*required" })}
                     onKeyUp={() => {
                       trigger("project");
-                    }} multiple>
+                    }} >
                     <option className="option1" value="">Select...</option>
 
-                    {options1}
+                    {projOps}
                   </select>
                  
                 </div>
@@ -273,7 +352,7 @@ const EditWorkExp = () => {
                 Role
                 <div className='role-input-div'>
                   <div className="workRole">
-                    <input type="text" placeholder="role" /><span className="projCross"><GrFormClose/></span>
+                    {(data.role) ? showRoles(data) : null}
                   </div>
                   <select className={`roles1 ${errors.role && "invalid"}`} name="role" id="role" {...register("role", { required: "*required" })}
                     onKeyUp={() => {
@@ -310,7 +389,7 @@ const EditWorkExp = () => {
               <div className='business'>
                 <label className="WorkExplabel">
                   Business Solution
-                  <textarea className={`sixth ${errors.business_sol && "invalid"}`}
+                  <textarea placeholder={data.bussinessSol} className={`sixth ${errors.business_sol && "invalid"}`}
                     {...register('business_sol', {
                       required: "*required",
                       maxLength: {
@@ -321,10 +400,10 @@ const EditWorkExp = () => {
                     onKeyUp={() => {
                       trigger("business_sol");
                     }}
-                    name="business_sol" placeholder="Write Your Solution" id="about" cols="54" rows="4"></textarea>
-                  {errors.business_sol && (
+                    name="business_sol"  id="about" cols="54" rows="4"></textarea>
+                  {/* {errors.business_sol && (
                     <small className="text-danger">{errors.business_sol.message}</small>
-                  )}
+                  )} */}
                 </label>
 
               </div>
@@ -335,7 +414,7 @@ const EditWorkExp = () => {
                 TechnologyStack
                 <div className='techstack-input-div'>
                 <div className="workRole">
-                  <input type="text" placeholder="tech-stack" /><span className="projCross"><GrFormClose/></span>
+                  {(data.techStack) ? showTechStack(data) : null}
                 </div>
                   {/* <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
                   <span className="cross">&#9747;</span> 
@@ -356,19 +435,25 @@ const EditWorkExp = () => {
 
               <label className="WorkExplabel">
                 Project Responsibilities
+                {/* <div>
+                    <ul>
+                      {(data.projectResp) ? showProjResp(data) : null}
+                    </ul>
+                  </div> */}
                 <div className="projRes-main-div" >
-                  <input className={`eight ${errors.responsibility && "invalid"}`} {...register('responsibility', { required: "*required" })}
+                  <input className={`eight ${errors.responsibility && "invalid"}`} {...register('responsibility')}
                     onKeyUp={() => {
                       trigger("responsibility");
                     }}
                     type="text" name="responsibility[]" placeholder="Write Responsibilities" />
-                  {errors.responsibility && (
+                  {/* {errors.responsibility && (
                     <small className="text-danger">{errors.responsibility.message}</small>
-                  )}
+                  )} */}
                 </div>
                 <i onClick={createProjRes} className="Responsibility"><BsPlusCircle /></i>
               </label>
             </div>
+            
           </div>
         </>
       )

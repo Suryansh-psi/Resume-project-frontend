@@ -6,6 +6,7 @@ import { FaShareSquare } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 import { FaFileAlt } from "react-icons/fa";
 import { FcApproval } from "react-icons/fc";
+import { VscPreview } from "react-icons/vsc";
 import './UserHome.css'
 import swal from 'sweetalert'
 import 'react-notifications/lib/notifications.css';
@@ -113,7 +114,7 @@ const UserHome = () => {
                     <div class="dpdown">
                         <button class="dropbtn"><BsThreeDots /></button>
                         <div class="dropdown-content">
-
+                            <Link to={`\preview\\${data.resumeId}`}><VscPreview /> Preview </Link>
                             <Link to={`/editforms/editMyDetails/${data.resumeId}`}><span className='edit'><MdEdit />Edit</span></Link>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
                             <span onClick={() => shareResume(data.resumeId, data.status)}><FaShareSquare /> Share</span>

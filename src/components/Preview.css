@@ -8,6 +8,7 @@
     
 	overflow-x: hidden;
 	overflow-y: scroll;
+    background-color: #EAEAEA;
 }
 
 
@@ -18,7 +19,8 @@
 
 .h3{
     position: relative;
-    top: -3rem;
+    top: -2.5rem;
+    width: 50px;
     text-align: center;
     /* color: #bab1ff; */
     color: #1d4e89;
@@ -28,12 +30,12 @@
 
 .preview .arrowBtn{
     font-size: 40px;
-    color: #bab1ff;
+    color: black;
     margin-left: 1rem;
-    position: relative;
-    top: 0rem;
 
 }
+
+
 
 
 
@@ -48,7 +50,7 @@
 }
 
 .preStyle{
-    background-color: #f79256;
+    background-color: #6FB2D2;
     height: 5rem;
     width: 100%;   
 }
@@ -70,7 +72,7 @@
 .imagePreview{
     width: 100px;
     height: 100px;
-    border: 50%;
+    border-radius: 50%;
     position: relative;
     left: -15rem;
     top: 5.5rem;
@@ -85,7 +87,7 @@
     background-color: #c4bcff;
     border-radius: 27px;
     position: relative;
-    top: -5rem;
+    top: -2.5rem;
     left: 64rem;
     margin-right: 1rem;
 }
@@ -107,13 +109,13 @@
     float: left;
     width: 50%;
     padding-top: 1.5rem !important;
-    height: 200px;
+    padding-bottom: 6rem;
     padding: 0 50px;
 }
 
-.PreColumn h4{
+/* .PreColumn h4{
     background-color: #78acb4;
-}
+} */
 
 .PreRow:after {
     content: "";
