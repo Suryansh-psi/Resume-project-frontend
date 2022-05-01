@@ -16,17 +16,17 @@ table{
 
 
 
-thead {
-	background-color: lightgrey;
+.skillTable thead {
+	background-color: #d6d9db;
 	width: 4rem;
 	height: 2.5rem;
 
 }
 
-thead th{
-	padding: 0 0 0 1rem;
+.skillTable thead th{
+	padding: 0rem 0 0 1rem;
 }
- tbody td{
+.skillTable tbody td{
  	border: 2px solid lightgrey;
  	padding: 0.5rem 0.5rem;
  }
@@ -39,8 +39,9 @@ thead i{
 	color: darkgrey;
 }
 
-th a{
+.skillTable th a{
 	padding-left: 4rem;
+	
     color: darkgrey !important;
 
 }
@@ -66,19 +67,20 @@ th a{
 	color: darkgrey;
 }
 
-.skillEdit{
-	border: 2px solid lightgrey;
-	height: 40px;
-	width: 200px;
-	border-radius: 27px;
-	padding-left: 1rem;
-	padding-top: 0.4rem;
-}
+
 
 .close{
 	position: relative;
-	top: -0.6rem;
-	left: 9rem;
+
+	left: -2rem;
 	font-size: 25px;
+}
+
+.sP{
+	border: 2px solid lightgrey;
+	border-radius: 27px;
+	width: 12rem;
+	height: 2rem;
+	padding: 1rem;
 }
 

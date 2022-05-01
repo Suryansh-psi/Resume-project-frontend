@@ -182,7 +182,6 @@ const Preview = (props) => {
 		<section className="preview" style={{ backgroundImage: "url(/ground.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
 			<div className='preStyle'>
 				<Link to="/managerHome" className="arrowBtn"><HiOutlineArrowCircleLeft /></Link>
-				<span className='h3'><h3>Resume Preview</h3></span>
 				
 				<div className='mainBtn'>
 					<button style={{backgroundColor: setColor(resumeInfo.status)}}
@@ -199,14 +198,14 @@ const Preview = (props) => {
 
 
             <div className='preResume' style={{ backgroundImage: "url(/hd.jpg)",backgroundRepeat:"no-repeat",backgroundSize:"cover" }} >
-				<div className='gt'>
+				
 				<div className="PreHeader" >
 					<i><img className='imagePreview' src={(resumeInfo.image) ? `data:image/jpeg;base64,${resumeInfo.image}` : ""} /></i>
 					<h2>{resumeInfo.name}</h2>
 					<h5>{(resumeInfo.role) ? roleMapping() : null}</h5>
 					<h5>Total Exp: {resumeInfo.total_exp}</h5>
 				</div>
-				</div>
+				
 				
 
 				<div className="PreRow">

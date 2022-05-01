@@ -205,15 +205,15 @@ const UserPreview = (props) => {
 
         <section className="preview" style={{ backgroundImage: "url(/ground.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             <div className='preStyle'>
-                <Link to="/managerHome" className="arrowBtn"><HiOutlineArrowCircleLeft /></Link>
-                <span className='h3'><h3>Resume Preview</h3></span>
+                <Link to="/UserHome" className="arrowBtn"><HiOutlineArrowCircleLeft /></Link>
+    
 
                 <div className='mainBtn'>
                     <button style={{ backgroundColor: setColor(resumeInfo.status) }}
                         onClick={() => approveResume(params.id)} className='preBtn'>
                         {(resumeInfo.status) ? resumeInfo.status : null}
                     </button>
-                    <button onClick={() => viewFeedback(params.id)} className='preBtn'>View Feedback</button>
+                    <button onClick={() => viewFeedback(params.id)} className='preBtn'>Feedback</button>
                     <button onClick={() => exportResume()} className='preBtn'>Export</button>
                     {/* <ReactToPrint
                         trigger={() => <button>Print this out!</button>}

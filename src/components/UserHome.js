@@ -114,8 +114,8 @@ const UserHome = () => {
                     <div class="dpdown">
                         <button class="dropbtn"><BsThreeDots /></button>
                         <div class="dropdown-content">
-                            <Link to={`\preview\\${data.resumeId}`}><VscPreview /> Preview </Link>
-                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}><span className='edit'><MdEdit />Edit</span></Link>
+                            <Link to={`\preview\\${data.resumeId}`}><span><VscPreview /> Preview </span></Link>
+                            <Link to={`/editforms/editMyDetails/${data.resumeId}`}><span><MdEdit />Edit</span></Link>
                             <span onClick={() => cloneResume(data.resumeId)}><FaFileAlt /> Clone</span>
                             <span onClick={() => shareResume(data.resumeId, data.status)}><FaShareSquare /> Share</span>
                             <span onClick={() => deleteResume(data.resumeId)}><MdEdit /> Delete </span>

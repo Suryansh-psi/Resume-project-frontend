@@ -82,10 +82,10 @@ const EditSkills = () => {
 			// <p>{`${category} : ${skill}`}</p>
 			return (
 				<>
-					<input type="text"
+					<input className="sP" type="text"
 					 value={`${category} : ${skill}`} /> 
 					{/* <span ><GrFormClose /></span> */}
-					<span onClick={() => deleteskills(index)}className="close" ><GrFormClose /></span>
+					<span onClick={() => deleteskills(index)} className="close" ><GrFormClose /></span>
 				</>
 			)
 		})

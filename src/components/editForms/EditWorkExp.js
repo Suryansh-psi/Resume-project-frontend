@@ -435,12 +435,16 @@ const EditWorkExp = () => {
 
               <label className="WorkExplabel">
                 Project Responsibilities
+                  
                 {/* <div>
                     <ul>
                       {(data.projectResp) ? showProjResp(data) : null}
                     </ul>
                   </div> */}
                 <div className="projRes-main-div" >
+                <div className="workRole">
+                  <input type="text" placeholder="project" /><span className="projCross"><GrFormClose/></span>
+                </div>
                   <input className={`eight ${errors.responsibility && "invalid"}`} {...register('responsibility')}
                     onKeyUp={() => {
                       trigger("responsibility");

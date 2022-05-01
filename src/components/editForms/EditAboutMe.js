@@ -81,9 +81,9 @@ const EditAboutMe = (props) => {
     let result = resumeInfo.about_me_points.map((data, index) => {
       return (
         <>
-          <input  type="text"
+          <input   className="pts" type="text"
         name="points[]" placeholder="Write in bulleted list" value={data} />
-          <span onClick={() => deleteRolePoints(index)} className="cross"><GrFormClose/></span>
+          <span onClick={() => deleteRolePoints(index)} className="cross1"><GrFormClose/></span>
         </>
     )})
     return result;
@@ -134,7 +134,7 @@ const EditAboutMe = (props) => {
           
           {/* <span className="cross"><GrFormClose/></span> */}
           
-          <i onClick={addBulletPoint}><BsPlusCircle /></i>
+          <i className="bPts"   onClick={addBulletPoint}><BsPlusCircle /></i>
         </div>
       </div>
 

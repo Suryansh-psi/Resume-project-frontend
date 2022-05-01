@@ -84,3 +84,22 @@
 	border: 2px solid red !important;
 }
 
+
+.pts{
+	border: 2px solid lightgrey;
+	border-radius: 27px;
+	width: 120px;
+	height: 30px;
+	padding: 1rem;
+	
+	margin: 0 -4rem 0 8.5rem;
+}
+.cross1{
+	position: relative;
+	left: 2rem;
+	font-size: 25px;
+}
+
+.bPts{
+	margin-left: 32rem;
+}
