@@ -305,7 +305,7 @@ const EditWorkExp = () => {
               <label className="WorkExplabel">
                 Client Description
                 <input className={`first ${errors.client_desc && "invalid"}`}
-                  // {...register('client_desc', { required: "*required" })}
+                  {...register('client_desc', { required: "*required" })}
                   // onKeyUp={() => {
                   //   trigger("client_desc");
                   // }}
@@ -319,7 +319,7 @@ const EditWorkExp = () => {
               <label className="WorkExplabel">
                 Country
                 <input placeholder={data.country} className={`second ${errors.country && "invalid"}`}
-                  // {...register('country', { required: "*required" })}
+                  {...register('country', { required: "*required" })}
                   // onKeyUp={() => {
                   //   trigger("country");
                   // }}

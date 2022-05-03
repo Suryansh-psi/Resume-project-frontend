@@ -5,7 +5,8 @@ import { FaPlus } from "react-icons/fa";
 import './EducationalBackground.css';
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
-
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const EducationalBackground = () => {
   const [term, setTerm] = useOutletContext();
@@ -34,6 +35,7 @@ const EducationalBackground = () => {
       .then(res => {
         if (res) {
           console.log(res);
+          NotificationManager.success( 'Resume created Successfully !', "", 1000); 
         }
       })
     setTerm(5);
@@ -55,6 +57,7 @@ const EducationalBackground = () => {
           <button className="button2">Cancel</button>
           <input className="bt" type="submit" name="aboutme" value="Save" />
           <button className="button1"><i><FaArrowRight /></i></button>
+          <NotificationContainer/>
         </div>
         <div className="eduBackground">
           <div className="ebType">
@@ -139,9 +142,9 @@ const EducationalBackground = () => {
 
           
         </div>
-        <div className="footer">
+        {/* <div className="footer">
           <span className="plus"><FaPlus /></span><input className="element" {...register('addEducation')} type="text" name="addEducation[]" placeholder='Add education details' value="Add education details" />
-        </div>
+        </div> */}
 
 
       </form>

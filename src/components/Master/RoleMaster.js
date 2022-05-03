@@ -5,12 +5,14 @@ import './RoleMaster.css'
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import MasterSidebar from './MasterSidebar';
+import swal from 'sweetalert';
 
 
 const RoleMaster = () => {
     const [roleInfo, setRoleInfo] = useState([]);
     const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
     const [temp, setTemp] = useState(0);
+    const [term, setTerm] = useState();
 
     useEffect(() => {
         let result = async () => {
@@ -26,18 +28,52 @@ const RoleMaster = () => {
             }
         }
         result();
-    }, [temp]);
+    }, [temp, term]);
 
-    const editRole = (id) => {
-        console.log("Editing Role with Id", id);
-        // axios.put(`http://localhost:8080/role/${id}`, {
-        //     "role_name": d.roleName,
-        //     "role_desc": d.roleDesc,
-        //     "isVisible": true
-        // }).then(res => {
-        //     // console.log(res);
-        //     // console.log(res.data);
-        // })
+    const editRole = (id,  name , desc) => {
+        swal("Edit Project Name : ", {
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "Type your Project name",
+                    type: "text",
+                    value: name
+                },
+            }
+        }).then((value) => {
+            // console.log("this value is from swal", value);
+            if (value === null || value === "" || value === undefined) {
+                // swal("Project Name can't be empty, name is been revered to privios state");
+                // return;
+                value = name;
+            }
+            swal("Edit Project Description : ", {
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "Type your password",
+                        type: "text",
+                        value: desc
+                    },
+                }
+            }).then((value2) => {
+                if (value2 === null || value2 === "" || value2 === undefined) {
+                    // swal("Project Description can't be empty");
+                    // return;
+                    value2 = desc
+                }
+                axios.put(`http://localhost:8080/role/${id}`, {
+                    "role_name": value,
+                    "role_desc": value2,
+                    "isVisible": true
+                }).then((res) => {
+                    swal(`Role Details has been updated`);
+                    let date = new Date();
+                    setTerm(date.toLocaleString());
+                })
+                
+            })
+        });
     }
 
     const deleteRole = (id) => {
@@ -56,7 +92,7 @@ const RoleMaster = () => {
                 <td>{data.role_desc}</td>
                 <td>
                     <button className='delBtn' onClick={() => deleteRole(data.role_id)}>Delete</button>
-                    <button className='editBtn' onClick={() => editRole(data.role_id)}>Edit</button>
+                    <button className='editBtn' onClick={() => editRole(data.role_id, data.role_name, data.role_desc)}>Edit</button>
                     <NotificationContainer/>
                 </td>
             </tr>
@@ -100,7 +136,7 @@ const RoleMaster = () => {
                         {...register('roleDesc', {
                             required: "*required",
                             maxLength: {
-                                value: 150,
+                                value: 500,
                                 message: "*limit exceed"
                             }
                         })}

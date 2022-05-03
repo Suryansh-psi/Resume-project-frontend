@@ -210,7 +210,8 @@ const UserPreview = (props) => {
 
                 <div className='mainBtn'>
                     <button style={{ backgroundColor: setColor(resumeInfo.status) }}
-                        onClick={() => approveResume(params.id)} className='preBtn'>
+                        // onClick={() => approveResume(params.id)} 
+                        className='preBtn'>
                         {(resumeInfo.status) ? resumeInfo.status : null}
                     </button>
                     <button onClick={() => viewFeedback(params.id)} className='preBtn'>Feedback</button>

@@ -30,7 +30,7 @@ const Skills = () => {
 		})
 			.then(res => {
 				console.log(res);
-				NotificationManager.success( 'Saved Successfully !');
+				NotificationManager.success( 'Saved Successfully !', "", 1000);
 				console.log(res.data);
 				
 			})

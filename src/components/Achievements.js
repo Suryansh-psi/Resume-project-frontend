@@ -40,7 +40,7 @@ function Achievements() {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
-        NotificationManager.success( 'Saved Successfully');
+        NotificationManager.success( 'Saved Successfully', "", 1000);
       })
     setTerm(6);
     sessionStorage.setItem("achievement", achievementList);

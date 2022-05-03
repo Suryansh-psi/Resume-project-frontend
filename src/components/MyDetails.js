@@ -34,7 +34,7 @@ const MyDetails = (props) => {
           sessionStorage.setItem("resume_id", res.data);
           //alert("new Resume Created");
           //swal("Resume created Successfully !");
-          NotificationManager.success( 'Resume created Successfully !');   
+          NotificationManager.success( 'Resume created Successfully !', "", 1000);   
         }
       })
     setTerm(1);

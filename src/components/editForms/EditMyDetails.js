@@ -63,11 +63,10 @@ const EditMyDetails = (props) => {
 
   let imageHandler = async (e) => {
     const file = e.target.files[0];
-    let base64 = await convertBase64(file);
-    console.log("Hellloooo")
-    setImagePath(base64);
-    let temp = imagePath.split(',')[1];
-    setResumeInfo({ ...resumeInfo, image: temp })
+    let base64 = await convertBase64(file);    
+    let temp = base64.split(',')[1];
+    setImagePath(temp);
+    setResumeInfo({ ...resumeInfo, "image": temp })
   }
 
   const convertBase64 = (file) => {
@@ -106,7 +105,13 @@ const EditMyDetails = (props) => {
   const customFunction = (d) => {
     const elementRole = document.querySelectorAll('.element-role');
     const imageURl = imagePath.split(',')[1];
-    // console.log(d);
+    console.log("d", d);
+    if(d.experience === '') {
+      d.experience = resumeInfo.total_exp;
+    } 
+    if(d.name === '') {
+      d.name = resumeInfo.name;
+    }
     axios.put(`http://localhost:8080/resume/${params.id}`, {
       name: d.name,
       role: [...resumeInfo.role, ...d.role],

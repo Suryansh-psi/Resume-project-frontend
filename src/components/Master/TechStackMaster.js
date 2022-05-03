@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import MasterSidebar from './MasterSidebar';
+import swal from 'sweetalert';
 
 
 const TechStackMaster = () => {
     const [techStackInfo, setTechStackInfo] = useState([]);
     const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm();
     const [temp, setTemp] = useState(0);
+    const [term, setTerm] = useState();
 
     useEffect(() => {
         let result = async () => {
@@ -23,10 +25,52 @@ const TechStackMaster = () => {
             }
         }
         result();
-    }, [temp]);
+    }, [temp, term]);
 
-    const editTechStack = (id) => {
-        console.log("Edit techStack with Id", id);
+    const editTechStack = (id, name, desc) => {
+        swal("Edit Project Name : ", {
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "Type your Project name",
+                    type: "text",
+                    value: name
+                },
+            }
+        }).then((value) => {
+            console.log("this value is from swal", typeof(value));
+            if (value === null || value === "" || value === undefined) {
+                // swal("Project Name can't be empty, name is been revered to privios state");
+                // return;
+                value = name;
+            }
+            swal("Edit Project Description : ", {
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: "Type your password",
+                        type: "text",
+                        value: desc
+                    },
+                }
+            }).then((value2) => {
+                if (value2 === null || value2 === "" || value2 === undefined) {
+                    // swal("Project Description can't be empty");
+                    // return;
+                    value2 = desc
+                }
+                axios.put(`http://localhost:8080/techstack/${id}`, {
+                    "techStackName": value,
+                    "techStackDesc": value2,
+                    "isVisible": true
+                }).then((res) => {
+                    swal(`TechStack Details has been updated`);
+                    let date = new Date();
+                    setTerm(date.toLocaleString());
+                })
+                
+            })
+        });
     }
 
     const deleteTechStack = (id) => {
@@ -44,7 +88,7 @@ const TechStackMaster = () => {
                 <td>
                     {/* <button onClick={() => editRole(data.role_id)}>Edit</button> */}
                     <button className='delBtn' onClick={() => deleteTechStack(data.techStackId)}>Delete</button>
-                    <button className='editBtn' onClick={() => editTechStack(data.techStackId)}>Edit</button>
+                    <button className='editBtn' onClick={() => editTechStack(data.techStackId, data.techStackName, data.techStackDesc)}>Edit</button>
                 </td>
             </tr>
         )
@@ -87,7 +131,7 @@ const TechStackMaster = () => {
                         {...register('techStackDesc', {
                             required: "*required",
                             maxLength: {
-                                value: 150,
+                                value: 500,
                                 message: "*limit exceed"
                             }
                         })}

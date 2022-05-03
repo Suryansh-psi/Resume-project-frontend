@@ -37,7 +37,7 @@ const AboutMe = () => {
       .then(res => {
         // console.log(res);
         // console.log(res.data);
-        NotificationManager.success( 'Saved Successfully !');
+        NotificationManager.success( 'Saved Successfully !', "", 1000);
         // swal("Saved Successfully !");
       })
       setTerm(2);

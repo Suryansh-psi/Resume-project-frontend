@@ -43,16 +43,22 @@ const EditAboutMe = (props) => {
         aboutList.push(ele.value);
       }
     });
+    let finalAboutPointList
+    if(resumeInfo.about_me_points) {
+      finalAboutPointList = [...resumeInfo.about_me_points, ...aboutList];
+    } else {
+      finalAboutPointList = [...aboutList];
+    }
 
     axios.put(`http://localhost:8080/resume/about/${id}`, {
       "about_me": resumeInfo.about_me,
-      "about_me_points": [...resumeInfo.about_me_points, ...aboutList]
+      "about_me_points": finalAboutPointList
     }).then(res => {
       let date = new Date();
       setTerm(date.toLocaleString());
       console.log(res.data);
     })
-    setResumeInfo({ ...resumeInfo, "about_me_points": [...resumeInfo.about_me_points, ...aboutList] });
+    setResumeInfo({ ...resumeInfo, "about_me_points": finalAboutPointList });
     setTerm(2);
     reset();
   }

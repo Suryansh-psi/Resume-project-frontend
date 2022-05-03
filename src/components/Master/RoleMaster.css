@@ -59,10 +59,16 @@
     margin-left: 20rem;
 }
 
-.masterTable table{
+.masterTable table, .masterTable td{
     width: 1rem !important;
     border-radius: 0.25rem;
+    border-width: 2px;
+    padding : 1rem;
+}
 
+.masterTable th {
+    padding: 1rem;
+    background-color: lightgrey;
 }
 
 .delBtn{

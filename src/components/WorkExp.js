@@ -62,7 +62,7 @@ const WorkExp = () => {
       // console.log(res.data);
       console.log(techList);
       sessionStorage.setItem("workexp_id", res.data);
-      NotificationManager.success( 'Saved Successfully');
+      NotificationManager.success( 'Saved Successfully', "", 1000);
     })
     setTerm(4);
 
