@@ -37,3 +37,33 @@
             margin-left: 2.3rem;
             margin-top: 1rem;
         } */
+
+
+
+
+.achievementEdit{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.achievementEdit ul{
+    border: 2px solid lightgrey;
+    width: 9rem;
+    height: 3rem;
+    border-radius: 27px;
+    list-style: none;
+    padding-bottom: 0.5rem;
+}
+
+.achClose{
+    font-size: 25px;
+}
+
+.certificationEdit ul{
+    border: 2px solid lightgrey;
+    width: 9rem;
+    height: 3rem;
+    border-radius: 27px;
+    list-style: none;
+    padding-bottom: 0.5rem;
+}

@@ -90,7 +90,7 @@ const AboutMe = () => {
         )}
         <div className="bulletPoints">
           <input {...register('points')} className="aboutmepoints" type="text" name="points[]" placeholder="Write in bulleted list" />
-          <span className="cross"><GrFormClose/></span>
+          
           <i onClick={addBulletPoint}><BsPlusCircle/></i>
         </div>
       </div>

@@ -33,3 +33,25 @@
 .end{
     margin-left: 2.7rem;
 } */
+
+
+.memberEdit{
+    margin-top: -4rem;
+}
+
+.memberEdit ul{
+    border: 2px solid lightgrey;
+    width: 7rem;
+    padding-top: 0.5rem;
+    height: 2.5rem;
+    border-radius: 27px;
+    list-style: none;
+    padding-bottom: 0.5rem;
+}
+
+.memClose{
+    font-size: 25px;
+    position: relative;
+    top: -2rem;
+    left: 3.4rem;
+}

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import './EditMemberships.css';
+import { GrFormClose } from "react-icons/gr";
 import axios from 'axios';
 import { useOutletContext } from "react-router-dom";
 import { BsPlusCircle } from "react-icons/bs";
@@ -80,7 +81,7 @@ const EditMemberships = () => {
     result = resumeInfo.membership.map((data, index) => {
       return (
         <>
-          <li>{data} <span onClick={() => deletethisbubble3(index)}>X</span></li>
+          <li>{data} <span className="memClose" onClick={() => deletethisbubble3(index)}><GrFormClose/></span></li>
         </>
       )
     });
@@ -97,8 +98,8 @@ const EditMemberships = () => {
           <button className="button1"><i><FaArrowRight /></i></button>
         </div>
         <div className="membership">
-          <div>
-            <h3>Memberships</h3>
+          <div className="memberEdit">
+            <h6>Memberships</h6>
             <div>
               <ul>
                 {(resumeInfo.membership) ? membershipBubbleMapping() : null}

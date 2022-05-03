@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { BsPlusCircle } from "react-icons/bs";
 import './EditAchievements.css';
 import axios from 'axios';
+import { GrFormClose } from "react-icons/gr";
 import { useOutletContext, useParams } from "react-router-dom";
 
 
@@ -92,7 +93,7 @@ const EditAchievements = (props) => {
     let result = [];
     result = resumeInfo.achievement.map((data, index) => {
       return (
-        <li>{data} <span onClick={() => deletethisbubble(index)}>X</span></li>
+        <li>{data} <span className="achClose" onClick={() => deletethisbubble(index)}><GrFormClose/></span></li>
       )
     });
     return result;
@@ -103,7 +104,7 @@ const EditAchievements = (props) => {
     result = resumeInfo.certificate.map((data, index) => {
       return (
         <>
-          <li>{data} <span onClick={() => deletethisbubble2(index)}>X</span></li>
+          <li>{data} <span  className="achClose" onClick={() => deletethisbubble2(index)}><GrFormClose/></span></li>
         </>
       )
     });
@@ -120,8 +121,8 @@ const EditAchievements = (props) => {
           <input type="submit" name="aboutme" value="Save" />
           <button className="button1"><i><FaArrowRight /></i></button>
         </div>
-        <div>
-          <h3>Achievements</h3>
+        <div className="achievementEdit">
+          <h6>Achievements</h6>
           <div>
             <ul>
               {(resumeInfo.achievement) ? achievementBulbleMapping() : null}
@@ -129,8 +130,8 @@ const EditAchievements = (props) => {
           </div>
         </div>
 
-        <div>
-          <h3>Certification</h3>
+        <div className="certificationEdit">
+          <h6>Certification</h6>
           <div>
             <ul>
               {(resumeInfo.certificate) ? certificateBubbleMapping() : null}
