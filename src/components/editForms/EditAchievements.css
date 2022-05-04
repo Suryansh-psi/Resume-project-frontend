@@ -46,24 +46,28 @@
     margin-bottom: 2rem;
 }
 
-.achievementEdit ul{
+.achievementEdit li{
     border: 2px solid lightgrey;
+    margin-bottom: 0.5rem;
     width: 9rem;
-    height: 3rem;
     border-radius: 27px;
     list-style: none;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
 }
 
 .achClose{
     font-size: 25px;
+    position: relative;
+    left: 1rem;
+    
 }
 
-.certificationEdit ul{
+.certificationEdit li{
     border: 2px solid lightgrey;
     width: 9rem;
-    height: 3rem;
     border-radius: 27px;
     list-style: none;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
 }

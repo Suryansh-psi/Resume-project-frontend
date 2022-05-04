@@ -4,9 +4,7 @@
 	box-sizing: border-box;
 }
 
-.skillTable{
-	position: relative;
-	top: 1rem;
+/* .skillTable{
 	width: 33.5rem;
 
 }
@@ -19,7 +17,7 @@ table{
 .skillTable thead {
 	background-color: #d6d9db;
 	width: 4rem;
-	height: 2.5rem;
+	height: 2rem;
 
 }
 
@@ -67,11 +65,10 @@ thead i{
 	color: darkgrey;
 }
 
-
+ */
 
 .close{
 	position: relative;
-
 	left: -2rem;
 	font-size: 25px;
 }
@@ -79,7 +76,7 @@ thead i{
 .sP{
 	border: 2px solid lightgrey;
 	border-radius: 27px;
-	width: 12rem;
+	width: 15rem;
 	height: 2rem;
 	padding: 1rem;
 }
