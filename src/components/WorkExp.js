@@ -266,7 +266,7 @@ const WorkExp = () => {
                     }} >
                     <option className="option1" value="">Select...</option>
 
-                    {projOps}
+                    {projOps} 
                   </select>
               </label>
 
