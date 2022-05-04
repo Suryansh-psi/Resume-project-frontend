@@ -124,7 +124,7 @@ const EditAchievements = (props) => {
         <div className="achievementEdit">
           <h6>Achievements</h6>
           <div>
-            <ul>
+            <ul className="achiList">
               {(resumeInfo.achievement) ? achievementBulbleMapping() : null}
             </ul>
           </div>

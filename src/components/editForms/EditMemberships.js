@@ -100,7 +100,7 @@ const EditMemberships = () => {
         <div className="membership">
           <div className="memberEdit">
             <h6>Memberships</h6>
-            <div>
+            <div className="memBox">
               <ul>
                 {(resumeInfo.membership) ? membershipBubbleMapping() : null}
               </ul>

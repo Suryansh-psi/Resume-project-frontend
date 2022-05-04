@@ -46,24 +46,38 @@
     margin-bottom: 2rem;
 }
 
-.achievementEdit ul{
+.achievementEdit li{
     border: 2px solid lightgrey;
-    width: 9rem;
-    height: 3rem;
+    margin-bottom: 0.5rem;
+    width: 22rem; 
     border-radius: 27px;
     list-style: none;
-    padding-bottom: 0.5rem;
+    height: 3rem;
+    padding-left: 1rem;
 }
 
 .achClose{
     font-size: 25px;
+    position: absolute;
+    left: 22rem;    
 }
 
-.certificationEdit ul{
+.certificationEdit li{
     border: 2px solid lightgrey;
-    width: 9rem;
+    width: 22rem;
     height: 3rem;
     border-radius: 27px;
     list-style: none;
-    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.achiList {
+    /* display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+}
+
+.achiList li {
+    /* margin: 2px; */
 }
