@@ -41,12 +41,12 @@
 
 .memberEdit .memBox li{
     border: 2px solid lightgrey;
-    width: 7rem;
+    width: 15rem;
     border-radius: 27px;
     list-style: none;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-    text-align: center;
+    padding-left: 1rem;
     padding-bottom: 0.4rem;
 }
 
@@ -54,5 +54,5 @@
     font-size: 25px;
     position: relative;
 
-    left: 0.5rem;
+    left: 8rem;
 }
