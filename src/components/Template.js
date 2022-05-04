@@ -105,7 +105,10 @@ const Template = (props) => {
 		skills = skills.split(',');
 		// if (true & data) {
 			let result = skills.map(skill => {
-				return <li>{skill}</li>
+				skill = skill.split('#');
+				let category = skill[0];
+				skill = skill[1];
+				return <li>{`${category} : ${skill}`}</li>
 			});
 			return result;
 		// }

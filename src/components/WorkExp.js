@@ -20,7 +20,23 @@ const WorkExp = () => {
   // const [role, setRole] = useState([]);
   const [roles, setRoles] = useState([]);
   const [techstacks, setTechstacks] = useState([]);
+  const [projects, setProjects] = useState([]);
   // const [data, setData] = useState("");
+
+  useEffect(() => {
+    let result = async () => {
+      try {
+        const result2 = await axios.get(`http://localhost:8080/project`).then(res => {
+          const response = res.data;
+          setProjects(response);
+        })
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    result();
+  }, []);
 
   const customFunction = (d) => {
     // console.log(role);
@@ -79,6 +95,10 @@ const WorkExp = () => {
 
     // reset();
   }
+
+  const projOps = projects.map((ops) => {
+    return <option title={ops.project_desc} value={ops.project_name}>{ops.project_name}</option>
+  })
 
   useEffect(() => {
     let result = async () => {
@@ -231,7 +251,7 @@ const WorkExp = () => {
 
               <label className="WorkExplabel">
                 Project Name
-                <input className={`third ${errors.project && "invalid"}`}
+                {/* <input className={`third ${errors.project && "invalid"}`}
                   {...register('project', { required: "*required" })}
                   onKeyUp={() => {
                     trigger("project");
@@ -239,7 +259,15 @@ const WorkExp = () => {
                   type="text" name="project[]" />
                 {errors.project && (
                   <small className="text-danger">{errors.project.message}</small>
-                )}
+                )} */}
+                <select className={`project12 ${errors.project && "invalid"}`} name="project" id="project" {...register("project", { required: "*required" })}
+                    onKeyUp={() => {
+                      trigger("project");
+                    }} >
+                    <option className="option1" value="">Select...</option>
+
+                    {projOps}
+                  </select>
               </label>
 
               <label className="WorkExplabel">
@@ -273,7 +301,7 @@ const WorkExp = () => {
                     }}
                     type="date" name="startdate[]" />
                   <span className="duration"><input className="fifth"{...register("enddate")} type="date" name="enddate[]" /></span>
-                  <span className="checkBox"><RiCheckboxCircleLine /></span> till date
+                  {/* <span className="checkBox"><RiCheckboxCircleLine /></span> till date */}
                   {errors.startdate && (
                     <small className="text-danger">{errors.startdate.message}</small>
                   )}
@@ -356,7 +384,7 @@ const WorkExp = () => {
       </div>
       <div className="footer">
         {/* <span onClick={createWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" /> */}
-        <span onClick={addWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" />
+        {/* <span onClick={addWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" /> */}
         {/* <i className='plus'><FaPlus /> Add Work Exp</i> */}
       </div>
 

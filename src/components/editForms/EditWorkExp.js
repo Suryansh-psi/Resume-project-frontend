@@ -278,8 +278,9 @@ const EditWorkExp = () => {
     let result = [];
     result = work.projectResp.map((data, index) => {
       return <>
-        <input type="text" value={data} /><span className="projCross" onClick={() => deleteSelectProjResp(index, work)}> 
-          <GrFormClose/></span>
+        {/* <input type="text" value={data} /><span className="projCross" onClick={() => deleteSelectProjResp(index, work)}> 
+          <GrFormClose/></span> */}
+           <input type="text" value={data} className="projRespinput" placeholder="project" /><span className="projCross"><GrFormClose/></span>
       </>
     })
     return result;
@@ -414,7 +415,7 @@ const EditWorkExp = () => {
                 TechnologyStack
                 <div className='techstack-input-div'>
                 <div className="workRole">
-                  {(data.techStack) ? showTechStack(data) : null}
+                  {/* {(data.techStack) ? showTechStack(data) : null} */}
                 </div>
                   {/* <input className="seventh"{...register('technology')} type="text" name="technology[]" placeholder="Mention Tech" />
                   <span className="cross">&#9747;</span> 
@@ -443,7 +444,7 @@ const EditWorkExp = () => {
                   </div> */}
                 <div className="projRes-main-div" >
                 <div className="workRole">
-                  <input type="text" placeholder="project" /><span className="projCross"><GrFormClose/></span>
+                {(data.projectResp) ? showProjResp(data) : null}
                 </div>
                   <input className={`eight ${errors.responsibility && "invalid"}`} {...register('responsibility')}
                     onKeyUp={() => {
@@ -482,7 +483,7 @@ const EditWorkExp = () => {
       </div >
       <div className="footer">
         {/* <span onClick={createWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" /> */}
-        <span onClick={addWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" />
+        {/* <span onClick={addWorkExp} className="plus"><FaPlus /></span><input className="element" {...register('workExp')} type="text" name="workExp[]" placeholder='Add work experience' value="Add work experience" /> */}
         {/* <i className='plus'><FaPlus /> Add Work Exp</i> */}
       </div>
 

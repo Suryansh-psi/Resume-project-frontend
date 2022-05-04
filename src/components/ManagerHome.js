@@ -56,8 +56,8 @@ const ManagerHome = () => {
                         {(data.status) ? data.status : "Null"}
                         
                     </h5>
-                    <h4>Project Manager{(data.status === "Approved") ? <FcApproval /> : null}</h4>
-                    <h6>PSI Resume Project Manager Virendra Singh </h6>
+                    <h4>{data.name}{(data.status === "Approved") ? <FcApproval /> : null}</h4>
+                    <h6>Pratham Software (PSI)</h6>
                 </div>
 
                 <div class="dpdown">
